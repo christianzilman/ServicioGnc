@@ -1,4 +1,6 @@
-﻿using ServicioGnc.Models;
+﻿using ServicioGnc.DAL.Repository;
+using ServicioGnc.DAL.Repository.Impl;
+using ServicioGnc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +11,16 @@ namespace ServicioGnc.DAL
     public class UnitOfWork : IDisposable
     {
         private ServicioGncContext context = new ServicioGncContext();
-        private GenericRepository<Persona> personaRepository;
+        private IPersonaRepository personaRepository;
         
-        public GenericRepository<Persona> PersonaRepository
+        public IPersonaRepository PersonaRepository
         {
             get
             {
 
                 if (this.personaRepository == null)
                 {
-                    this.personaRepository = new GenericRepository<Persona>(context);
+                    this.personaRepository =  new PersonaRepository(); //new GenericRepository<Persona>(context);
                 }
                 return personaRepository;
             }

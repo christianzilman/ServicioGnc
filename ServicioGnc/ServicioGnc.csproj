@@ -165,6 +165,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\GenericRepository2.cs" />
+    <Compile Include="DAL\IGenericRepository.cs" />
+    <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\PersonaRepository.cs" />
+    <Compile Include="DAL\Repository\IPersonaRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,7 +1,5 @@
-﻿using ServicioGnc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,23 +7,60 @@ using System.Web;
 
 namespace ServicioGnc.DAL
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public abstract class GenericRepository<C, T> :
+    IGenericRepository<T>
+        where T : class
+        where C : DbContext, new()
     {
-        internal ServicioGncContext context;
-        internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(ServicioGncContext context)
+        private C _entities = new C();
+        public C Context
         {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
+
+            get { return _entities; }
+            set { _entities = value; }
         }
 
-        public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+        public virtual IEnumerable<T> GetAll()
+        {
+
+            IQueryable<T> query = _entities.Set<T>();
+            return query;
+        }
+
+        public IEnumerable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        {
+
+            IQueryable<T> query = _entities.Set<T>().Where(predicate);
+            return query;
+        }
+
+        public virtual void Add(T entity)
+        {
+            _entities.Set<T>().Add(entity);
+        }
+
+        public virtual void Delete(T entity)
+        {
+            _entities.Set<T>().Remove(entity);
+        }
+
+        public virtual void Edit(T entity)
+        {
+            _entities.Entry(entity).State = System.Data.EntityState.Modified;
+        }
+
+        public virtual void Save()
+        {
+            _entities.SaveChanges();
+        }
+
+        public IEnumerable<T> Get(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<T> query = _entities.Set<T>();
 
             if (filter != null)
             {
@@ -48,35 +83,15 @@ namespace ServicioGnc.DAL
             }
         }
 
-        public virtual TEntity GetByID(object id)
+        public T GetByID(object id)
         {
-            return dbSet.Find(id);
+            return _entities.Set<T>().Find(id);
         }
 
-        public virtual void Insert(TEntity entity)
+        public void Delete(object id)
         {
-            dbSet.Add(entity);
-        }
-
-        public virtual void Delete(object id)
-        {
-            TEntity entityToDelete = dbSet.Find(id);
+            T entityToDelete = _entities.Set<T>().Find(id);
             Delete(entityToDelete);
-        }
-
-        public virtual void Delete(TEntity entityToDelete)
-        {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                dbSet.Attach(entityToDelete);
-            }
-            dbSet.Remove(entityToDelete);
-        }
-
-        public virtual void Update(TEntity entityToUpdate)
-        {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
         }
     }
 }

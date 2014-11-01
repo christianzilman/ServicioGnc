@@ -53,7 +53,7 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {                
-                unitOfWork.PersonaRepository.Insert(persona);
+                unitOfWork.PersonaRepository.Add(persona);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }
@@ -82,7 +82,7 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
-                unitOfWork.PersonaRepository.Update(persona);
+                unitOfWork.PersonaRepository.Edit(persona);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }
