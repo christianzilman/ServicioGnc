@@ -12,7 +12,30 @@ namespace ServicioGnc.DAL
     {
         private ServicioGncContext context = new ServicioGncContext();
         private IPersonaRepository personaRepository;
-        
+        private IProveedorRepository proveedorRepository;
+        private IProductoRepository productoRepository;
+        private IUnidadRepository unidadRepository;
+
+        public IUnidadRepository UnidadRepository {
+            get {
+                if(this.unidadRepository==null){
+                    this.unidadRepository = new UnidadRepository(context);
+                }
+                return this.unidadRepository;
+            }
+        }
+
+        public IProductoRepository ProductoRepository
+        {
+            get 
+            {
+                if(this.productoRepository==null){
+                    this.productoRepository = new ProductoRepository(context);
+                }
+                return this.productoRepository;
+            }        
+        }
+
         public IPersonaRepository PersonaRepository
         {
             get
@@ -20,11 +43,23 @@ namespace ServicioGnc.DAL
 
                 if (this.personaRepository == null)
                 {
-                    this.personaRepository =  new PersonaRepository(); //new GenericRepository<Persona>(context);
+                    this.personaRepository =  new PersonaRepository(context); //new GenericRepository<Persona>(context);
                 }
-                return personaRepository;
+                return this.personaRepository;
             }
         }
+
+        public IProveedorRepository ProveedorRepository {
+            get { 
+                if(this.proveedorRepository==null){
+                    this.proveedorRepository = new ProveedorRepository(context);
+                }
+                return this.proveedorRepository;
+            }        
+        }
+
+
+
 
         public void Save()
         {

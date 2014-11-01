@@ -1,0 +1,50 @@
+﻿@model ServicioGnc.Models.Producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Producto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PrecioCompra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrecioCompra)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Unidad.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Unidad.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PrecioVenta)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrecioVenta)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cantidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cantidad)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

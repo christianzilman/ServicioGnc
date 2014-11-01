@@ -164,12 +164,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\GenericRepository2.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Repository\Impl\PersonaRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\ProductoRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\ProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\UnidadRepository.cs" />
     <Compile Include="DAL\Repository\IPersonaRepository.cs" />
+    <Compile Include="DAL\Repository\IProductoRepository.cs" />
+    <Compile Include="DAL\Repository\IProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\IUnidadRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -339,6 +347,16 @@
     <Content Include="Views\Persona\Create.cshtml" />
     <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Delete.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\Proveedor\Details.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\Proveedor\Edit.cshtml" />
+    <Content Include="Views\Proveedor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

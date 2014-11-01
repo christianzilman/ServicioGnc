@@ -9,6 +9,10 @@ namespace ServicioGnc.DAL.Repository.Impl
     public class PersonaRepository :
     GenericRepository<ServicioGncContext, Persona>, IPersonaRepository 
     {
-
+        public PersonaRepository() { }
+        public PersonaRepository(ServicioGncContext context)
+        {
+            this.Context = context;
+        }
     }
 }

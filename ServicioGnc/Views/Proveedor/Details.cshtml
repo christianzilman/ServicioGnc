@@ -1,0 +1,36 @@
+﻿@model ServicioGnc.Models.Proveedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Proveedor</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RazonSocial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RazonSocial)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CUIT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CUIT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Domicilio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Domicilio)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProveedorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
