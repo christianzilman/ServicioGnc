@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "BuscarProducto";
+    Layout = null;
+}
+
+<input type="text" value="@ViewBag.NombreProducto"  />
+<input type="text" value="@ViewBag.ProductoId" id="ProductoIdPanel" name="ProductoIdPanel"/>
+<input type="text" value="1" id="ProductoCantidad" name="ProductoCantidad"/>
+<input type="button" value="Agregar" onclick="javascript:AgregarDetalle()"/>
