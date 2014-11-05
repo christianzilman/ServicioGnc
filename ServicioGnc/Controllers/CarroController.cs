@@ -96,6 +96,45 @@ namespace ServicioGnc.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult ProcesarCompra()
+        {
+            List<Carro> listCarro = unitOfWork.CarroRepository.Get(includeProperties: "Producto").ToList();
+
+            double total = (double)listCarro.Sum<Carro>(t => t.SubTotal);
+
+            Compra compra = new Compra();
+            compra.ProveedorId = 1;
+            compra.Total = total;
+            compra.Fecha = DateTime.Now;
+
+
+            List<DetalleCompra> listDetalleCompra = new List<DetalleCompra>();
+            foreach (Carro carro in listCarro)
+            {
+                DetalleCompra detalleCompra = new DetalleCompra();
+                detalleCompra.Cantidad = (double)carro.Cantidad;
+                detalleCompra.Subtotal = carro.SubTotal;
+                detalleCompra.ProductoId = carro.ProductoId;
+                detalleCompra.Precio = carro.Precio;
+
+                listDetalleCompra.Add(detalleCompra);
+
+            }
+
+            compra.DetalleCompras = listDetalleCompra;
+            unitOfWork.CompraRepository.Add(compra);
+            unitOfWork.Save();
+            foreach (Carro carro in listCarro)
+            {
+                unitOfWork.CarroRepository.Delete(carro);
+            }
+            unitOfWork.Save();
+
+            return View();
+        }
+
         //
         // POST: /Carro/Create
 
