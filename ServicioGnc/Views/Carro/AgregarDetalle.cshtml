@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "AgregarDetalle";
+    Layout = null;
+}
+
+@{
+    List<ServicioGnc.Models.Carro> listCarro = ViewBag.ListCarro;
+    
+
+    <table>
+        <tr>
+            <td>Nombre Produc</td>
+            <td>Cantidad</td>
+        </tr>
+        @foreach(ServicioGnc.Models.Carro carro in listCarro){
+            <tr>
+                
+                <td>@carro.Producto.Nombre</td>
+                
+                <td>@carro.Cantidad</td>
+            </tr>
+        }
+    </table>
+    
+    
+}

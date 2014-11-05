@@ -1,0 +1,60 @@
+﻿@model ServicioGnc.Models.Carro
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm(actionName:"ProcesarVenta",controllerName:"Carro"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="busqueda">
+        <input type="text" name="productoId" id="productoId"  />
+        <input type="button" onclick="javascript:BuscarProducto()" value="Enviar" />
+
+    </div>
+    <div id="productoDescripcion"></div>
+    
+    <div id="detalleCarro"></div>
+    <input type="submit" onclick="javascript:ProcesarVenta()" value="Guardar" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script >
+    function BuscarProducto(){
+        var productoCodigo = $("#productoId").val();
+        $.ajax({
+            url: "@Url.Content("~/Producto/BuscarProducto")",
+            type: 'POST',
+            data: { 'productoId': productoCodigo },
+            success: function (data) {
+                $("#productoDescripcion").html(data);
+            }
+        });
+    }
+
+    
+
+    function AgregarDetalle() {
+        var productoIdPanel = $("#ProductoIdPanel").val();
+        var cantidad = $("#ProductoCantidad").val();
+        $.ajax({
+            url: "@Url.Content("~/Carro/AgregarDetalle")",
+            type:'post',
+            data: { 'productoId': productoIdPanel, 'cantidad': cantidad },
+        success: function (data) {
+            $("#detalleCarro").html(data);
+        }
+    });
+
+    }
+</script>

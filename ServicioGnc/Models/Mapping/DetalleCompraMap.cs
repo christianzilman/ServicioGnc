@@ -11,10 +11,6 @@ namespace ServicioGnc.Models.Mapping
             this.HasKey(t => t.DetalleCompraId);
 
             // Properties
-            this.Property(t => t.Cantidad)
-                .IsFixedLength()
-                .HasMaxLength(10);
-
             // Table & Column Mappings
             this.ToTable("DetalleCompra");
             this.Property(t => t.DetalleCompraId).HasColumnName("DetalleCompraId");

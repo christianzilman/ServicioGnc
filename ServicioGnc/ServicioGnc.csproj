@@ -162,6 +162,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarroController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -170,14 +172,18 @@
     <Compile Include="DAL\GenericRepository2.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\Repository\ICarroRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\CarroRepository.cs" />
     <Compile Include="DAL\Repository\Impl\PersonaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProductoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProveedorRepository.cs" />
     <Compile Include="DAL\Repository\Impl\UnidadRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\VentaRepository.cs" />
     <Compile Include="DAL\Repository\IPersonaRepository.cs" />
     <Compile Include="DAL\Repository\IProductoRepository.cs" />
     <Compile Include="DAL\Repository\IProveedorRepository.cs" />
     <Compile Include="DAL\Repository\IUnidadRepository.cs" />
+    <Compile Include="DAL\Repository\IVentaRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +191,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AsignacionTurno.cs" />
+    <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Concepto.cs" />
@@ -198,6 +205,7 @@
     <Compile Include="Models\LecturaPresionTemperatura.cs" />
     <Compile Include="Models\Liquidacion.cs" />
     <Compile Include="Models\Mapping\AsignacionTurnoMap.cs" />
+    <Compile Include="Models\Mapping\CarroMap.cs" />
     <Compile Include="Models\Mapping\ClienteMap.cs" />
     <Compile Include="Models\Mapping\CompraMap.cs" />
     <Compile Include="Models\Mapping\ConceptoMap.cs" />
@@ -357,6 +365,19 @@
     <Content Include="Views\Proveedor\Create.cshtml" />
     <Content Include="Views\Proveedor\Edit.cshtml" />
     <Content Include="Views\Proveedor\Delete.cshtml" />
+    <Content Include="Views\Carro\Index.cshtml" />
+    <Content Include="Views\Carro\Details.cshtml" />
+    <Content Include="Views\Carro\Create.cshtml" />
+    <Content Include="Views\Carro\Edit.cshtml" />
+    <Content Include="Views\Carro\Delete.cshtml" />
+    <Content Include="Views\Producto\BuscarProducto.cshtml" />
+    <Content Include="Views\Carro\AgregarDetalle.cshtml" />
+    <Content Include="Views\Carro\ProcesarVenta.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,7 +8,7 @@ namespace ServicioGnc.Models.Mapping
         public ProductoMap()
         {
             // Primary Key
-            this.HasKey(t => t.ProductoID);
+            this.HasKey(t => t.ProductoId);
 
             // Properties
             this.Property(t => t.Nombre)
@@ -16,7 +16,7 @@ namespace ServicioGnc.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("Producto");
-            this.Property(t => t.ProductoID).HasColumnName("ProductoID");
+            this.Property(t => t.ProductoId).HasColumnName("ProductoId");
             this.Property(t => t.Nombre).HasColumnName("Nombre");
             this.Property(t => t.PrecioCompra).HasColumnName("PrecioCompra");
             this.Property(t => t.UnidadId).HasColumnName("UnidadId");

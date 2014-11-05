@@ -23,6 +23,17 @@ namespace ServicioGnc.Controllers
             return View(productoes.ToList());
         }
 
+
+
+        [HttpPost]
+        public ActionResult BuscarProducto(int productoId)
+        {
+            Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
+            ViewBag.ProductoId = productoId;
+            ViewBag.NombreProducto = producto.Nombre;
+            return View();
+        }
+
         //
         // GET: /Producto/Details/5
 

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace ServicioGnc.Models
 {
-    public partial class DetalleCompra
+    public partial class Carro
     {
-        public int DetalleCompraId { get; set; }
+        public int CarroId { get; set; }
+        public Nullable<int> UsuarioId { get; set; }
         public Nullable<int> ProductoId { get; set; }
-        public Nullable<int> CompraId { get; set; }
         public Nullable<double> Precio { get; set; }
-        public Nullable<double> Subtotal { get; set; }
+        public Nullable<double> SubTotal { get; set; }
         public Nullable<double> Cantidad { get; set; }
-        public virtual Compra Compra { get; set; }
+        public Nullable<int> TipoOperacionId { get; set; }
         public virtual Producto Producto { get; set; }
     }
 }

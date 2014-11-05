@@ -17,6 +17,7 @@ namespace ServicioGnc.Models
         }
 
         public DbSet<AsignacionTurno> AsignacionTurnoes { get; set; }
+        public DbSet<Carro> Carroes { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Concepto> Conceptoes { get; set; }
@@ -42,6 +43,7 @@ namespace ServicioGnc.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AsignacionTurnoMap());
+            modelBuilder.Configurations.Add(new CarroMap());
             modelBuilder.Configurations.Add(new ClienteMap());
             modelBuilder.Configurations.Add(new CompraMap());
             modelBuilder.Configurations.Add(new ConceptoMap());
