@@ -6,19 +6,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ServicioGnc.Models;
+using ServicioGnc.DAL;
 
 namespace ServicioGnc.Controllers
 {
     public class ClienteController : Controller
     {
-        private ServicioGncContext db = new ServicioGncContext();
+        //private ServicioGncContext db = new ServicioGncContext();
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         //
         // GET: /Cliente/
 
         public ActionResult Index()
         {
-            return View(db.Clientes.ToList());
+            var clienteList = unitOfWork.ClienteRepository.Get();
+            return View(clienteList.ToList());
         }
 
         //
@@ -26,7 +29,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Cliente cliente = db.Clientes.Find(id);
+            Cliente cliente = unitOfWork.ClienteRepository.GetByID(id);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -51,8 +54,8 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(cliente);
-                db.SaveChanges();
+                unitOfWork.ClienteRepository.Add(cliente);
+                unitOfWork.Save();
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +67,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Cliente cliente = db.Clientes.Find(id);
+            Cliente cliente = unitOfWork.ClienteRepository.GetByID(id);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -81,8 +84,9 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                db.SaveChanges();
+                unitOfWork.ClienteRepository.Edit(cliente);
+                unitOfWork.Save();
+                                
                 return RedirectToAction("Index");
             }
             return View(cliente);
@@ -93,7 +97,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Cliente cliente = db.Clientes.Find(id);
+            Cliente cliente = unitOfWork.ClienteRepository.GetByID(id);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -108,15 +112,15 @@ namespace ServicioGnc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Clientes.Find(id);
-            db.Clientes.Remove(cliente);
-            db.SaveChanges();
+            Cliente cliente = unitOfWork.ClienteRepository.GetByID(id);
+            unitOfWork.PersonaRepository.Delete(cliente);
+            unitOfWork.Save();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            unitOfWork.Dispose();
             base.Dispose(disposing);
         }
     }

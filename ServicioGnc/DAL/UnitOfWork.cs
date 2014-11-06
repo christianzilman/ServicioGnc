@@ -18,6 +18,20 @@ namespace ServicioGnc.DAL
         private ICarroRepository carroRepository;
         private IVentaRepository ventaRepository;
         private ICompraRepository compraRepository;
+        private IClienteRepository clienteRepository;
+
+
+        public IClienteRepository ClienteRepository
+        {
+            get
+            {
+                if (this.clienteRepository == null)
+                {
+                    this.clienteRepository = new ClienteRepository(context);
+                }
+                return clienteRepository;
+            }
+        }
 
         public ICompraRepository CompraRepository
         {
