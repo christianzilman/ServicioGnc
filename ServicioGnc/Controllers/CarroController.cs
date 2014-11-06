@@ -43,6 +43,11 @@ namespace ServicioGnc.Controllers
             return View();
         }
 
+        public ActionResult CreateCompra()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AgregarDetalle(int productoId,int cantidad)
         {
@@ -133,6 +138,20 @@ namespace ServicioGnc.Controllers
             unitOfWork.Save();
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCompra(Carro carro)
+        {
+            if (ModelState.IsValid)
+            {
+                unitOfWork.CarroRepository.Add(carro);
+                unitOfWork.Save();
+                return RedirectToAction("Index");
+            }
+
+            return View(carro);
         }
 
         //

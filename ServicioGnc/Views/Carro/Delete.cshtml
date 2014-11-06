@@ -45,12 +45,7 @@
         @Html.DisplayFor(model => model.Cantidad)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UnidadId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UnidadId)
-    </div>
+
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

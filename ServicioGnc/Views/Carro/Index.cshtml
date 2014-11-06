@@ -26,9 +26,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Cantidad)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnidadId)
-        </th>
         <th></th>
     </tr>
 
@@ -48,9 +45,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnidadId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CarroId }) |
