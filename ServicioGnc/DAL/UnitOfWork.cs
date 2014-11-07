@@ -19,7 +19,57 @@ namespace ServicioGnc.DAL
         private IVentaRepository ventaRepository;
         private ICompraRepository compraRepository;
         private IClienteRepository clienteRepository;
+        private ILiquidacionRepository liquidacionRepository;
+        private IEmpresaRepository empresaRepository;
+        private IConceptoRepository conceptoRepository;
+        private ITipoConcepto tipoConceptoRepository;
 
+        public  ITipoConcepto TipoConceptoRepository
+        {
+            get
+            {
+                if (this.tipoConceptoRepository == null)
+                {
+                    this.tipoConceptoRepository = new TipoConceptoRepository(context);                
+                }
+                return this.tipoConceptoRepository;
+            }
+        }
+        public IConceptoRepository ConceptoRepository
+        {
+            get
+            {
+                if (this.conceptoRepository == null)
+                {
+                    this.conceptoRepository = new ConceptoRepository(context);
+                }
+                return this.conceptoRepository;
+            }  
+
+        }
+
+        public IEmpresaRepository EmpresaRepository
+        {
+            get
+            {
+                if(this.empresaRepository==null){
+                    this.empresaRepository = new EmpresaRepository(context);
+                }
+                return this.empresaRepository;
+            }
+        }
+
+        public ILiquidacionRepository LiquidacionRepository
+        {
+            get
+            {
+                if(this.liquidacionRepository==null)
+                {
+                    this.liquidacionRepository = new LiquidacionRepository(context);
+                }
+                return this.liquidacionRepository;
+            }
+        }
 
         public IClienteRepository ClienteRepository
         {
