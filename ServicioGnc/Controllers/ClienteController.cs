@@ -12,7 +12,7 @@ namespace ServicioGnc.Controllers
 {
     public class ClienteController : Controller
     {
-        //private ServicioGncContext db = new ServicioGncContext();
+       
         private UnitOfWork unitOfWork = new UnitOfWork();
 
         //
@@ -113,7 +113,7 @@ namespace ServicioGnc.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Cliente cliente = unitOfWork.ClienteRepository.GetByID(id);
-            unitOfWork.PersonaRepository.Delete(cliente);
+            unitOfWork.ClienteRepository.Delete(cliente);
             unitOfWork.Save();
             return RedirectToAction("Index");
         }
