@@ -8,7 +8,18 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Liqudiacion General", "CreateGeneral")
 </p>
+<p>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    
+       <p>
+           Consultar por periodo: <input id="periodo" name="periodo"/>
+           <input type="submit" value="Consultar"/>
+       </p>    
+}
+ 
 <table>
     <tr>
         <th>

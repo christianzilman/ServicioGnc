@@ -23,6 +23,14 @@ namespace ServicioGnc.Controllers
             return View(liquidacions.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(DateTime periodo)
+        {
+            var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
+            liquidacions = liquidacions.Where(l=> l.Fecha >= periodo && l.Fecha <= periodo);
+            return View(liquidacions.ToList());
+        }
+
         //
         // GET: /Liquidacion/Details/5
 
@@ -47,6 +55,85 @@ namespace ServicioGnc.Controllers
             return View();
         }
 
+        public ActionResult CreateGeneral()
+        {
+            ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre");
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateGeneral(Liquidacion liquidacion)
+        {
+            try
+            {
+                foreach(Persona persona in unitOfWork.PersonaRepository.Get().ToList())
+                {
+                    Liquidacion liquidacionGeneral = new Liquidacion();
+
+                    liquidacionGeneral.Persona = persona;
+                    liquidacionGeneral.PersonaId = persona.PersonaId;
+                    liquidacionGeneral.Fecha = liquidacion.Fecha;
+                    liquidacionGeneral.Empresa = liquidacion.Empresa;
+                    liquidacionGeneral.EmpresaId = liquidacion.EmpresaId;
+
+                    List<DetalleLiquidacion> listDetalleLiquidacion = new List<DetalleLiquidacion>();
+
+                    List<Concepto> listConcepto = unitOfWork.ConceptoRepository.Get().ToList();
+                    double importeTotal = 0.00;
+                    foreach (Concepto concepto in listConcepto)
+                    {
+                        switch (concepto.ConceptoId)
+                        {
+                            case 1:
+                                importeTotal = importeTotal + (double)concepto.Importe;
+                                break;
+                            default:
+                                importeTotal = calcularSueldo(importeTotal, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
+                                break;
+                        }
+                    }
+
+                    liquidacionGeneral.Total = importeTotal;
+
+                    double importeTemp = 0.00;
+                    double sueldoBasico = 0.00;
+                    foreach (Concepto concepto in listConcepto)
+                    {
+                        DetalleLiquidacion detalleLiquidacion = new DetalleLiquidacion();
+                        detalleLiquidacion.ConceptoId = concepto.ConceptoId;
+                        importeTemp = 0.00;
+                        switch (concepto.ConceptoId)
+                        {
+                            case 1:
+                                sueldoBasico = (double)concepto.Importe;
+                                importeTemp = sueldoBasico;
+                                break;
+                            default:
+                                importeTemp = calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
+                                break;
+                        }
+                        detalleLiquidacion.SubTotal = importeTemp;
+
+                        listDetalleLiquidacion.Add(detalleLiquidacion);
+                    }
+
+                    liquidacionGeneral.DetalleLiquidacions = listDetalleLiquidacion;
+
+                    unitOfWork.LiquidacionRepository.Add(liquidacionGeneral);
+                    unitOfWork.Save();
+                    //return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex){
+                ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre", liquidacion.EmpresaId);
+            }            
+            
+            return View(liquidacion);
+        }
         //
         // POST: /Liquidacion/Create
 
@@ -60,8 +147,41 @@ namespace ServicioGnc.Controllers
                 List<DetalleLiquidacion> listDetalleLiquidacion = new List<DetalleLiquidacion>();
 
                 List<Concepto> listConcepto = unitOfWork.ConceptoRepository.Get().ToList();
+                double importeTotal = 0.00;
+                foreach(Concepto concepto in listConcepto){
+                    switch(concepto.ConceptoId){
+                        case 1:
+                            importeTotal = importeTotal + (double)concepto.Importe;
+                            break;
+                        default:
+                            importeTotal = calcularSueldo(importeTotal,(double)concepto.Importe,(double)concepto.Porcentaje,(int)concepto.Utilidad,(int)concepto.TipoConceptoId);
+                            break;
+                    }
+                }
 
+                liquidacion.Total = importeTotal;
 
+                double importeTemp = 0.00;
+                double sueldoBasico = 0.00;
+                foreach(Concepto concepto in listConcepto){
+                    DetalleLiquidacion detalleLiquidacion = new DetalleLiquidacion();
+                    detalleLiquidacion.ConceptoId = concepto.ConceptoId;
+                    importeTemp = 0.00;
+                    switch(concepto.ConceptoId){
+                        case 1:
+                            sueldoBasico = (double)concepto.Importe;
+                            importeTemp = sueldoBasico;
+                            break;
+                        default:
+                            importeTemp = calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
+                            break;
+                    }
+                    detalleLiquidacion.SubTotal = importeTemp;
+
+                    listDetalleLiquidacion.Add(detalleLiquidacion);
+                }
+
+                liquidacion.DetalleLiquidacions = listDetalleLiquidacion;
 
                 unitOfWork.LiquidacionRepository.Add(liquidacion);
                 unitOfWork.Save();
@@ -71,6 +191,26 @@ namespace ServicioGnc.Controllers
             ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre", liquidacion.EmpresaId);
             ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", liquidacion.PersonaId);
             return View(liquidacion);
+        }
+
+        public double calcularSueldo(double importeTotal, double importe , double porcentaje, int utilidad, int tipoConceptoId) {
+            double importeHaberDebe = 1;
+            if (tipoConceptoId == 1)
+            {
+                importeHaberDebe = importeHaberDebe* 1;
+            }
+            else {
+                importeHaberDebe = importeHaberDebe * -1;
+            }
+
+            if (utilidad == 1)
+            {
+                importeTotal = importeTotal + (importeHaberDebe + importe);
+            }
+            else { 
+                importeTotal = importeTotal + (importeHaberDebe * importeTotal * porcentaje/100.00);
+            }
+            return importeTotal;
         }
 
         //

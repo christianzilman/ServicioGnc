@@ -164,24 +164,39 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarroController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiquidacionController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\TipoConceptoController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\GenericRepository2.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Repository\ICarroRepository.cs" />
+    <Compile Include="DAL\Repository\IClienteRepository.cs" />
+    <Compile Include="DAL\Repository\ICompraRepository.cs" />
+    <Compile Include="DAL\Repository\IConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\IEmpresaRepository.cs" />
+    <Compile Include="DAL\Repository\ILiquidacionRepository.cs" />
     <Compile Include="DAL\Repository\Impl\CarroRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\ClienteRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\CompraRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\ConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\EmpresaRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\LiquidacionRepository.cs" />
     <Compile Include="DAL\Repository\Impl\PersonaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProductoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\TipoConceptoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\UnidadRepository.cs" />
     <Compile Include="DAL\Repository\Impl\VentaRepository.cs" />
     <Compile Include="DAL\Repository\IPersonaRepository.cs" />
     <Compile Include="DAL\Repository\IProductoRepository.cs" />
     <Compile Include="DAL\Repository\IProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\ITipoConcepto.cs" />
     <Compile Include="DAL\Repository\IUnidadRepository.cs" />
     <Compile Include="DAL\Repository\IVentaRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
@@ -311,7 +326,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -378,6 +395,22 @@
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\TipoConcepto\Create.cshtml" />
+    <Content Include="Views\TipoConcepto\Delete.cshtml" />
+    <Content Include="Views\TipoConcepto\Details.cshtml" />
+    <Content Include="Views\TipoConcepto\Edit.cshtml" />
+    <Content Include="Views\TipoConcepto\Index.cshtml" />
+    <Content Include="Views\Liquidacion\Create.cshtml" />
+    <Content Include="Views\Liquidacion\Delete.cshtml" />
+    <Content Include="Views\Liquidacion\Details.cshtml" />
+    <Content Include="Views\Liquidacion\Edit.cshtml" />
+    <Content Include="Views\Liquidacion\Index.cshtml" />
+    <Content Include="Views\Concepto\Create.cshtml" />
+    <Content Include="Views\Concepto\Delete.cshtml" />
+    <Content Include="Views\Concepto\Details.cshtml" />
+    <Content Include="Views\Concepto\Edit.cshtml" />
+    <Content Include="Views\Concepto\Index.cshtml" />
+    <Content Include="Views\Liquidacion\CreateGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
