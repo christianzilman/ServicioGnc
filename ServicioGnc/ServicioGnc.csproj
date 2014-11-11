@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarroController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiquidacionController.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\TipoConceptoController.cs" />
+    <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\GenericRepository2.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
@@ -255,6 +257,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\datepicker.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\jquery-ui.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\navbar-fixed-top.css" />
+    <Content Include="Content\bootstrap-3.1.1\css\sticky-footer-navbar.css" />
+    <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap-3.1.1\js\bootstrap-datepicker.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\bootstrap.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\jquery-1.11.1.min.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\jquery-ui.js" />
+    <Content Include="Content\bootstrap-3.1.1\js\moment.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -311,12 +331,25 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-3.1.1\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-3.1.1\css\datepicker.less" />
+    <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -325,7 +358,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -411,6 +447,16 @@
     <Content Include="Views\Concepto\Edit.cshtml" />
     <Content Include="Views\Concepto\Index.cshtml" />
     <Content Include="Views\Liquidacion\CreateGeneral.cshtml" />
+    <Content Include="Views\Venta\Index.cshtml" />
+    <Content Include="Views\Venta\Details.cshtml" />
+    <Content Include="Views\Venta\Create.cshtml" />
+    <Content Include="Views\Venta\Edit.cshtml" />
+    <Content Include="Views\Venta\Delete.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
+    <Content Include="Views\Compra\Details.cshtml" />
+    <Content Include="Views\Compra\Create.cshtml" />
+    <Content Include="Views\Compra\Edit.cshtml" />
+    <Content Include="Views\Compra\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
