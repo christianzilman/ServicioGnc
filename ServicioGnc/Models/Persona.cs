@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -13,9 +14,12 @@ namespace ServicioGnc.Models
         }
 
         public int PersonaId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el Nombre")]
         public string Nombre { get; set; }
         public Nullable<int> RolId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el Apellido")]
         public string Apellido { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el Domicilio")]
         public string Domicilio { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public Nullable<System.DateTime> FechaEgreso { get; set; }

@@ -1,57 +1,73 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Producto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Productos";
 }
 
-<h2>Index</h2>
+<h2>Productos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioCompra)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Unidad.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    @Html.ActionLink("Crear nuevo producto ", "Create")
+</div>
+<br/>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioCompra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Unidad.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductoId })
-        </td>
-    </tr>
-}
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="hidden">
+            Buscar productos: @Html.TextBox("SearchString")
+            <input type="submit" class="btn-primary" value="Buscar" />
+        </div>
+    }
 
+</div>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unidad.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unidad.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductoId })
+                </td>
+            </tr>
+        }
+    <tbody>
 </table>
+

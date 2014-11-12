@@ -1,50 +1,30 @@
 ﻿@model ServicioGnc.Models.Producto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
-<fieldset>
-    <legend>Producto</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Producto</h2>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Nombre: @Html.DisplayFor(model => model.Nombre) </div>
+            <div>    Precio de Compra: @Html.DisplayFor(model => model.PrecioCompra)</div>
+            <div>    Precio de Venta: @Html.DisplayFor(model => model.PrecioVenta)</div>
+            <div>    Unidad: @Html.DisplayFor(model => model.Unidad.Nombre)</div>
+            <div>    Cantidad: @Html.DisplayFor(model => model.Cantidad)</div>
+            <br />
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ProductoId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PrecioCompra)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PrecioCompra)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Unidad.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Unidad.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PrecioVenta)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PrecioVenta)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Cantidad)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Cantidad)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductoID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,54 +1,34 @@
 ﻿@model ServicioGnc.Models.Producto
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Producto";
 }
 
-<h2>Delete</h2>
+<h2>Producto</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Producto</legend>
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h2 class="panel-title">Producto - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Nombre: @Html.DisplayFor(model => model.Nombre) </div>
+            <div>    Precio de Compra: @Html.DisplayFor(model => model.PrecioCompra)</div>
+            <div>    Precio de Venta: @Html.DisplayFor(model => model.PrecioVenta)</div>
+            <div>    Unidad: @Html.DisplayFor(model => model.Unidad.Nombre)</div>
+            <div>    Cantidad: @Html.DisplayFor(model => model.Cantidad)</div>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
+            </div>
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PrecioCompra)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PrecioCompra)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Unidad.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Unidad.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PrecioVenta)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PrecioVenta)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Cantidad)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Cantidad)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+</div>

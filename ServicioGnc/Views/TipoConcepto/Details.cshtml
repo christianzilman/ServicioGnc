@@ -1,13 +1,13 @@
 ﻿@model ServicioGnc.Models.TipoConcepto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Tipo de Concepto";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
 <fieldset>
-    <legend>TipoConcepto</legend>
+    <legend>Tipo Concepto</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Nombre)
@@ -17,6 +17,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TipoConceptoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.TipoConceptoId }) |
+    @Html.ActionLink("Volver al listado", "Index")
 </p>

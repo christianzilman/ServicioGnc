@@ -1,17 +1,17 @@
 ﻿@model ServicioGnc.Models.Liquidacion
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Liquidación";
 }
 
-<h2>Create</h2>
+<h2>Liquidación</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Liquidacion</legend>
+        <legend>Liquidación</legend>
        
         <div class="editor-label">
             @Html.LabelFor(model => model.EmpresaId, "Empresa")
@@ -29,14 +29,22 @@
             @Html.ValidationMessageFor(model => model.Fecha)
         </div>        
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Periodo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Periodo)
+            @Html.ValidationMessageFor(model => model.Periodo)
+        </div>  
+
         <p>
-            <input type="submit" value="Liqudicion General" />
+            <input type="submit" class="btn-warning" value="Liqudicion General" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al listado", "Index")
 </div>
 
 @section Scripts {

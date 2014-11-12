@@ -4,36 +4,41 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Cliente</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo cliente", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Domicilio)
-        </th>
-        <th></th>
-    </tr>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domicilio)
+                </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Domicilio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClienteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteId })
-        </td>
-    </tr>
-}
-
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ClienteId }) |
+                      @Html.ActionLink("Detalle", "Details", new { id = item.ClienteId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ClienteId })
+                </td>
+            </tr>
+        }
+    <tbody>
 </table>
+

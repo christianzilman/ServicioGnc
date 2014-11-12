@@ -1,10 +1,10 @@
 ﻿@model ServicioGnc.Models.TipoConcepto
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Tipo de Concepto";
 }
 
-<h2>Edit</h2>
+<h2>Editar Tipo de Concepto</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -24,7 +24,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn-warning" value="Guardar" />
         </p>
     </fieldset>
 }

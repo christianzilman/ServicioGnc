@@ -1,10 +1,10 @@
 ﻿@model ServicioGnc.Models.Producto
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Producto";
 }
 
-<h2>Edit</h2>
+<h2>Editar Producto</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -56,13 +56,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn-warning" value="Guardar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al listado", "Index")
 </div>
 
 @section Scripts {

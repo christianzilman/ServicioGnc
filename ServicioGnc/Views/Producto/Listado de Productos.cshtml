@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ServicioGnc.Models.Producto>
+
+@{
+    ViewBag.Title = "Listado de Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado de Productos</h2>
+
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Productos</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-3">
+                    
+                    <div>Descripcion:@Html.DisplayFor(modelItem => item.Nombre) </div>
+                    <div>    Precio:@Html.DisplayFor(modelItem => item.PrecioVenta)</div>
+                    <div>    Precio:@Html.DisplayFor(modelItem => item.PrecioCompra)</div>
+                    <div>    Unidad: @Html.DisplayFor(model => item.Unidad.Nombre)</div>
+                    <div>    Cantidad: @Html.DisplayFor(model => item.Cantidad)</div>
+                    <a href="@Url.Content("~/Producto/Details/")@item.ProductoId"> Vender a cliente </a>
+                    <a href="@Url.Content("~/Producto/Details/")@item.ProductoId"> Comprar a proveedor </a>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</div>

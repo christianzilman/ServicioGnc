@@ -1,10 +1,10 @@
 ﻿@model ServicioGnc.Models.Proveedor
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Proveedor";
 }
 
-<h2>Edit</h2>
+<h2>Editar proveedor</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -40,7 +40,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn-warning" value="Guardar" />
         </p>
     </fieldset>
 }

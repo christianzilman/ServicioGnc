@@ -1,62 +1,75 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Liquidacion>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liquidación de Sueldos";
 }
 
-<h2>Index</h2>
+<h2>Liquidación de Sueldos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("Liqudiacion General", "CreateGeneral")
+    @Html.ActionLink("Liquidación Particular", "Create")
+    @Html.ActionLink("Liquidacion General", "CreateGeneral")
 </p>
+
+
 <p>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     
        <p>
-           Consultar por periodo: <input id="periodo" name="periodo"/>
-           <input type="submit" value="Consultar"/>
+           Consultar por periodo: @Html.TextBox("periodo")
+           <input type="submit" class="btn-warning" value="Consultar" />
        </p>    
 }
  
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Persona.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Persona.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LiquidacionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LiquidacionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LiquidacionId })
-        </td>
-    </tr>
-}
-
+<table class="table" >
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Persona.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Periodo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persona.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Periodo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.LiquidacionId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.LiquidacionId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.LiquidacionId })
+                </td>
+            </tr>
+        }
+    <tbody>
 </table>
+
+

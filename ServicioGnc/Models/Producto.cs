@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -13,6 +14,7 @@ namespace ServicioGnc.Models
         }
 
         public int ProductoId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el Nombre")]
         public string Nombre { get; set; }
         public Nullable<double> PrecioCompra { get; set; }
         public Nullable<int> UnidadId { get; set; }
