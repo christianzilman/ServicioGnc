@@ -10,13 +10,12 @@
     @Html.ActionLink("Crear nuevo producto ", "Create")
 </div>
 <br/>
-
-<div>
+<div id="buscador">
     @using (Html.BeginForm())
     {
-        <div class="hidden">
+        <div >
             Buscar productos: @Html.TextBox("SearchString")
-            <input type="submit" class="btn-primary" value="Buscar" />
+            <input type="submit" class="btn-warning" value="Buscar" />
         </div>
     }
 

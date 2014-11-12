@@ -4,66 +4,75 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Edición de Liquidación</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Liquidacion</legend>
+                <fieldset>
+                    <legend>Liquidacion</legend>
 
-        @Html.HiddenFor(model => model.LiquidacionId)
+                    @Html.HiddenFor(model => model.LiquidacionId)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PersonaId, "Persona")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("PersonaId", String.Empty)
-            @Html.ValidationMessageFor(model => model.PersonaId)
-        </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PersonaId, "Persona")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("PersonaId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.PersonaId)
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EmpresaId, "Empresa")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("EmpresaId", String.Empty)
-            @Html.ValidationMessageFor(model => model.EmpresaId)
-        </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.EmpresaId, "Empresa")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("EmpresaId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.EmpresaId)
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Total)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Total)
-            @Html.ValidationMessageFor(model => model.Total)
-        </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Total)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Total)
+                        @Html.ValidationMessageFor(model => model.Total)
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Fecha)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Fecha)
-            @Html.ValidationMessageFor(model => model.Fecha)
-        </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Fecha)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Fecha)
+                        @Html.ValidationMessageFor(model => model.Fecha)
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Periodo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Periodo)
-            @Html.ValidationMessageFor(model => model.Periodo)
-        </div>
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Periodo)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Periodo)
+                        @Html.ValidationMessageFor(model => model.Periodo)
+                    </div>
+                    <br/>
+                    <p>
+                        <input type="submit" class="btn-warning" value="Guardar" />
+                    </p>
+                </fieldset>
+            }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+            <div>
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
