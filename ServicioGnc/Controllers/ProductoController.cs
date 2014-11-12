@@ -17,9 +17,16 @@ namespace ServicioGnc.Controllers
         //
         // GET: /Producto/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var productoes = unitOfWork.ProductoRepository.Get(includeProperties: "Unidad");
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productoes = productoes.Where(p => p.Nombre.ToUpper().Contains(searchString.ToUpper()));
+
+            }
+
             return View(productoes.ToList());
         }
 

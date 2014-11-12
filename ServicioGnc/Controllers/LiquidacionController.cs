@@ -16,18 +16,22 @@ namespace ServicioGnc.Controllers
 
         //
         // GET: /Liquidacion/
-
+/*
         public ActionResult Index()
         {
             var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
             return View(liquidacions.ToList());
         }
-
-        [HttpPost]
-        public ActionResult Index(DateTime periodo)
+        */
+       // [HttpPost]
+        public ActionResult Index(string periodo)
         {
             var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
-            liquidacions = liquidacions.Where(l=> l.Fecha >= periodo && l.Fecha <= periodo);
+            if (!String.IsNullOrEmpty(periodo))
+            {
+            liquidacions = liquidacions.Where(l => l.Periodo.ToUpper().Contains(periodo.ToUpper()));
+           
+            }
             return View(liquidacions.ToList());
         }
 
@@ -76,6 +80,7 @@ namespace ServicioGnc.Controllers
                     liquidacionGeneral.Persona = persona;
                     liquidacionGeneral.PersonaId = persona.PersonaId;
                     liquidacionGeneral.Fecha = liquidacion.Fecha;
+                    liquidacionGeneral.Periodo = liquidacion.Periodo;
                     liquidacionGeneral.Empresa = liquidacion.Empresa;
                     liquidacionGeneral.EmpresaId = liquidacion.EmpresaId;
 
