@@ -1,12 +1,13 @@
 ﻿@model ServicioGnc.Models.Persona
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Empleado";
 }
 
-<h2>Edit</h2>
+<h2>Editar Empleado</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -22,14 +23,62 @@
             @Html.ValidationMessageFor(model => model.Nombre)
         </div>
 
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.RolId, "Rol")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RolId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RolId)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Apellido)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Apellido)
+            @Html.ValidationMessageFor(model => model.Apellido)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Domicilio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Domicilio)
+            @Html.ValidationMessageFor(model => model.Domicilio)
+        </div>
+
+        <div class="editor-label">
+            <b>Fecha de Nacimiento</b>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaNacimiento)
+            @Html.ValidationMessageFor(model => model.FechaNacimiento)
+        </div>
+
+        <div class="editor-label">
+            <b>Fecha de Egreso</b>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaEgreso)
+            @Html.ValidationMessageFor(model => model.FechaEgreso)
+        </div>
+
+        <div class="editor-label">
+            <b>Fecha de Ingreso</b>
+</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaIngreso)
+            @Html.ValidationMessageFor(model => model.FechaIngreso)
+        </div>
+        <br/>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn-warning" value="Guardar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al listado", "Index")
 </div>
 
 @section Scripts {

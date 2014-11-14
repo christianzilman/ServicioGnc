@@ -1,20 +1,36 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Persona>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Empleado";
 }
 
-<h2>Index</h2>
-
-
+<h2 class="warning"> Empleados </h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo empleado", "Create")
 </p>
-<table>
-    <tr>
+<table class="table">
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            Rol
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </th>
+        <th>
+         Fecha de Nacimiento
+        </th>
+        <th>
+        Fecha de Egreso
+        </th>
+        <th>
+         Fecha de Ingreso
         </th>
         <th></th>
     </tr>
@@ -25,9 +41,27 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonaId })
+            @Html.DisplayFor(modelItem => item.Rol.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEgreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PersonaId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PersonaId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.PersonaId })
         </td>
     </tr>
 }

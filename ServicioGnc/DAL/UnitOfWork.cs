@@ -23,6 +23,68 @@ namespace ServicioGnc.DAL
         private IEmpresaRepository empresaRepository;
         private IConceptoRepository conceptoRepository;
         private ITipoConcepto tipoConceptoRepository;
+        private IFichadaRepository fichadaRepository;
+        private ILecturaPresionTemperaturaRepository lecturaPresionTemperaturaRepository;
+        private IFeriadoRepository feriadoRepository;
+        private ITurnoRepository turnoRepository;
+        private ITurnoEspecialRepository turnoEspecialRepository;
+
+        public ITurnoEspecialRepository TurnoEspecialRepository {
+            get
+            {
+                if(this.turnoEspecialRepository==null){
+                    this.turnoEspecialRepository = new TurnoEspecialRepository(context);
+                }
+                return this.turnoEspecialRepository;
+            }
+        }
+
+        public ITurnoRepository TurnoRepository
+        {
+            get
+            {
+                if (this.turnoRepository == null)
+                {
+                    this.turnoRepository = new TurnoRepository(context);
+                }
+                return this.turnoRepository;
+            }
+        }
+
+        public IFeriadoRepository FeriadoRepository
+        {
+            get
+            {
+                if (this.feriadoRepository == null)
+                {
+                    this.feriadoRepository = new FeriadoRepository(context);
+                }
+                return this.feriadoRepository;
+            }
+        }
+        public ILecturaPresionTemperaturaRepository LecturaPresionTemperaturaRepository
+        {
+            get
+            {
+                if (this.lecturaPresionTemperaturaRepository == null)
+                {
+                    this.lecturaPresionTemperaturaRepository = new LecturaPresionTemperaturaRepository(context);
+                }
+                return this.lecturaPresionTemperaturaRepository;
+            }
+        }
+
+        public IFichadaRepository FichadaRepository
+        {
+            get 
+            {
+                if (this.fichadaRepository == null)
+                {
+                    this.fichadaRepository = new FichadaRepository(context);
+                }
+                return this.fichadaRepository;
+            }        
+        }
 
         public  ITipoConcepto TipoConceptoRepository
         {

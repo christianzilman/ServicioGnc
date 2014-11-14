@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Crear nuevo concepto ", "Create")
 </p>
-<table class="table-bordered">
+<table class="table">
     <thead>
         <tr class="warning">
             <th>
@@ -51,7 +51,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.TipoConceptoId }) |
-                    @*  @Html.ActionLink("Detalle", "Details", new { id = item.TipoConceptoId }) |*@
+                     @Html.ActionLink("Detalle", "Details", new { id = item.TipoConceptoId }) |
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.TipoConceptoId })
                 </td>
             </tr>

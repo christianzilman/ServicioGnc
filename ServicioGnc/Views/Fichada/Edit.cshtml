@@ -1,0 +1,62 @@
+﻿@model ServicioGnc.Models.Fichada
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Fichada</legend>
+
+        @Html.HiddenFor(model => model.FichadaId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaIngreso)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaIngreso)
+            @Html.ValidationMessageFor(model => model.FechaIngreso)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaEgreso)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaEgreso)
+            @Html.ValidationMessageFor(model => model.FechaEgreso)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PersonaId, "Persona")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PersonaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PersonaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Observacion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Observacion)
+            @Html.ValidationMessageFor(model => model.Observacion)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

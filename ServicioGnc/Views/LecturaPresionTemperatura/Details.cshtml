@@ -1,0 +1,43 @@
+﻿@model ServicioGnc.Models.LecturaPresionTemperatura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LecturaPresionTemperatura</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Presion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Presion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Temperatura)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Temperatura)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fecha)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.LecturaPresionTemperaturaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

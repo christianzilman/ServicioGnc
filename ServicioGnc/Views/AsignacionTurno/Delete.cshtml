@@ -1,0 +1,40 @@
+﻿@model ServicioGnc.Models.AsignacionTurno
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>AsignacionTurno</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Turno.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Turno.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Persona.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Persona.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Observacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacion)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

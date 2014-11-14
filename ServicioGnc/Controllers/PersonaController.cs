@@ -52,9 +52,9 @@ namespace ServicioGnc.Controllers
         public ActionResult Create(Persona persona)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 unitOfWork.PersonaRepository.Add(persona);
-                unitOfWork.Save();
+                unitOfWork.PersonaRepository.Save();
                 return RedirectToAction("Index");
             }
 
@@ -83,7 +83,7 @@ namespace ServicioGnc.Controllers
             if (ModelState.IsValid)
             {
                 unitOfWork.PersonaRepository.Edit(persona);
-                unitOfWork.Save();
+                unitOfWork.PersonaRepository.Save();
                 return RedirectToAction("Index");
             }
             return View(persona);

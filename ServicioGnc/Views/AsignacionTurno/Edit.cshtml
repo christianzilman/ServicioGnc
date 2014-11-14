@@ -1,0 +1,54 @@
+﻿@model ServicioGnc.Models.AsignacionTurno
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AsignacionTurno</legend>
+
+        @Html.HiddenFor(model => model.AsignacionTurnoId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TurnoId, "Turno")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TurnoId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TurnoId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PersonaId, "Persona")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PersonaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PersonaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Observacion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Observacion)
+            @Html.ValidationMessageFor(model => model.Observacion)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

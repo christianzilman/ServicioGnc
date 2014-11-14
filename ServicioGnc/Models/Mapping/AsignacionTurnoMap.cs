@@ -20,6 +20,8 @@ namespace ServicioGnc.Models.Mapping
             this.Property(t => t.TurnoId).HasColumnName("TurnoId");
             this.Property(t => t.PersonaId).HasColumnName("PersonaId");
             this.Property(t => t.Observacion).HasColumnName("Observacion");
+            this.Property(t => t.Fecha).HasColumnName("Fecha");
+            this.Property(t => t.Periodo).HasColumnName("Periodo");
 
             // Relationships
             this.HasOptional(t => t.Persona)

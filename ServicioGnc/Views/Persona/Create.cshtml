@@ -4,9 +4,10 @@
     ViewBag.Title = "Empleado";
 }
 
-<h2>Empleado</h2>
+<h2></h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -19,6 +20,15 @@
             @Html.EditorFor(model => model.Nombre)
             @Html.ValidationMessageFor(model => model.Nombre)
         </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.RolId, "Rol")
+        </div>*@
+        @*<div class="editor-field">
+            @Html.DropDownList("RolId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RolId)
+        </div>*@
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Apellido)
         </div>
@@ -26,13 +36,7 @@
             @Html.EditorFor(model => model.Apellido)
             @Html.ValidationMessageFor(model => model.Apellido)
         </div>
-        <div class="editor-label">
-           Rol: 
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("RolId", String.Empty)
-            @Html.ValidationMessageFor(model => model.RolId)
-        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Domicilio)
         </div>
@@ -40,36 +44,39 @@
             @Html.EditorFor(model => model.Domicilio)
             @Html.ValidationMessageFor(model => model.Domicilio)
         </div>
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.FechaNacimiento)
+            Fecha de nacimiento
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.FechaNacimiento)
             @Html.ValidationMessageFor(model => model.FechaNacimiento)
         </div>
-        
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.FechaIngreso)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FechaIngreso)
-            @Html.ValidationMessageFor(model => model.FechaIngreso)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FechaEgreso)
+            Fecha de Egreso
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.FechaEgreso)
             @Html.ValidationMessageFor(model => model.FechaEgreso)
         </div>
+
+        <div class="editor-label">
+            Fecha de ingreso
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaIngreso)
+            @Html.ValidationMessageFor(model => model.FechaIngreso)
+        </div>
+        <br/>
         <p>
-            <input type="submit" class="btn-warning"  value="Guardar" />
+            <input type="submit" class="btn-warning" value="Guardar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al listado", "Index")
 </div>
 
 @section Scripts {
