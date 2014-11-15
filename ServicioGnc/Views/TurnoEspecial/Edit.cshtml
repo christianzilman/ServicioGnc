@@ -1,46 +1,54 @@
 ﻿@model ServicioGnc.Models.TurnoEspecial
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Turnos Especiales";
 }
 
-<h2>Edit</h2>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Edición de Turnos Especiales</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
 
-    <fieldset>
-        <legend>TurnoEspecial</legend>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
-        @Html.HiddenFor(model => model.TurnoEspecialId)
+                <fieldset>
+                    <legend></legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FeriadoId, "Feriado")
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FeriadoId, "Feriado")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("FeriadoId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.FeriadoId)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PersonaId, "Persona")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("PersonaId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.PersonaId)
+                    </div>
+                    <br />
+                    <p>
+                        <input type="submit" class="btn-warning" value="Guardar" />
+                    </p>
+                </fieldset>
+            }
+
+            <div>
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.DropDownList("FeriadoId", String.Empty)
-            @Html.ValidationMessageFor(model => model.FeriadoId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PersonaId, "Persona")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("PersonaId", String.Empty)
-            @Html.ValidationMessageFor(model => model.PersonaId)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

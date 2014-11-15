@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Turno>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Turnos";
 }
 
-<h2>Index</h2>
+<h2>Turnos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo turno", "Create")
 </p>
-<table>
-    <tr>
+<table   class="table" >
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TurnoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TurnoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TurnoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.TurnoId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.TurnoId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.TurnoId })
         </td>
     </tr>
 }

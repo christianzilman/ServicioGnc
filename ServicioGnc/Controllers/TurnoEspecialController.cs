@@ -44,7 +44,7 @@ namespace ServicioGnc.Controllers
         public ActionResult Create()
         {
             ViewBag.FeriadoId = new SelectList(unitOfWork.FeriadoRepository.Get(), "FeriadoId", "Nombre");
-            ViewBag.PersonaId = new SelectList(unitOfWork.FeriadoRepository.Get(), "PersonaId", "Nombre");
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre");
             return View();
         }
 
@@ -62,8 +62,8 @@ namespace ServicioGnc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FeriadoId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
-            ViewBag.PersonaId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
+            ViewBag.FeriadoId = new SelectList(unitOfWork.FeriadoRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
             return View(turnoespecial);
         }
 
@@ -78,8 +78,8 @@ namespace ServicioGnc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FeriadoId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
-            ViewBag.PersonaId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
+            ViewBag.FeriadoId = new SelectList(unitOfWork.FeriadoRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
             return View(turnoespecial);
         }
 
@@ -97,8 +97,8 @@ namespace ServicioGnc.Controllers
                 unitOfWork.TurnoEspecialRepository.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.FeriadoId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
-            ViewBag.PersonaId = new SelectList(unitOfWork.TurnoEspecialRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
+            ViewBag.FeriadoId = new SelectList(unitOfWork.FeriadoRepository.Get(), "FeriadoId", "Nombre", turnoespecial.FeriadoId);
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", turnoespecial.PersonaId);
             return View(turnoespecial);
         }
 
