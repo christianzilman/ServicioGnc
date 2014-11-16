@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model IEnumerable<ServicioGnc.Models.Fichada>
 
 @{
@@ -51,5 +52,19 @@
         </td>
     </tr>
 }
+=======
+﻿@{
+    ViewBag.Title = "Index";
+}
 
-</table>
+
+>>>>>>> e954714f4a5443c8d8a791fec1c7b91ec19c2ec7
+
+<h2>
+    Index
+</h2>
+@using (Html.BeginForm("Index", "Fichada", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="Importar" />
+}  
