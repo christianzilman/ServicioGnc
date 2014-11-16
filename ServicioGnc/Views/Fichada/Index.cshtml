@@ -1,27 +1,31 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Fichada>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Fichada";
 }
 
-<h2>Index</h2>
+<h2>Fichadas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nueva Fichada", "Create")
 </p>
-<table>
-    <tr>
+<p>
+    @Html.ActionLink("Carga masiva de fichadas", "Create")
+</p>
+
+<table class="table">
+    <tr class="warning">
         <th>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            Fecha de ingreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaEgreso)
+            Fecha de Egreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Persona.Nombre)
+            Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Observacion)
+            Observacion
         </th>
         <th></th>
     </tr>
@@ -41,9 +45,9 @@
             @Html.DisplayFor(modelItem => item.Observacion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FichadaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FichadaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FichadaId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.FichadaId }) |
+          @*  @Html.ActionLink("Details", "Details", new { id=item.FichadaId }) |*@
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.FichadaId })
         </td>
     </tr>
 }

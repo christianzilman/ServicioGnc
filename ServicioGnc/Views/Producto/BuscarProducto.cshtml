@@ -1,9 +1,108 @@
-﻿@{
+﻿@model IEnumerable<ServicioGnc.Models.Producto>
+@{
     ViewBag.Title = "BuscarProducto";
     Layout = null;
 }
 
-<input type="text" value="@ViewBag.NombreProducto"  />
-<input type="text" value="@ViewBag.ProductoId" id="ProductoIdPanel" name="ProductoIdPanel"/>
-<input type="text" value="1" id="ProductoCantidad" name="ProductoCantidad"/>
-<input type="button" value="Agregar" onclick="javascript:AgregarDetalle()"/>
+<br/>
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    Resultados de búsqueda
+</div>
+
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th hidden="hidden">
+                Código
+            </th>
+
+            <th>
+               Producto
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+            <tr>
+                <td hidden="hidden">
+                    <input type="text" value="@ViewBag.ProductoId" id="ProductoIdPanel" name="ProductoIdPanel" />
+                </td>
+
+                <td>
+                    <label>
+                        @ViewBag.NombreProducto
+                    </label>
+                </td>
+                <td>
+                    <input type="text" value="1" id="ProductoCantidad" name="ProductoCantidad" />
+                </td>
+                <td>
+                    <label>@ViewBag.PrecioVenta</label>
+                </td>
+
+            </tr>
+        
+    <tbody>
+</table>
+
+
+
+
+
+
+
+@*<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Unidad.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unidad.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+
+            </tr>
+        }
+    <tbody>
+</table>*@
+
+
+
+<input type="button" value="Agregar" class="btn-warning" onclick="javascript:AgregarDetalle()"/>
+<br/>

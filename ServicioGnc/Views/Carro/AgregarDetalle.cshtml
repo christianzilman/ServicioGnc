@@ -5,12 +5,20 @@
 
 @{
     List<ServicioGnc.Models.Carro> listCarro = ViewBag.ListCarro;
-    
+     
+    <br/>
+    <div class="alert alert-warning" role="alert">
+        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+    Listado de Pedido
+</div>
 
-    <table>
-        <tr>
+ 
+        
+    <table class="table">
+        <tr class="warning">
             <td>Nombre Producto</td>
             <td>Cantidad</td>
+            <td>Precio</td>
         </tr>
         @foreach(ServicioGnc.Models.Carro carro in listCarro){
             <tr>
@@ -18,7 +26,9 @@
                 <td>@carro.Producto.Nombre</td>
                 
                 <td>@carro.Cantidad</td>
-            </tr>
+
+                <td>@carro.Precio</td>
+            </tr>   
         }
     </table>
     

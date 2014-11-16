@@ -4,7 +4,10 @@
     ViewBag.Title = "Turnos Especiales";
 }
 
-<h2>Turno Especial</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Turnos especial
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

@@ -1,10 +1,15 @@
 ﻿@model ServicioGnc.Models.Carro
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Venta";
 }
 
-<h2>Create</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    VENTA
+</div>
+
+
 
 @using (Html.BeginForm(actionName:"ProcesarVenta",controllerName:"Carro"))
 {
@@ -12,17 +17,18 @@
     @Html.ValidationSummary(true)
     <div id="busqueda">
         <input type="text" name="productoId" id="productoId"  />
-        <input type="button" onclick="javascript:BuscarProducto()" value="Enviar" />
+        <input type="button" onclick="javascript:BuscarProducto()" class="btn-warning" value="Buscar" />
 
     </div>
     <div id="productoDescripcion"></div>
     
     <div id="detalleCarro"></div>
-    <input type="submit" onclick="javascript:ProcesarVenta()" value="Guardar" />
+    <br/>
+    <input type="submit" onclick="javascript:ProcesarVenta()" class="btn-warning" value="Guardar" />
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Realizar nueva venta", "Create")
 </div>
 
 @section Scripts {
