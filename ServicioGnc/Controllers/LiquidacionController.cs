@@ -133,7 +133,7 @@ namespace ServicioGnc.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch(Exception ex){
+            catch{
                 
                 ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre", liquidacion.EmpresaId);
             }            

@@ -50,7 +50,7 @@
         $.ajax({
             url: "@Url.Content("~/Carro/AgregarDetalle")",
             type:'post',
-            data: { 'productoId': productoIdPanel, 'cantidad': cantidad },
+            data: { 'productoId': productoIdPanel, 'cantidad': cantidad , 'tipoOperacionId': 2 },
         success: function (data) {
             $("#detalleCarro").html(data);
         }
