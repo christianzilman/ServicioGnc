@@ -21,10 +21,61 @@
             @Html.ValidationMessageFor(model => model.Nombre)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
+        <div class="editor-field">
+            
+            <div id="formularioDetail">
+                @Html.Partial("CreateDetail")
+            </div>            
+        </div>
+        <div class="editor-field">
+            <h4>Detalle del Turno</h4>
+            <div id="detalleTurno">
+            </div>
+        </div>
+        <script type="text/javascript">
+                function agregarDetalle() {
+
+                    var HorarioId = $("#HorarioId").val();
+                    var Dia = $("#Dia").val();
+
+                    $.ajax({
+                        url: "@Url.Content("~/Turno/CreateDetail")",
+                        type: 'post',
+                        data: { 'TurnoId': 0, 'HorarioId': HorarioId, 'Dia': Dia },
+                        success: function (data) {
+                            $("#formularioDetail").html(data);
+                            listarDetalle();
+                        }
+                    });
+                }
+
+            function listarDetalle() {
+                $.ajax({
+                    url: "@Url.Content("~/Turno/ListDetail")",
+                    type: 'post',
+                    data: {},
+                    success: function (data) {
+                        $("#detalleTurno").html(data);
+                    }
+                });
+            }
+
+            function eliminarDetalle(detalleId) {
+                    $.ajax({
+                        url: "@Url.Content("~/Turno/DeleteDetail")",
+                        type: 'post',
+                        data: { 'HorarioId': detalleId },
+                        success: function (data) {
+                            $("#detalleTurno").html(data);
+                        }
+                    });
+            }
+        </script>
+
+        <p class="editor-field">
+            <input type="submit" class="btn-primary" value="Crear Turno" />
         </p>
-    </fieldset>
+</fieldset>
 }
 
 <div>
@@ -34,3 +85,10 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    $(function(){    
+        
+    });
+
+</script>

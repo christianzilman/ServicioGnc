@@ -15,5 +15,10 @@ namespace ServicioGnc.DAL.Repository.Impl
         {
             this.Context = context;
         }
+
+        public List<Carro> GetByTipoOperacion(int TipoOperacionId)
+        {
+            return this.Context.Set<Carro>().Include("Producto").Where(c => c.TipoOperacionId == TipoOperacionId).ToList();
+        }
     }
 }

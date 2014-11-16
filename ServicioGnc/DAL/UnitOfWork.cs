@@ -28,6 +28,18 @@ namespace ServicioGnc.DAL
         private IFeriadoRepository feriadoRepository;
         private ITurnoRepository turnoRepository;
         private ITurnoEspecialRepository turnoEspecialRepository;
+        private IHorarioRepository horarioRepository;
+
+
+        public IHorarioRepository HorarioRepository {
+            get 
+            { 
+                if(this.horarioRepository==null){
+                    this.horarioRepository = new HorarioRepository(context);
+                }
+                return this.horarioRepository;
+            }
+        }
 
         public ITurnoEspecialRepository TurnoEspecialRepository {
             get

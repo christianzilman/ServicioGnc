@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 using System.Globalization;
 using System.Web.Security;
 
@@ -16,6 +17,14 @@ namespace ServicioGnc.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<webpages_UsersInRoles> UserRoles { get; set; }
+
+        /*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new UserRoleMap());           
+        }*/
     }
 
     [Table("UserProfile")]
@@ -25,6 +34,40 @@ namespace ServicioGnc.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
+        public string Email { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+    }
+
+    /*
+    public class UserRoleMap : EntityTypeConfiguration<webpages_UsersInRoles>
+    {
+        public UserRoleMap()
+        {
+            // Primary Key
+            this.HasKey(t => t.UserRoleId);
+            this.Property(t => t.UserRoleId).HasColumnName("UserRoleId");
+            this.Property(t => t.RoleId).HasColumnName("RoleId");
+            this.Property(t => t.UserId).HasColumnName("UserId");
+
+            // Table & Column Mappings
+            this.ToTable("webpages_UsersInRoles");
+
+
+        }
+    }
+        */
+    [Table("webpages_UsersInRoles")]
+    public partial class webpages_UsersInRoles
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int UserRoleId { get; set; }
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -86,6 +129,29 @@ namespace ServicioGnc.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Edad")]
+        [DataType(DataType.CreditCard)]
+        public int Age { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Apellido")]
+        [Required]
+        public string Surname { get; set; }
+
+        [Display(Name = "Fecha Nacimiento")]
+        [Required]
+        public System.DateTime Birthday { get; set; }
+
+        public int RoleId { get; set; }
     }
 
     public class ExternalLogin

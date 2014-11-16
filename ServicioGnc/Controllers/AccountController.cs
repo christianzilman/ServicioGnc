@@ -11,7 +11,7 @@ using WebMatrix.WebData;
 using ServicioGnc.Filters;
 using ServicioGnc.Models;
 
-namespace ServicioGnc.Controllers
+namespace Negocio.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
@@ -63,9 +63,69 @@ namespace ServicioGnc.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterModel registerRole = new RegisterModel() { Age = 0, Birthday = DateTime.Now, Email = "name@gmail.com"};
+            return View(registerRole);
         }
 
+        // comentar despues
+        [AllowAnonymous]
+        public ActionResult RegisterRole()
+        {
+            RegisterModel registerRole = new RegisterModel() { Age = 0, Birthday = DateTime.Now, Email = "name@gmail.com" };
+            return View(registerRole);
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterRole(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Intento de registrar al usuario
+                try
+                {
+                    UsersContext db = new UsersContext();
+
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.Login(model.UserName, model.Password);
+
+
+
+                    UsersContext dbUser = new UsersContext();
+
+                    int UserId = dbUser.UserProfiles.Max<UserProfile>(p => p.UserId);
+
+                    webpages_UsersInRoles UserRole = new webpages_UsersInRoles();
+                    UserRole.UserId = UserId;
+                    UserRole.RoleId = model.RoleId;
+
+
+                    dbUser.UserRoles.Add(UserRole);
+                    dbUser.SaveChanges();
+
+                    UserProfile UserProfile = new ServicioGnc.Models.UserProfile();
+                    UserProfile = dbUser.UserProfiles.Find(UserId);
+
+                    UserProfile.Surname = model.Surname;
+                    UserProfile.Name = model.Name;
+                    UserProfile.Email = model.Email;
+                    UserProfile.Birthday = model.Birthday;
+                    UserProfile.Age = model.Age;
+                    dbUser.Entry(UserProfile).State = System.Data.EntityState.Modified;
+                    dbUser.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
+
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
         //
         // POST: /Account/Register
 
@@ -175,7 +235,7 @@ namespace ServicioGnc.Controllers
             else
             {
                 // El usuario no dispone de contraseña local, por lo que debe quitar todos los errores de validación generados por un
-                // campo OldPassword vacío
+                // campo OldPassword
                 ModelState state = ModelState["OldPassword"];
                 if (state != null)
                 {
@@ -189,9 +249,9 @@ namespace ServicioGnc.Controllers
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        ModelState.AddModelError("", e);
+                        ModelState.AddModelError("", String.Format("No se puede crear una cuenta local. Es posible que ya exista una cuenta con el nombre \"{0}\".", User.Identity.Name));
                     }
                 }
             }

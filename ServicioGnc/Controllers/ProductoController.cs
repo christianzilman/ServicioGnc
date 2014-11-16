@@ -38,7 +38,19 @@ namespace ServicioGnc.Controllers
             Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
             ViewBag.ProductoId = productoId;
             ViewBag.NombreProducto = producto.Nombre;
+            ViewBag.PrecioVenta = producto.PrecioVenta;
             return View();
+
+            //var productoes = unitOfWork.ProductoRepository.Get(includeProperties: "Unidad");
+
+            //if (!String.IsNullOrEmpty(productoId))
+            //{
+            //    productoes = productoes.Where(p => p.Nombre.ToUpper().Contains(productoId.ToUpper()));
+
+            //}
+
+            //return View(productoes.ToList());
+
         }
 
         //

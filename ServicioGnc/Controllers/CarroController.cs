@@ -49,11 +49,13 @@ namespace ServicioGnc.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarDetalle(int productoId,int cantidad)
+        public ActionResult AgregarDetalle(int productoId,int cantidad, int tipoOperacionId)
         {
             Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
 
             Carro carro = new Carro();
+            // tipo operacion 1:Venta  2:Compra
+            carro.TipoOperacionId = tipoOperacionId;
             carro.Cantidad = (double)cantidad;
             carro.ProductoId = productoId;
             carro.SubTotal = producto.PrecioVenta * (double)cantidad;
@@ -62,13 +64,13 @@ namespace ServicioGnc.Controllers
             unitOfWork.CarroRepository.Add(carro);
             unitOfWork.CarroRepository.Save();
 
-            List<Carro> listCarro = unitOfWork.CarroRepository.Get(includeProperties :"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(1); //CarroRepository.Get(includeProperties :"Producto").ToList();
             ViewBag.ListCarro = listCarro;
             return View();
         }
         [HttpPost]
         public ActionResult ProcesarVenta() {
-            List<Carro> listCarro = unitOfWork.CarroRepository.Get(includeProperties:"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(1); //unitOfWork.CarroRepository.Get(includeProperties:"Producto").ToList();
 
             double total = (double)listCarro.Sum<Carro>(t=>t.SubTotal);
 
@@ -105,7 +107,7 @@ namespace ServicioGnc.Controllers
         [HttpPost]
         public ActionResult ProcesarCompra()
         {
-            List<Carro> listCarro = unitOfWork.CarroRepository.Get(includeProperties: "Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(2); //unitOfWork.CarroRepository.Get(includeProperties: "Producto").ToList();
 
             double total = (double)listCarro.Sum<Carro>(t => t.SubTotal);
 

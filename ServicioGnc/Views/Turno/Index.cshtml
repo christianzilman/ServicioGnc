@@ -23,9 +23,12 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.TurnoId }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.TurnoId }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.TurnoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.TurnoId })
+            @*
+                |
+                @Html.ActionLink("Detalles", "Details", new { id=item.TurnoId }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.TurnoId })
+            *@ 
         </td>
     </tr>
 }

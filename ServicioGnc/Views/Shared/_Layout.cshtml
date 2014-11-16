@@ -41,6 +41,43 @@
                     <li>@Html.ActionLink("Compras", "Index", "Compra")</li>
                     <li>@Html.ActionLink("Ventas", "Index", "Compra")</li>
                     <li>@Html.ActionLink("Liquidaciones", "Index", "Liquidacion")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Asignacion de Turnos", "Index", "AsignacionTurno")</li>                    
+                    <li>@Html.ActionLink("Presión y Temperatura", "Index", "LecturaPresionTemperatura")</li>
+                    <li>@Html.ActionLink("Cargar de Ficha", "Index", "Fichada")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parametros <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Turnos", "Index", "Turno")</li>
+                            <li>@Html.ActionLink("Empleados", "Index", "Persona")</li>
+                            <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
+                            <li>@Html.ActionLink("Empleados", "Index", "Persona")</li>
+                            <li>@Html.ActionLink("Unidad", "Index", "Unidad")</li>
+                            <li>@Html.ActionLink("Concepto", "Index", "Concepto")</li>
+                            <li>@Html.ActionLink("Horario", "Index", "Horario")</li>
+                            <li>@Html.ActionLink("Proveedor", "Index", "Proveedor")</li>
+                            
+                            @if (Request.IsAuthenticated)
+                            {
+                                try
+                                { 
+                                    if (User.IsInRole("administrador") || User.IsInRole("negocio"))
+                                    {
+                                        <li>@Html.ActionLink("Empleados", "Index", "Empleado")</li>
+                                        <li>@Html.ActionLink("Crear Usuario", "RegisterRole", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    }
+                                }
+                                catch { }
+                            }
+
+                            <li>@Html.ActionLink("Usuarios", "Index", "Unidad")</li>
+                        </ul>
+                    </li>                                
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

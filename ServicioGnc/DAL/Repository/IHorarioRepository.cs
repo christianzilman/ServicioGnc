@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServicioGnc.DAL.Repository
 {
-    public interface ICarroRepository:IGenericRepository<Carro>
+    public interface IHorarioRepository: IGenericRepository<Horario>
     {
-        List<Carro> GetByTipoOperacion(int TipoOperacionId);
     }
 }
