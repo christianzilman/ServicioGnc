@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "CreateDetail";
+      
+}
+
+<h2>Datos Detalle</h2>
+<div class="editor-label">
+    Horario:
+</div>
+<div class="editor-field">  
+    @{
+        List<ServicioGnc.Models.Horario> listHorario = ViewBag.Horarios;
+    }
+
+    <select id="HorarioId" name="HorarioId">
+        @foreach (var item in listHorario)
+        {
+            <option value="@item.HorarioId"> @item.ComienzoTurno -- @item.FinalTurno</option>
+        }
+    </select>
+</div>
+
+<div class="editor-label">
+    Día:
+</div>
+<div class="editor-field">
+    <select id="Dia" name="Dia">       
+       <option value="Lunes"> Lunes</option>       
+       <option value="Martes"> Martes</option>       
+       <option value="Miercoles"> Miercoles</option>       
+       <option value="Jueves"> Jueves</option>       
+       <option value="Viernes"> Viernes</option>       
+       <option value="Sabado"> Sabado</option>       
+       <option value="Domingo"> Domingo</option>       
+    </select>
+</div>
+
+<input  type="button" value="Agregar Detalle" onclick="javascript: agregarDetalle()"/>

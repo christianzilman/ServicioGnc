@@ -18,3 +18,6 @@ insert into Rol(Nombre)values('Empleado');
 insert into Rol(Nombre)values('Cliente');
 
 
+insert into Horario(ComienzoTurno,FinalTurno)values('08:00','17:00')
+
+insert into Horario(ComienzoTurno,FinalTurno)values('08:00 - 12:00 | ','13:00 - 18:00')

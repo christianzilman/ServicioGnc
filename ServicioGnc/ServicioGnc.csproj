@@ -167,6 +167,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
+    <Compile Include="Controllers\DetalleTurnoController.cs" />
     <Compile Include="Controllers\FeriadoController.cs" />
     <Compile Include="Controllers\FichadaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -518,6 +519,11 @@
     </Content>
     <Content Include="Views\Carro\ProcesarCompra.cshtml" />
     <Content Include="Views\Producto\Listado de Productos.cshtml" />
+    <Content Include="Views\DetalleTurno\Index.cshtml" />
+    <Content Include="Views\DetalleTurno\Details.cshtml" />
+    <Content Include="Views\DetalleTurno\Create.cshtml" />
+    <Content Include="Views\DetalleTurno\Edit.cshtml" />
+    <Content Include="Views\DetalleTurno\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
