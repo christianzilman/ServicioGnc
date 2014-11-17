@@ -176,6 +176,7 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoConceptoController.cs" />
     <Compile Include="Controllers\TurnoController.cs" />
     <Compile Include="Controllers\TurnoEspecialController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="DAL\Repository\IClienteRepository.cs" />
     <Compile Include="DAL\Repository\ICompraRepository.cs" />
     <Compile Include="DAL\Repository\IConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\IDetalleCompraRepository.cs" />
     <Compile Include="DAL\Repository\IEmpresaRepository.cs" />
     <Compile Include="DAL\Repository\IFeriadoRepository.cs" />
     <Compile Include="DAL\Repository\IFichadaRepository.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="DAL\Repository\Impl\ProductoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProveedorRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TipoConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\TipoEstadoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TurnoEspecialRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TurnoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\UnidadRepository.cs" />
@@ -216,6 +219,8 @@
     <Compile Include="DAL\Repository\IProductoRepository.cs" />
     <Compile Include="DAL\Repository\IProveedorRepository.cs" />
     <Compile Include="DAL\Repository\ITipoConcepto.cs" />
+    <Compile Include="DAL\Repository\ITipoConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\ITipoEstadoRepository.cs" />
     <Compile Include="DAL\Repository\ITurnoEspecialRepository.cs" />
     <Compile Include="DAL\Repository\ITurnoRepository.cs" />
     <Compile Include="DAL\Repository\IUnidadRepository.cs" />
@@ -237,6 +242,7 @@
     <Compile Include="Models\DetalleTurno.cs" />
     <Compile Include="Models\DetalleVenta.cs" />
     <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Familiar.cs" />
     <Compile Include="Models\Feriado.cs" />
     <Compile Include="Models\Fichada.cs" />
     <Compile Include="Models\Horario.cs" />
@@ -253,6 +259,7 @@
     <Compile Include="Models\Mapping\DetalleTurnoMap.cs" />
     <Compile Include="Models\Mapping\DetalleVentaMap.cs" />
     <Compile Include="Models\Mapping\EmpresaMap.cs" />
+    <Compile Include="Models\Mapping\FamiliarMap.cs" />
     <Compile Include="Models\Mapping\FeriadoMap.cs" />
     <Compile Include="Models\Mapping\FichadaMap.cs" />
     <Compile Include="Models\Mapping\HorarioMap.cs" />
@@ -264,6 +271,7 @@
     <Compile Include="Models\Mapping\RolMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TipoConceptoMap.cs" />
+    <Compile Include="Models\Mapping\TipoEstadoMap.cs" />
     <Compile Include="Models\Mapping\TurnoEspecialMap.cs" />
     <Compile Include="Models\Mapping\TurnoMap.cs" />
     <Compile Include="Models\Mapping\UnidadMap.cs" />
@@ -275,6 +283,7 @@
     <Compile Include="Models\ServicioGncContext.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TipoConcepto.cs" />
+    <Compile Include="Models\TipoEstado.cs" />
     <Compile Include="Models\Turno.cs" />
     <Compile Include="Models\TurnoEspecial.cs" />
     <Compile Include="Models\Unidad.cs" />

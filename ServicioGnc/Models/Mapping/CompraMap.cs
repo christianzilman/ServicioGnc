@@ -18,14 +18,12 @@ namespace ServicioGnc.Models.Mapping
             this.Property(t => t.Fecha).HasColumnName("Fecha");
             this.Property(t => t.Total).HasColumnName("Total");
             this.Property(t => t.TipoEstadoId).HasColumnName("TipoEstadoId");
+            this.Property(t => t.UsuarioId).HasColumnName("UsuarioId");
 
             // Relationships
             this.HasRequired(t => t.Proveedor)
                 .WithMany(t => t.Compras)
                 .HasForeignKey(d => d.ProveedorId);
-            this.HasRequired(t => t.TipoEstado)
-                .WithMany(t => t.Compras)
-                .HasForeignKey(d => d.TipoEstadoId);
 
         }
     }

@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalle de la Asignación</h2>
 
 <fieldset>
-    <legend>AsignacionTurno</legend>
+    <legend>Asignación Turno</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Turno.Nombre)
@@ -31,6 +31,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.AsignacionTurnoId }) |
+    @Html.ActionLink("Editar", "Edit", new { id=Model.AsignacionTurnoId }) |
     @Html.ActionLink("Volver al listado", "Index")
 </p>

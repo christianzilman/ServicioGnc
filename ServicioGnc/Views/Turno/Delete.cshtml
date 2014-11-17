@@ -4,9 +4,10 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+    Realmente deseas eliminar este turno?
+</div>
 <fieldset>
     <legend>Turno</legend>
 
@@ -20,7 +21,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Eliminar" /> |
         @Html.ActionLink("Volver al listado", "Index")
     </p>
 }

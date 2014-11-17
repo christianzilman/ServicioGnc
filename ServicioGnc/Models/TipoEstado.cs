@@ -7,11 +7,11 @@ namespace ServicioGnc.Models
     {
         public TipoEstado()
         {
-            this.Compras = new List<Compra>();
+            this.Ventas = new List<Venta>();
         }
 
         public int TipoEstadoId { get; set; }
         public string Nombre { get; set; }
-        public virtual ICollection<Compra> Compras { get; set; }
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }
