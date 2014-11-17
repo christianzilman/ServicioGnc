@@ -14,7 +14,9 @@ namespace ServicioGnc.Models
         public int ProveedorId { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<double> Total { get; set; }
+        public int TipoEstadoId { get; set; }
         public virtual Proveedor Proveedor { get; set; }
+        public virtual TipoEstado TipoEstado { get; set; }
         public virtual ICollection<DetalleCompra> DetalleCompras { get; set; }
     }
 }

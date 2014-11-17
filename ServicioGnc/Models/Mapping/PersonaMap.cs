@@ -30,6 +30,7 @@ namespace ServicioGnc.Models.Mapping
             this.Property(t => t.FechaNacimiento).HasColumnName("FechaNacimiento");
             this.Property(t => t.FechaEgreso).HasColumnName("FechaEgreso");
             this.Property(t => t.FechaIngreso).HasColumnName("FechaIngreso");
+            this.Property(t => t.Dni).HasColumnName("Dni");
 
             // Relationships
             this.HasOptional(t => t.Rol)

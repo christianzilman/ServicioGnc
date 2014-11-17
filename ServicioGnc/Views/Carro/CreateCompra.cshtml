@@ -1,5 +1,6 @@
 ﻿@model ServicioGnc.Models.Carro
 
+
 @{
     ViewBag.Title = "Compra";
 }
@@ -14,6 +15,12 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    
+             @*<div id="busquedaP">
+                 <input type="text" name="proveedorId" id="proveedorId" />
+        <input type="button" class="btn-warning" onclick="javascript:BuscarProveedor()" value="Buscar" />
+
+    </div>*@
     <div id="busqueda">
         <input type="text" name="productoId" id="productoId"  />
         <input type="button" class="btn-warning" onclick="javascript:BuscarProducto()" value="Buscar" />
@@ -48,6 +55,17 @@
         });
     }
 
+    function BuscarProducto(){
+        var productoCodigo = $("#proveedorId").val();
+        $.ajax({
+            url: "@Url.Content("~/Proveedor/BuscarProveedor")",
+            type: 'POST',
+            data: { 'proveedorId': proveedorCodigo },
+        success: function (data) {
+            $("#proveedorNombre").html(data);
+        }
+    });
+    }
 
 
     function AgregarDetalle() {

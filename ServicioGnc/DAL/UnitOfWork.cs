@@ -22,15 +22,26 @@ namespace ServicioGnc.DAL
         private ILiquidacionRepository liquidacionRepository;
         private IEmpresaRepository empresaRepository;
         private IConceptoRepository conceptoRepository;
-        private ITipoConcepto tipoConceptoRepository;
+        private ITipoConceptoRepository tipoConceptoRepository;
         private IFichadaRepository fichadaRepository;
         private ILecturaPresionTemperaturaRepository lecturaPresionTemperaturaRepository;
         private IFeriadoRepository feriadoRepository;
         private ITurnoRepository turnoRepository;
         private ITurnoEspecialRepository turnoEspecialRepository;
         private IHorarioRepository horarioRepository;
+        private ITipoEstadoRepository tipoEstadoRepository;
 
-
+        public ITipoEstadoRepository TipoEstadoRepository
+        {
+            get
+            {
+                if (this.tipoEstadoRepository == null)
+                {
+                    this.tipoEstadoRepository = new TipoEstadoRepository(context);
+                }
+                return this.tipoEstadoRepository;
+            }
+        }
         public IHorarioRepository HorarioRepository {
             get 
             { 
@@ -98,7 +109,7 @@ namespace ServicioGnc.DAL
             }        
         }
 
-        public  ITipoConcepto TipoConceptoRepository
+        public  ITipoConceptoRepository TipoConceptoRepository
         {
             get
             {

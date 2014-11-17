@@ -26,6 +26,7 @@ namespace ServicioGnc.Models
         public DbSet<DetalleTurno> DetalleTurnoes { get; set; }
         public DbSet<DetalleVenta> DetalleVentas { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<Familiar> Familiars { get; set; }
         public DbSet<Feriado> Feriadoes { get; set; }
         public DbSet<Fichada> Fichadas { get; set; }
         public DbSet<Horario> Horarios { get; set; }
@@ -37,6 +38,7 @@ namespace ServicioGnc.Models
         public DbSet<Rol> Rols { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<TipoConcepto> TipoConceptoes { get; set; }
+        public DbSet<TipoEstado> TipoEstadoes { get; set; }
         public DbSet<Turno> Turnoes { get; set; }
         public DbSet<TurnoEspecial> TurnoEspecials { get; set; }
         public DbSet<Unidad> Unidads { get; set; }
@@ -54,6 +56,7 @@ namespace ServicioGnc.Models
             modelBuilder.Configurations.Add(new DetalleTurnoMap());
             modelBuilder.Configurations.Add(new DetalleVentaMap());
             modelBuilder.Configurations.Add(new EmpresaMap());
+            modelBuilder.Configurations.Add(new FamiliarMap());
             modelBuilder.Configurations.Add(new FeriadoMap());
             modelBuilder.Configurations.Add(new FichadaMap());
             modelBuilder.Configurations.Add(new HorarioMap());
@@ -65,6 +68,7 @@ namespace ServicioGnc.Models
             modelBuilder.Configurations.Add(new RolMap());
             modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new TipoConceptoMap());
+            modelBuilder.Configurations.Add(new TipoEstadoMap());
             modelBuilder.Configurations.Add(new TurnoMap());
             modelBuilder.Configurations.Add(new TurnoEspecialMap());
             modelBuilder.Configurations.Add(new UnidadMap());

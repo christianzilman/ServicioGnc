@@ -1,4 +1,5 @@
 ﻿@model ServicioGnc.Models.Carro
+@model ServicioGnc.Models.Proveedor
 
 @{
     ViewBag.Title = "Venta";
@@ -15,7 +16,11 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    
+
+    
     <div id="busqueda">
+
         <input type="text" name="productoId" id="productoId"  />
         <input type="button" onclick="javascript:BuscarProducto()" class="btn-warning" value="Buscar" />
 
@@ -53,10 +58,11 @@
     function AgregarDetalle() {
         var productoIdPanel = $("#ProductoIdPanel").val();
         var cantidad = $("#ProductoCantidad").val();
+        var clienteId = $("#ClienteId").val();
         $.ajax({
             url: "@Url.Content("~/Carro/AgregarDetalle")",
             type:'post',
-            data: { 'productoId': productoIdPanel, 'cantidad': cantidad, 'tipoOperacionId': 1 },
+            data: { 'productoId': productoIdPanel, 'cantidad': cantidad, 'tipoOperacionId': 1,'clienteId':clienteId },
         success: function (data) {
             $("#detalleCarro").html(data);
         }

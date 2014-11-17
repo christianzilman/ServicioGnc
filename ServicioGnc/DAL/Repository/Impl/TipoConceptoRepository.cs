@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ServicioGnc.DAL.Repository.Impl
 {
-    public class TipoConceptoRepository:GenericRepository<ServicioGncContext,TipoConcepto>,ITipoConcepto
+    public class TipoConceptoRepository:GenericRepository<ServicioGncContext,TipoConcepto>,ITipoConceptoRepository
     {
         public TipoConceptoRepository() 
         { 

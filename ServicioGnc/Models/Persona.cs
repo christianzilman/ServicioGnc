@@ -8,6 +8,7 @@ namespace ServicioGnc.Models
         public Persona()
         {
             this.AsignacionTurnoes = new List<AsignacionTurno>();
+            this.Familiars = new List<Familiar>();
             this.Fichadas = new List<Fichada>();
             this.Liquidacions = new List<Liquidacion>();
             this.TurnoEspecials = new List<TurnoEspecial>();
@@ -21,7 +22,9 @@ namespace ServicioGnc.Models
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public Nullable<System.DateTime> FechaEgreso { get; set; }
         public Nullable<System.DateTime> FechaIngreso { get; set; }
+        public Nullable<int> Dni { get; set; }
         public virtual ICollection<AsignacionTurno> AsignacionTurnoes { get; set; }
+        public virtual ICollection<Familiar> Familiars { get; set; }
         public virtual ICollection<Fichada> Fichadas { get; set; }
         public virtual ICollection<Liquidacion> Liquidacions { get; set; }
         public virtual Rol Rol { get; set; }
