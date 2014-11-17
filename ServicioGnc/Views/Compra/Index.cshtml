@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Compra>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Compras";
 }
 
-<h2>Index</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    Compras
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
+
+<table class="table">
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.Proveedor.RazonSocial)
         </th>
@@ -35,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CompraId }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.CompraId }) |
             @Html.ActionLink("Details", "Details", new { id=item.CompraId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CompraId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompraId })*@
         </td>
     </tr>
 }

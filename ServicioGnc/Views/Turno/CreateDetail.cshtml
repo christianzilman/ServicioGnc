@@ -5,8 +5,14 @@
     ViewBag.Title = "CreateDetail";
       
 }
+<br />
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+    Agregar detalle de turno
+</div>
 
-<h2>Datos Detalle</h2>
+
+
 <div class="editor-label">
     Horario:
 </div>
@@ -37,5 +43,6 @@
        <option value="Domingo"> Domingo</option>       
     </select>
 </div>
-
-<input  type="button" value="Agregar Detalle" onclick="javascript: agregarDetalle()"/>
+<br/>
+<input  type="button"  class="btn-warning" value="Agregar Detalle" onclick="javascript:agregarDetalle()"/>
+<br />

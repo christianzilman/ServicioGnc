@@ -10,8 +10,9 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap-3.1.1/css/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-3.1.1/css/bootstrap-theme.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.js"></script>
+    <link href="@Url.Content("~/Content/bootstrap-3.1.1/css/bootstrap-theme.css")" rel="stylesheet" />
+    
+    <script src="@Url.Content("~/Scripts/jquery.js")"></script>
     <script src="~/Content/bootstrap-3.1.1/js/bootstrap.js"></script>
     <script src="~/Content/bootstrap-3.1.1/js/moment.js"></script>
     <script src="~/Content/bootstrap-3.1.1/js/bootstrap-datetimepicker.js"></script>
@@ -38,8 +39,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Compras", "Index", "Compra")</li>
-                    <li>@Html.ActionLink("Ventas", "Index", "Compra")</li>
+                    <li>@Html.ActionLink("Compras", "CreateCompra", "Carro")</li>
+                    <li>@Html.ActionLink("Ventas", "Create", "Carro")</li>
                     <li>@Html.ActionLink("Liquidaciones", "Index", "Liquidacion")</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <b class="caret"></b></a>

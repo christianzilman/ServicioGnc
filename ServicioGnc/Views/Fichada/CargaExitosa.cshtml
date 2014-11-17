@@ -1,5 +1,49 @@
-﻿@{
-    ViewBag.Title = "CargaExitosa";
+﻿@model IEnumerable<ServicioGnc.Models.Fichada>
+
+@{
+    ViewBag.Title = "Fichada";
 }
 
-<h2>Los datos fueron cargados exitosamente</h2>
+<h2>Carga exitosa</h2>
+
+@*<table class="table">
+    <tr class="warning">
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Fecha de Egreso
+        </th>
+        <th>
+            Empleado
+        </th>
+        <th>
+            Observación
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEgreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.FichadaId }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.FichadaId }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.FichadaId })
+            </td>
+        </tr>
+    }
+
+</table>*@

@@ -1,70 +1,19 @@
-<<<<<<< HEAD
 ﻿@model IEnumerable<ServicioGnc.Models.Fichada>
 
-@{
+﻿@{
     ViewBag.Title = "Fichada";
 }
 
-<h2>Fichadas</h2>
-
-<p>
-    @Html.ActionLink("Nueva Fichada", "Create")
-</p>
-<p>
-    @Html.ActionLink("Carga masiva de fichadas", "Create")
-</p>
-
-<table class="table">
-    <tr class="warning">
-        <th>
-            Fecha de ingreso
-        </th>
-        <th>
-            Fecha de Egreso
-        </th>
-        <th>
-            Empleado
-        </th>
-        <th>
-            Observacion
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaIngreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaEgreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Persona.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacion)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.FichadaId }) |
-          @*  @Html.ActionLink("Details", "Details", new { id=item.FichadaId }) |*@
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.FichadaId })
-        </td>
-    </tr>
-}
-=======
-﻿@{
-    ViewBag.Title = "Index";
-}
 
 
->>>>>>> e954714f4a5443c8d8a791fec1c7b91ec19c2ec7
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+Carga masiva de fichadas
+</div>
 
-<h2>
-    Index
-</h2>
 @using (Html.BeginForm("Index", "Fichada", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <input type="file" name="file" />
-    <input type="submit" value="Importar" />
+    <input type="file" class="warning" name="file" />
+    <br/>
+    <input type="submit" class="btn-warning" value="Importar" />
 }  

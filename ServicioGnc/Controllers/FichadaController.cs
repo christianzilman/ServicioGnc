@@ -30,7 +30,7 @@ namespace ServicioGnc.Controllers
         {
             var fichadas = unitOfWork.FichadaRepository.Get();
             return View(fichadas.ToList());
-            return View();
+            //return View();
         }
 
         [HttpPost]
@@ -121,7 +121,14 @@ namespace ServicioGnc.Controllers
                 sr.Dispose();
             }
             return View("CargaExitosa");
-        }   
+        }
+
+        public ActionResult CargaExitosa()
+        {
+            var fichadas = unitOfWork.FichadaRepository.Get();
+            return View(fichadas.ToList());
+            
+        }
 
         //
         // GET: /Fichada/Details/5

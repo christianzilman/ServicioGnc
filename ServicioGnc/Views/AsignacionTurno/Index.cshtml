@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<ServicioGnc.Models.AsignacionTurno>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Asignación de turnos";
 }
 
-<h2>Index</h2>
+<h2>Asignación de turnos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo", "Create")
 </p>
-<table>
-    <tr>
+<table class="table">
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.Turno.Nombre)
         </th>

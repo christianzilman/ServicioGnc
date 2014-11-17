@@ -75,7 +75,7 @@ namespace ServicioGnc.Controllers
             double total = (double)listCarro.Sum<Carro>(t=>t.SubTotal);
 
             Venta venta = new Venta();
-            venta.ClienteId = 1;
+            venta.ClienteId = 2;
             venta.Total = total;
             venta.Fecha = DateTime.Now;
 

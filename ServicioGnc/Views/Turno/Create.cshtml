@@ -1,10 +1,15 @@
 ﻿@model ServicioGnc.Models.Turno
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Turnos";
 }
 
-<h2>Create</h2>
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+   Turno
+</div>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -71,15 +76,15 @@
                     });
             }
         </script>
-
+        <br/>
         <p class="editor-field">
-            <input type="submit" class="btn-primary" value="Crear Turno" />
+            <input type="submit" class="btn-warning" value="Crear Turno" />
         </p>
 </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al listado", "Index")
 </div>
 
 @section Scripts {

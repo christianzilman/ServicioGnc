@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<ServicioGnc.Models.Venta>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ventas";
 }
 
-<h2>Index</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    Ventas
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
+<table class="table">
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Cliente.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VentaId }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.VentaId }) |
             @Html.ActionLink("Details", "Details", new { id=item.VentaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VentaId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.VentaId })*@
         </td>
     </tr>
 }
