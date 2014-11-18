@@ -4,15 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+    Presión y Temperatura
+</div>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Nuevo control", "Create")
 </p>
+
 <table class="table">
-    <tr>
+    <tr class="warning">
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Operación
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Presion)
@@ -41,9 +45,9 @@
             @Html.DisplayFor(modelItem => item.Fecha)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LecturaPresionTemperaturaId }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.LecturaPresionTemperaturaId }) |
             @Html.ActionLink("Details", "Details", new { id=item.LecturaPresionTemperaturaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LecturaPresionTemperaturaId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.LecturaPresionTemperaturaId })*@
         </td>
     </tr>
 }

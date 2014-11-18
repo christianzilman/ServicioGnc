@@ -19,7 +19,9 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Index()
         {
+            
             return View(unitOfWork.LecturaPresionTemperaturaRepository.Get().ToList());
+
         }
 
         //
@@ -50,6 +52,19 @@ namespace ServicioGnc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(LecturaPresionTemperatura lecturapresiontemperatura)
         {
+            Random rng = new Random();
+            
+            double presion;
+            presion = rng.Next(200,260);
+
+            double temperatura;
+            temperatura = rng.Next(0,60);
+
+            lecturapresiontemperatura.Nombre = "Lectura";
+            lecturapresiontemperatura.Presion = presion;
+            lecturapresiontemperatura.Temperatura = temperatura;
+            lecturapresiontemperatura.Fecha = DateTime.Today;
+
             if (ModelState.IsValid)
             {
                 unitOfWork.LecturaPresionTemperaturaRepository.Add(lecturapresiontemperatura);

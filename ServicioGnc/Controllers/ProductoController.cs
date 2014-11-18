@@ -41,18 +41,18 @@ namespace ServicioGnc.Controllers
             ViewBag.PrecioVenta = producto.PrecioVenta;
             return View();
 
-            //var productoes = unitOfWork.ProductoRepository.Get(includeProperties: "Unidad");
-
-            //if (!String.IsNullOrEmpty(productoId))
-            //{
-            //    productoes = productoes.Where(p => p.Nombre.ToUpper().Contains(productoId.ToUpper()));
-
-            //}
-
-            //return View(productoes.ToList());
-
         }
 
+        [HttpPost]
+        public ActionResult BuscarProductoCompra(int productoId)
+        {
+            Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
+            ViewBag.ProductoId = productoId;
+            ViewBag.NombreProducto = producto.Nombre;
+            ViewBag.PrecioCompra = producto.PrecioCompra;
+            return View();
+
+        }
         //
         // GET: /Producto/Details/5
 

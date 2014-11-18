@@ -2,16 +2,16 @@
 
 
 @{
-    ViewBag.Title = "Compra";
+    ViewBag.Title = "Liquidación";
 }
 
 <div class="alert alert-warning" role="alert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-    COMPRA
+    Liquidación
 </div>
 
 <div id="formularioDetail">
-    @Html.Partial("SeleccionarProveedor")
+    @Html.Partial("SeleccionarEmpleado")
 </div> 
 
 @using (Html.BeginForm(actionName:"ProcesarCompra",controllerName:"Carro"))
@@ -22,19 +22,19 @@
 
     <div id="busqueda">
         <input type="text" name="productoId" id="productoId"  />
-        <input type="button" class="btn-warning" onclick="javascript:BuscarProducto()" value="Buscar" />
+        <input type="button" class="btn-warning" onclick="javascript:BuscarConcepto()" value="Buscar" />
 
     </div>
     <div id="productoDescripcion"></div>
     
     <div id="detalleCarro"></div>
        <br/>
-    <input type="submit" class="btn-warning" onclick="javascript:ProcesarCompra()" value="Guardar" />
+    <input type="submit" class="btn-warning" onclick="javascript:ProcesarLiquidacion()" value="Guardar" />
     <br/>
 }
 
 <div>
-    @Html.ActionLink("Nueva compra", "CreateCompra")
+    @Html.ActionLink("Nueva Liquidación", "CreateLiquidacion")
 </div>
 
 @section Scripts {
@@ -42,14 +42,14 @@
 }
 
 <script >
-function BuscarProducto(){
-        var productoCodigo = $("#productoId").val();
+function BuscarConcepto(){
+        var productoCodigo = $("#conceptoId").val();
         $.ajax({
-            url: "@Url.Content("~/Producto/BuscarProductoCompra")",
+            url: "@Url.Content("~/Concepto/BuscarConcepto")",
             type: 'POST',
-            data: { 'productoId': productoCodigo },
+            data: { 'conceptoId': conceptoCodigo },
             success: function (data) {
-                $("#productoDescripcion").html(data);
+                $("#conceptoDescripcion").html(data);
             }
         });
     }
@@ -58,14 +58,14 @@ function BuscarProducto(){
 
 
 
-    function AgregarDetalleCompra() {
+    function AgregarDetalleLiquidacion() {
         var productoIdPanel = $("#ProductoIdPanel").val();
         var cantidad = $("#ProductoCantidad").val();
         $.ajax({
-            url: "@Url.Content("~/Carro/AgregarDetalleCompra")",
+            url: "@Url.Content("~/Carro/AgregarDetalleLiquidacion")",
             type:'post',
 
-            data: { 'productoId': productoIdPanel, 'cantidad': cantidad , 'tipoOperacionId': 2 },
+            data: { 'productoId': productoIdPanel, 'cantidad': cantidad , 'tipoOperacionId': 3 },
             success: function (data) {
                 $("#detalleCarro").html(data);
             }

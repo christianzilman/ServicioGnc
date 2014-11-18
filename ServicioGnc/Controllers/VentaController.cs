@@ -74,6 +74,7 @@ namespace ServicioGnc.Controllers
                 return HttpNotFound();
             }
             ViewBag.ClienteId = new SelectList(unitOfWork.ClienteRepository.Get(), "ClienteId", "Nombre", venta.ClienteId);
+            ViewBag.TipoEstadoId = new SelectList(unitOfWork.TipoEstadoRepository.Get().Where(t => t.TipoEstadoId > 4), "TipoEstadoId", "Nombre", venta.TipoEstadoId);
             return View(venta);
         }
 
@@ -91,6 +92,7 @@ namespace ServicioGnc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ClienteId = new SelectList(unitOfWork.ClienteRepository.Get(), "ClienteId", "Nombre", venta.ClienteId);
+            ViewBag.TipoEstadoId = new SelectList(unitOfWork.TipoEstadoRepository.Get().Where(t => t.TipoEstadoId > 4), "TipoEstadoId", "Nombre", venta.TipoEstadoId);
             return View(venta);
         }
 

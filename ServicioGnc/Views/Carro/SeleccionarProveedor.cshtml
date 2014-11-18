@@ -1,0 +1,10 @@
+﻿@model ServicioGnc.Models.Proveedor
+
+Seleccione Proveedor
+<div class="editor-label">
+    @Html.LabelFor(model => model.ProveedorId, "Proveedor")
+</div>
+<div class="editor-field" id="proveedorId">
+    @Html.DropDownList("ProveedorId", String.Empty)
+    @Html.ValidationMessageFor(model => model.ProveedorId)
+</div>

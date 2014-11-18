@@ -1,5 +1,4 @@
 ﻿@model ServicioGnc.Models.Carro
-@model ServicioGnc.Models.Proveedor
 
 @{
     ViewBag.Title = "Venta";
@@ -10,7 +9,9 @@
     VENTA
 </div>
 
-
+<div id="formularioDetail">
+    @Html.Partial("SeleccionarCliente")
+</div> 
 
 @using (Html.BeginForm(actionName:"ProcesarVenta",controllerName:"Carro"))
 {
@@ -69,4 +70,21 @@
     });
 
     }
+
+    function EliminarDetalle() {
+        var productoIdPanel = $("#ProductoIdPanel").val();
+        var cantidad = $("#ProductoCantidad").val();
+        var clienteId = $("#ClienteId").val();
+        $.ajax({
+            url: "@Url.Content("~/Carro/AgregarDetalle")",
+            type:'post',
+        data: { 'productoId': productoIdPanel, 'cantidad': cantidad, 'tipoOperacionId': 1,'clienteId':clienteId },
+        success: function (data) {
+            $("#detalleCarro").html(data);
+        }
+    });
+
+    }
 </script>
+
+

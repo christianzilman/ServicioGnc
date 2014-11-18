@@ -74,6 +74,7 @@ namespace ServicioGnc.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "ProveedorId", "RazonSocial", compra.ProveedorId);
+            ViewBag.TipoEstadoId = new SelectList(unitOfWork.TipoEstadoRepository.Get().Where(t => t.TipoEstadoId > 1 && t.TipoEstadoId < 4), "TipoEstadoId", "Nombre", compra.TipoEstadoId);
             return View(compra);
         }
 
@@ -86,11 +87,17 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
+                //if (ViewBag.TipoEstadoId = 2)
+                //{
+                //    Producto producto = unitOfWork.ProductoRepository.GetByID(id);
+                //    producto.Cantidad = 
+                //}
                 unitOfWork.CompraRepository.Edit(compra);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "ProveedorId", "RazonSocial", compra.ProveedorId);
+            ViewBag.TipoEstadoId = new SelectList(unitOfWork.TipoEstadoRepository.Get().Where(t => t.TipoEstadoId > 1 && t.TipoEstadoId < 4), "TipoEstadoId", "Nombre", compra.TipoEstadoId);
             return View(compra);
         }
 
