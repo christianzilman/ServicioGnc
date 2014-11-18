@@ -74,7 +74,7 @@ namespace ServicioGnc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PersonaId = new SelectList(unitOfWork.FamiliarRepository.Get(), "PersonaId", "Nombre", familiar.PersonaId);
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", familiar.PersonaId);
             return View(familiar);
         }
 
@@ -91,7 +91,7 @@ namespace ServicioGnc.Controllers
                 unitOfWork.FamiliarRepository.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.PersonaId = new SelectList(unitOfWork.FamiliarRepository.Get(), "PersonaId", "Nombre", familiar.PersonaId);
+            ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre", familiar.PersonaId);
             return View(familiar);
         }
 
