@@ -30,7 +30,19 @@ namespace ServicioGnc.DAL
         private ITurnoEspecialRepository turnoEspecialRepository;
         private IHorarioRepository horarioRepository;
         private ITipoEstadoRepository tipoEstadoRepository;
+        private IFamiliarRepository familiarRepository;
 
+        public IFamiliarRepository FamiliarRepository
+        {
+            get
+            {
+                if (this.familiarRepository == null)
+                {
+                    this.familiarRepository = new FamiliarRepository(context);
+                }
+                return this.familiarRepository;
+            }
+        }
         public ITipoEstadoRepository TipoEstadoRepository
         {
             get

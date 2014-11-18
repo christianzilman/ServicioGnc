@@ -1,0 +1,31 @@
+﻿@model ServicioGnc.Models.Familiar
+
+@{
+    ViewBag.Title = "Familiares";
+}
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Familiares
+</div>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de Femiliar</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Empleado: @Html.DisplayFor(model => model.Persona.Nombre) </div>
+            <div>    Familiar: @Html.DisplayFor(model => model.Nombre)</div>
+            <div>    Parentezco: @Html.DisplayFor(model => model.Relacion)</div>
+            <div>    Fecha de Nacimiento: @Html.DisplayFor(model => model.FechaNacimiento)</div>
+            <br />
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.FamiliarId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+
