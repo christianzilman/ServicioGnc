@@ -4,21 +4,23 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Realmente deseas eliminar esta fichada ?
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>Fichada</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.FechaIngreso)
+        Fecha Ingreso:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.FechaIngreso)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.FechaEgreso)
+         Fecha Egreso:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.FechaEgreso)
@@ -41,7 +43,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Eliminar" /> |
         @Html.ActionLink("Volver al listado", "Index")
     </p>
 }

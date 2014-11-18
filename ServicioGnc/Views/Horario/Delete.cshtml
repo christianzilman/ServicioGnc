@@ -1,0 +1,34 @@
+﻿@model ServicioGnc.Models.Horario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+    Realmente deseas eliminar este horario
+</div>
+<fieldset>
+    <legend>Horario</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ComienzoTurno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ComienzoTurno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FinalTurno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FinalTurno)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Volver al listado", "Index")
+    </p>
+}

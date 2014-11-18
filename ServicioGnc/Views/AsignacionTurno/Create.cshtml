@@ -4,7 +4,12 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Nueva Asignación</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Nueva Asignación
+</div>
+
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -30,7 +35,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Observacion)
+            Observación
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Observacion)

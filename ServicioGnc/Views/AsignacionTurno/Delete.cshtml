@@ -4,28 +4,29 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar</h2>
-
-<h3>Realmente deseas eliminar esta asignación?</h3>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Realmente deseas eliminar esta asignación?
+</div>
 <fieldset>
     <legend>AsignacionTurno</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Turno.Nombre)
+         Nombre Turno:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Turno.Nombre)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Persona.Nombre)
+         Nombre:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Persona.Nombre)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Observacion)
+         Observación:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Observacion)

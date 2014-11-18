@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ServicioGnc.Models.Horario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+    Horarios
+</div>
+
+<p>
+    @Html.ActionLink("Nuevo Horario", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComienzoTurno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinalTurno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComienzoTurno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinalTurno)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.HorarioId }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.HorarioId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.HorarioId })
+        </td>
+    </tr>
+}
+
+</table>

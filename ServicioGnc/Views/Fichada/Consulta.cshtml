@@ -4,11 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Fichadas
+</div>
+
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Nueva Fichada", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        Fecha desde: @Html.TextBox("fechaDesde")
+        Fecha Hasra: @Html.TextBox("fechaHasra")
+        <input type="submit" class="btn-warning" value="Consultar" />
+    </p>
+}
+
 <table class="table">
     <tr class="warning">
         <th>

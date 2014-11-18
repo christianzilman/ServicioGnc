@@ -1,0 +1,47 @@
+﻿@model ServicioGnc.Models.Horario
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+    Nuevo Horario
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Horario</legend>
+
+        <div class="editor-label">
+            Comienzo Turno:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ComienzoTurno)
+            @Html.ValidationMessageFor(model => model.ComienzoTurno)
+        </div>
+
+        <div class="editor-label">
+            Final del Turno
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FinalTurno)
+            @Html.ValidationMessageFor(model => model.FinalTurno)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

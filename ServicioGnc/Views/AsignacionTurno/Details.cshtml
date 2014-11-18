@@ -4,7 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detalle de la Asignación</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Detalle de la Asignación
+</div>
+
+
 
 <fieldset>
     <legend>Asignación Turno</legend>
@@ -24,7 +29,7 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Observacion)
+         Observación
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Observacion)
