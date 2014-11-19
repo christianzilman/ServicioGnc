@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.6.1\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -168,6 +171,7 @@
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\DetalleTurnoController.cs" />
+    <Compile Include="Controllers\FamiliarController.cs" />
     <Compile Include="Controllers\FeriadoController.cs" />
     <Compile Include="Controllers\FichadaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -191,7 +195,9 @@
     <Compile Include="DAL\Repository\ICompraRepository.cs" />
     <Compile Include="DAL\Repository\IConceptoRepository.cs" />
     <Compile Include="DAL\Repository\IDetalleCompraRepository.cs" />
+    <Compile Include="DAL\Repository\IDetalleVentaRepository.cs" />
     <Compile Include="DAL\Repository\IEmpresaRepository.cs" />
+    <Compile Include="DAL\Repository\IFamiliarRepository.cs" />
     <Compile Include="DAL\Repository\IFeriadoRepository.cs" />
     <Compile Include="DAL\Repository\IFichadaRepository.cs" />
     <Compile Include="DAL\Repository\IHorarioRepository.cs" />
@@ -201,7 +207,10 @@
     <Compile Include="DAL\Repository\Impl\ClienteRepository.cs" />
     <Compile Include="DAL\Repository\Impl\CompraRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\DetalleCompraRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\DetalleVentaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\EmpresaRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\FamiliarRepository.cs" />
     <Compile Include="DAL\Repository\Impl\FeriadoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\FichadaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\HorarioRepository.cs" />
@@ -219,7 +228,6 @@
     <Compile Include="DAL\Repository\IPersonaRepository.cs" />
     <Compile Include="DAL\Repository\IProductoRepository.cs" />
     <Compile Include="DAL\Repository\IProveedorRepository.cs" />
-    <Compile Include="DAL\Repository\ITipoConcepto.cs" />
     <Compile Include="DAL\Repository\ITipoConceptoRepository.cs" />
     <Compile Include="DAL\Repository\ITipoEstadoRepository.cs" />
     <Compile Include="DAL\Repository\ITurnoEspecialRepository.cs" />
@@ -372,7 +380,15 @@
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="NuGet.exe" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -541,6 +557,21 @@
     <Content Include="Views\Horario\Create.cshtml" />
     <Content Include="Views\Horario\Edit.cshtml" />
     <Content Include="Views\Horario\Delete.cshtml" />
+    <Content Include="Views\Familiar\Create.cshtml" />
+    <Content Include="Views\Familiar\Delete.cshtml" />
+    <Content Include="Views\Familiar\Details.cshtml" />
+    <Content Include="Views\Familiar\Edit.cshtml" />
+    <Content Include="Views\Familiar\Index.cshtml" />
+    <Content Include="Views\Reporte\CodigoProductoVentaCompra.cshtml" />
+    <Content Include="Views\Producto\BuscarProductoCompra.cshtml" />
+    <Content Include="Views\Carro\AgregarDetalleCompra.cshtml" />
+    <Content Include="Views\Carro\AgregarDetalleLiquidacion.cshtml" />
+    <Content Include="Views\Carro\CreateLiquidacion.cshtml" />
+    <Content Include="Views\Carro\SeleccionarCliente.cshtml" />
+    <Content Include="Views\Carro\SeleccionarEmpleado.cshtml" />
+    <Content Include="Views\Carro\SeleccionarProveedor.cshtml" />
+    <Content Include="Views\Reporte\CodigoPeriodoProductoVentaCompra.cshtml" />
+    <Content Include="Views\Producto\BuscarProductoReporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
