@@ -1,12 +1,15 @@
 ﻿@model ServicioGnc.Models.LoginModel
-
+<br/>
 @{
     ViewBag.Title = "Iniciar sesión";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Iniciar Sesión
+</div>
+
 
 <section id="loginForm">
 <h2>Utilice una cuenta local para iniciar sesión.</h2>
@@ -32,17 +35,16 @@
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
-        <input type="submit" value="Iniciar sesión" />
+        <input type="submit" class="btn-warning" value="Iniciar sesión" />
     </fieldset>
     <p>
-        @Html.ActionLink("Register", "Register") si no tiene ninguna cuenta.
+        @Html.ActionLink("Registrate", "RegisterRole") si no tiene ninguna cuenta.
     </p>
 }
 </section>
 
 <section class="social" id="socialLoginForm">
-    <h2>Usar otro servicio para iniciar sesión.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+
 </section>
 
 @section Scripts {

@@ -24,6 +24,22 @@ namespace ServicioGnc.Controllers
 
         }
 
+        public ActionResult PresionOk()
+        {
+
+            return View();
+
+        }
+
+        public ActionResult PresionNoOk()
+        {
+
+            return View();
+
+        }
+
+
+
         //
         // GET: /LecturaPresionTemperatura/Details/5
 
@@ -55,21 +71,34 @@ namespace ServicioGnc.Controllers
             Random rng = new Random();
             
             double presion;
-            presion = rng.Next(200,260);
+            presion = rng.Next(190,270);
 
             double temperatura;
-            temperatura = rng.Next(0,60);
+            temperatura = rng.Next(0,25);
 
-            lecturapresiontemperatura.Nombre = "Lectura";
+            lecturapresiontemperatura.Nombre = "Lectura Normal";
             lecturapresiontemperatura.Presion = presion;
             lecturapresiontemperatura.Temperatura = temperatura;
-            lecturapresiontemperatura.Fecha = DateTime.Today;
+            lecturapresiontemperatura.Fecha = DateTime.Today.Date;
+            
+            if (presion > 250)
+            {
+                lecturapresiontemperatura.Nombre = "Presion Alta";
+            }
+
 
             if (ModelState.IsValid)
             {
                 unitOfWork.LecturaPresionTemperaturaRepository.Add(lecturapresiontemperatura);
                 unitOfWork.LecturaPresionTemperaturaRepository.Save();
-                return RedirectToAction("Index");
+                if(presion > 250)
+                {
+                    return RedirectToAction("PresionNoOk");
+                }
+                else
+                {
+                    return RedirectToAction("PresionOk");
+                }    
             }
 
             return View(lecturapresiontemperatura);

@@ -9,10 +9,10 @@
     });
 </script>
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Cree una cuenta nueva.</h2>
-</hgroup>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Registrarse. Cree una cuenta nueva.
+</div>
 
 @using (Html.BeginForm())
 {
@@ -34,9 +34,9 @@
             </li>
 
             <li>
-                <label for="Age">Edad:</label>
+            @*    <label for="Age">Edad:</label>
                 @Html.TextBoxFor(m => m.Age)
-                @*
+
     @Html.EditorFor(model => model.Age)
     @Html.ValidationMessageFor(model => model.Age)*@
             </li>
@@ -88,7 +88,7 @@
             </li>
 
         </ol>
-        <input type="submit" value="Agregar" />
+        <input type="submit" class="btn-warning" value="Agregar" />
     </fieldset>
 }
 

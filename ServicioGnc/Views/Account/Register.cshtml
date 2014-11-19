@@ -2,11 +2,14 @@
 @{
     ViewBag.Title = "Registrarse";
 }
-
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Cree una cuenta nueva.</h2>
-</hgroup>
+<br/>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Cree una cuenta nueva.
+</div>
+@*<hgroup class="title">
+        <h2>Cree una cuenta nueva.</h2>
+</hgroup>*@
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -28,7 +31,7 @@
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
         </ol>
-        <input type="submit" value="Registrarse" />
+        <input type="submit" class="btn-warning" value="Registrarse" />
     </fieldset>
 }
 

@@ -1,10 +1,13 @@
 ﻿@model ServicioGnc.Models.LecturaPresionTemperatura
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Presion y temperatura";
 }
 
-<h2>Create</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+    Presión y Temperatura
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -12,46 +15,17 @@
 
     <fieldset>
         <legend>LecturaPresionTemperatura</legend>
+        <img src="~/Images/Barometer.png" class="center-block" style="width: 250px; height: 250px;" />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nombre)
+        <div class="center-block">
+            <p class="center-block">
+                <input type="submit"  class="btn-warning" value="Controlar" />
+            </p>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nombre)
-            @Html.ValidationMessageFor(model => model.Nombre)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Presion)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Presion)
-            @Html.ValidationMessageFor(model => model.Presion)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Temperatura)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Temperatura)
-            @Html.ValidationMessageFor(model => model.Temperatura)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Fecha)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Fecha)
-            @Html.ValidationMessageFor(model => model.Fecha)
-        </div>
-
-        <p>
-            <input type="submit" class ="btn-warning" value="Guardar" />
-        </p>
     </fieldset>
 }
 
-<div>
+<div class="center-block">
     @Html.ActionLink("Volver al listado", "Index")
 </div>
 

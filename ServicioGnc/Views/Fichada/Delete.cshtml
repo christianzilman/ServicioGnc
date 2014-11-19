@@ -43,7 +43,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Eliminar" /> |
+        <input type="submit"  class="warning"  value="Eliminar" /> |
         @Html.ActionLink("Volver al listado", "Index")
     </p>
 }

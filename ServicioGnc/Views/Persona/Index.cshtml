@@ -4,7 +4,10 @@
     ViewBag.Title = "Empleado";
 }
 
-<h2 class="warning"> Empleados </h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Empleado
+</div>
 
 <p>
     @Html.ActionLink("Crear nuevo empleado", "Create")
