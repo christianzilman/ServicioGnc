@@ -572,6 +572,10 @@
     <Content Include="Views\Carro\SeleccionarProveedor.cshtml" />
     <Content Include="Views\Reporte\CodigoPeriodoProductoVentaCompra.cshtml" />
     <Content Include="Views\Producto\BuscarProductoReporte.cshtml" />
+    <Content Include="Views\Account\RegisterRole.cshtml" />
+    <Content Include="Views\Concepto\BuscarConcepto.cshtml" />
+    <Content Include="Views\Carro\ImprimirVenta.cshtml" />
+    <Content Include="Views\Carro\ImprimirCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

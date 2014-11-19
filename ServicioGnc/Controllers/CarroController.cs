@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using ServicioGnc.Models;
 using ServicioGnc.DAL;
+using WebMatrix.WebData;
+using Rotativa;
 
 namespace ServicioGnc.Controllers
 {
@@ -43,13 +45,14 @@ namespace ServicioGnc.Controllers
         }
         //
         // GET: /Carro/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.ClienteId = new SelectList(unitOfWork.ClienteRepository.Get(), "ClienteId", "Nombre");
             return View();
         }
 
+        [Authorize]
         public ActionResult CreateCompra()
         {
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "ProveedorId", "RazonSocial");
@@ -66,6 +69,8 @@ namespace ServicioGnc.Controllers
             Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
 
             Carro carro = new Carro();
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+            carro.UsuarioId = UserId;
             // tipo operacion 1:Venta  2:Compra
             carro.TipoOperacionId = tipoOperacionId;
             carro.Cantidad = (double)cantidad;
@@ -76,7 +81,7 @@ namespace ServicioGnc.Controllers
             unitOfWork.CarroRepository.Add(carro);
             unitOfWork.CarroRepository.Save();
 
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(1); //CarroRepository.Get(includeProperties :"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1,UserId); //CarroRepository.Get(includeProperties :"Producto").ToList();
             ViewBag.ListCarro = listCarro;
             return View();
         }
@@ -86,6 +91,8 @@ namespace ServicioGnc.Controllers
             Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
 
             Carro carro = new Carro();
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+            carro.UsuarioId = UserId;
             // tipo operacion 1:Venta  2:Compra
             carro.TipoOperacionId = tipoOperacionId;
             carro.Cantidad = (double)cantidad;
@@ -96,7 +103,7 @@ namespace ServicioGnc.Controllers
             unitOfWork.CarroRepository.Add(carro);
             unitOfWork.CarroRepository.Save();
 
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(2); //CarroRepository.Get(includeProperties :"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(2,UserId); //CarroRepository.Get(includeProperties :"Producto").ToList();
             ViewBag.ListCarro = listCarro;
             return View();
         }
@@ -106,20 +113,27 @@ namespace ServicioGnc.Controllers
             Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
 
             Carro carro = new Carro();
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+            carro.UsuarioId = UserId;
             // tipo operacion 1:Venta  2:Compra
             carro.TipoOperacionId = tipoOperacionId;
 
             unitOfWork.CarroRepository.Delete(carro);
             unitOfWork.CarroRepository.Save();
 
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(1); //CarroRepository.Get(includeProperties :"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1,UserId); //CarroRepository.Get(includeProperties :"Producto").ToList();
             ViewBag.ListCarro = listCarro;
             return View();
         }
 
         [HttpPost]
-        public ActionResult ProcesarVenta() {
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(1); //unitOfWork.CarroRepository.Get(includeProperties:"Producto").ToList();
+        public ActionResult ProcesarVenta(int ClienteId)
+        {
+
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1,UserId); //unitOfWork.CarroRepository.Get(includeProperties:"Producto").ToList();
+            
 
             double total = (double)listCarro.Sum<Carro>(t=>t.SubTotal);
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "Cliente", "Nombre");
@@ -127,7 +141,9 @@ namespace ServicioGnc.Controllers
             Venta venta = new Venta();
             venta.ClienteId = 2;
             venta.Total = total;
+            venta.UsuarioId = UserId;
             venta.Fecha = DateTime.Now;
+            venta.ClienteId = ClienteId;
             //ESTADOS: 1=Pendiente 2=Confirmado 3=Cancelado
             venta.TipoEstadoId = 4;
 
@@ -152,26 +168,50 @@ namespace ServicioGnc.Controllers
             }
             unitOfWork.Save();
 
+            return new ActionAsPdf(
+                "ImprimirVenta",
+                new { VentaId = venta.VentaId });
+            //return View();
+        }
+
+
+        public ActionResult ImprimirVenta(int VentaId)
+        {
+            Venta venta = unitOfWork.VentaRepository.GetByID(VentaId);
+            ViewBag.Venta = unitOfWork.VentaRepository.GetByID(VentaId);
+            ViewBag.DetalleVenta = venta.DetalleVentas;
+            return View();
+        }
+
+        public ActionResult ImprimirCompra(int CompraId)
+        {
+            Venta venta = unitOfWork.VentaRepository.GetByID(CompraId);
+            ViewBag.Venta = unitOfWork.VentaRepository.GetByID(CompraId);
+            ViewBag.DetalleVenta = venta.DetalleVentas;
             return View();
         }
 
 
+
         [HttpPost]
-        public ActionResult ProcesarCompra()
+        public ActionResult ProcesarCompra(int ProveedorId)
         {
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacion(2); //unitOfWork.CarroRepository.Get(includeProperties: "Producto").ToList();
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+            
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(2,UserId); //unitOfWork.CarroRepository.Get(includeProperties: "Producto").ToList();
 
             double total = (double)listCarro.Sum<Carro>(t => t.SubTotal);
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "ProveedorId", "RazonSocial");
             
             Compra compra = new Compra();
-            //
+            // --
             compra.Total = total;
             compra.Fecha = DateTime.Now;
             //ESTADOS: 1=Pendiente 2=Confirmado 3=Cancelado
             compra.ProveedorId = 1;
             compra.TipoEstadoId = 1;
-
+            compra.ProveedorId = ProveedorId;
+            compra.UsuarioId = UserId;
 
             List<DetalleCompra> listDetalleCompra = new List<DetalleCompra>();
             foreach (Carro carro in listCarro)
@@ -195,7 +235,10 @@ namespace ServicioGnc.Controllers
             }
             unitOfWork.Save();
 
-            return View();
+            return new ActionAsPdf(
+                "ImprimirCompra",
+                new { CompraId = compra.CompraId });
+            //return View();
         }
 
         public ActionResult ProcesarLiquidacion()

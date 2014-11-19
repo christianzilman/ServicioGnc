@@ -8,13 +8,13 @@
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     VENTA
 </div>
-
-<div id="formularioDetail">
-    @Html.Partial("SeleccionarCliente")
-</div> 
-
-@using (Html.BeginForm(actionName:"ProcesarVenta",controllerName:"Carro"))
+@using (Html.BeginForm(actionName: "ProcesarVenta", controllerName: "Carro"))
 {
+
+    <div id="formularioDetail">
+        @Html.Partial("SeleccionarCliente")
+    </div> 
+
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
