@@ -181,7 +181,6 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
-    <Compile Include="Controllers\Reporte.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoConceptoController.cs" />
     <Compile Include="Controllers\TurnoController.cs" />
@@ -383,12 +382,6 @@
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-<<<<<<< HEAD
-    <Content Include="Images\barometer %281%29.png" />
-    <Content Include="Images\Barometer.png" />
-    <Content Include="Images\GNC_GASO.jpg" />
-    <Content Include="Images\HiAppHere_com_pl.baggus.barometr.png" />
-=======
     <Content Include="NuGet.exe" />
     <Content Include="Rotativa\libeay32.dll" />
     <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
@@ -396,7 +389,6 @@
     <Content Include="Rotativa\README.txt" />
     <Content Include="Rotativa\ssleay32.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
->>>>>>> b11f6af31edefb19e58eb5938e04c584f12e732d
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -565,24 +557,6 @@
     <Content Include="Views\Horario\Create.cshtml" />
     <Content Include="Views\Horario\Edit.cshtml" />
     <Content Include="Views\Horario\Delete.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\Familiar\Index.cshtml" />
-    <Content Include="Views\Familiar\Details.cshtml" />
-    <Content Include="Views\Familiar\Create.cshtml" />
-    <Content Include="Views\Familiar\Edit.cshtml" />
-    <Content Include="Views\Familiar\Delete.cshtml" />
-    <Content Include="Views\Carro\SeleccionarProveedor.cshtml" />
-    <Content Include="Views\Carro\SeleccionarCliente.cshtml" />
-    <Content Include="Views\Carro\AgregarDetalleCompra.cshtml" />
-    <Content Include="Views\Producto\BuscarProductoCompra.cshtml" />
-    <Content Include="Views\Carro\AgregarDetalleLiquidacion.cshtml" />
-    <Content Include="Views\Carro\CreateLiquidacion.cshtml" />
-    <Content Include="Views\Carro\SeleccionarEmpleado.cshtml" />
-    <Content Include="Views\Concepto\BuscarConcepto.cshtml" />
-    <Content Include="Views\LecturaPresionTemperatura\PresionOk.cshtml" />
-    <Content Include="Views\LecturaPresionTemperatura\PresionNoOk.cshtml" />
-    <Content Include="Views\Account\RegisterRole.cshtml" />
-=======
     <Content Include="Views\Familiar\Create.cshtml" />
     <Content Include="Views\Familiar\Delete.cshtml" />
     <Content Include="Views\Familiar\Details.cshtml" />
@@ -602,16 +576,12 @@
     <Content Include="Views\Concepto\BuscarConcepto.cshtml" />
     <Content Include="Views\Carro\ImprimirVenta.cshtml" />
     <Content Include="Views\Carro\ImprimirCompra.cshtml" />
->>>>>>> b11f6af31edefb19e58eb5938e04c584f12e732d
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reporte\Ventas.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
