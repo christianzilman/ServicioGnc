@@ -31,6 +31,27 @@ namespace ServicioGnc.DAL
         private IHorarioRepository horarioRepository;
         private ITipoEstadoRepository tipoEstadoRepository;
         private IFamiliarRepository familiarRepository;
+        private IDetalleCompraRepository detalleCompraRepository;
+        private IDetalleVentaRepository detalleVentaRepository;
+
+
+        public IDetalleVentaRepository DetalleVentaRepository {
+            get { 
+                if(this.detalleVentaRepository== null){
+                    this.detalleVentaRepository = new DetalleVentaRepository(context);
+                }
+                return this.detalleVentaRepository;
+            }
+        }
+
+        public IDetalleCompraRepository DetalleCompraRepository {
+            get { 
+                if(this.detalleCompraRepository==null){
+                    this.detalleCompraRepository = new DetalleCompraRepository(context);
+                }
+                return this.detalleCompraRepository;
+            }
+        }
 
         public IFamiliarRepository FamiliarRepository
         {

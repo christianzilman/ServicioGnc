@@ -9,13 +9,13 @@
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     COMPRA
 </div>
+@using (Html.BeginForm(actionName: "ProcesarCompra", controllerName: "Carro"))
+{
 
 <div id="formularioDetail">
     @Html.Partial("SeleccionarProveedor")
 </div> 
 
-@using (Html.BeginForm(actionName:"ProcesarCompra",controllerName:"Carro"))
-{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     

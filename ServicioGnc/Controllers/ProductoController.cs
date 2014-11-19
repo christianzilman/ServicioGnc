@@ -53,6 +53,20 @@ namespace ServicioGnc.Controllers
             return View();
 
         }
+
+        [HttpPost]
+        public ActionResult BuscarProductoReporte(int productoId)
+        {
+            Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
+            ViewBag.ProductoId = productoId;
+            ViewBag.NombreProducto = producto.Nombre;
+            ViewBag.PrecioVenta = producto.PrecioVenta;
+            ViewBag.PrecioCompra = producto.PrecioCompra;
+            ViewBag.Cantidad = producto.Cantidad;
+
+            return View();
+
+        }
         //
         // GET: /Producto/Details/5
 

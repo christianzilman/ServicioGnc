@@ -10,5 +10,7 @@ namespace ServicioGnc.DAL.Repository
     public interface ICarroRepository:IGenericRepository<Carro>
     {
         List<Carro> GetByTipoOperacion(int TipoOperacionId);
+
+        List<Carro> GetByTipoOperacionUsuario(int TipoOperacionId, int UsuarioId);
     }
 }
