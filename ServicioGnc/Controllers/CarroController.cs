@@ -180,14 +180,14 @@ namespace ServicioGnc.Controllers
             Venta venta = unitOfWork.VentaRepository.GetByID(VentaId);
             ViewBag.Venta = unitOfWork.VentaRepository.GetByID(VentaId);
             ViewBag.DetalleVenta = venta.DetalleVentas;
-            return View();
+            return View(venta);
         }
 
         public ActionResult ImprimirCompra(int CompraId)
         {
-            Venta venta = unitOfWork.VentaRepository.GetByID(CompraId);
-            ViewBag.Venta = unitOfWork.VentaRepository.GetByID(CompraId);
-            ViewBag.DetalleVenta = venta.DetalleVentas;
+            Compra compra = unitOfWork.CompraRepository.GetByID(CompraId);
+            ViewBag.Compra = unitOfWork.CompraRepository.GetByID(CompraId);
+            ViewBag.DetalleCompra = compra.DetalleCompras;
             return View();
         }
 
