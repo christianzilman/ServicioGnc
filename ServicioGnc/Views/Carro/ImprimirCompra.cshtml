@@ -1,6 +1,58 @@
-﻿@{
-    ViewBag.Title = "ImprimirCompra";
-    Layout = null;
-}
+﻿@model ServicioGnc.Models.Compra
 
-<h2>ImprimirCompra</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Compra - Servicio Gnc
+</div>
+
+<div style="margin-right:auto"><h4>Factura N°: @Html.DisplayFor(model => model.CompraId)</h4>  </div>
+<div style="margin-right:auto"><h4>Fecha: @Html.DisplayFor(model => model.Fecha)</h4>  </div>
+<br />
+<br />
+
+<fieldset>
+    <legend>Venta</legend>
+
+    <div class="display-label">
+        <h4>Cliente:  @Html.DisplayFor(model => model.Proveedor.RazonSocial) </h4> 
+        
+    </div>
+    <div class="display-label">
+        <h4>Domicilio Proveedor : @Html.DisplayFor(model => model.Proveedor.Domicilio)</h4>
+    </div>
+    <div class="display-label">
+        <h4>CUIT : @Html.DisplayFor(model => model.Proveedor.CUIT)</h4>
+    </div>
+    <br />
+    <br />
+    <h5>Detalle de compra</h5>
+    <table class="table">
+        <tr class="warning">
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+        </tr>
+        @foreach (var item in Model.DetalleCompras)
+    {
+        <tr>
+            <th>@Html.DisplayFor(modelItem => item.ProductoId)</th>
+            <th>@Html.DisplayFor(modelItem => item.Producto.Nombre)</th>
+            <th>@Html.DisplayFor(modelItem => item.Cantidad)</th>
+            <th>$ @Html.DisplayFor(modelItem => item.Precio)</th>
+            <th>$ @Html.DisplayFor(modelItem => item.Subtotal)</th>
+
+        </tr>
+    }
+
+    </table>
+
+
+    <div class="display-label" style="margin-right:auto">
+        <h2 class="right">  Total:$  @Html.DisplayFor(model => model.Total)</h2>
+    </div>
+
+
+
+</fieldset>

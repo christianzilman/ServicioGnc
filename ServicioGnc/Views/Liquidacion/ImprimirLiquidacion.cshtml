@@ -1,0 +1,77 @@
+﻿@model ServicioGnc.Models.Liquidacion
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Liquidacion - Servicio Gnc
+</div>
+
+<div style="margin-right:auto"><h4>Liquidacion N°: @Html.DisplayFor(model => model.LiquidacionId)</h4>  </div>
+<div style="margin-right:auto"><h4>Fecha: @Html.DisplayFor(model => model.Fecha)</h4>  </div>
+<br />
+
+
+<fieldset>
+    <legend>Liquidacion</legend>
+    <div class="alert alert-warning" role="alert">
+        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+        Datos de la empresa
+    </div>
+    <div class="display-label">
+        <h4>Empresa:  @Html.DisplayFor(model => model.Empresa.Nombre) </h4>
+
+    </div>
+
+    <div class="display-label">
+        <h4>CUIT :  @Html.DisplayFor(model => model.Empresa.Cuit) </h4>
+    </div>
+    <br />
+    <div class="alert alert-warning" role="alert">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        Datos del empleado
+    </div>
+    <div class="display-label">
+        <h4>Empleado:  @Html.DisplayFor(model => model.Persona.Nombre) </h4> 
+        
+    </div>
+    <div class="display-label">
+        <h4>Domicilio : @Html.DisplayFor(model => model.Persona.Domicilio)</h4>
+    </div>
+    <div class="display-label">
+        <h4>DNI : @Html.DisplayFor(model => model.Persona.Dni)</h4>
+    </div>
+
+    <br />
+    <div class="alert alert-warning" role="alert">
+        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        Detalle de liquidación
+    </div>
+    <table class="table">
+        <tr class="warning">
+       @*     <th>Código</th>*@
+            <th>Concepto</th>
+            <th>Importe</th>
+            <th>Porcentaje</th>
+          @*  <th>Subtotal</th>*@
+        </tr>
+        @foreach (var item in Model.DetalleLiquidacions)
+    {
+        <tr>
+           @* <th>@Html.DisplayFor(modelItem => item.LiquidacionId)</th>*@
+            <th>@Html.DisplayFor(modelItem => item.Concepto.Nombre)</th>
+            <th>$ @Html.DisplayFor(modelItem => item.Concepto.Importe)</th>
+            <th>@Html.DisplayFor(modelItem => item.Concepto.Porcentaje) %</th>
+            @*<th>$ @Html.DisplayFor(modelItem => item.SubTotal)</th>*@
+
+        </tr>
+    }
+
+    </table>
+
+
+    <div class="display-label" style="margin-right:auto">
+        <h2 class="right">  Total:$  @Html.DisplayFor(model => model.Total)</h2>
+    </div>
+
+
+
+</fieldset>

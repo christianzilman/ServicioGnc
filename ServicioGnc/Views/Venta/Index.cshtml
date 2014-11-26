@@ -35,7 +35,10 @@
             @Html.DisplayFor(modelItem => item.Cliente.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Anular", "Edit", new { id=item.VentaId }) @*
+            @Html.ActionLink("Anular", "Edit", new { id=item.VentaId }) |
+        @*    <a href="@Url.Content("~/Carro/ImprimirVenta/")@Html.DisplayFor(modelItem => item.VentaId)">Imprimir</a>*@
+           @* @Html.ActionLink("Anular", "Edit", new { id = item.VentaId })*@
+             @*
             @Html.ActionLink("Details", "Details", new { id=item.VentaId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.VentaId })*@
         </td>

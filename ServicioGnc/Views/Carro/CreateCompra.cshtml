@@ -54,10 +54,6 @@ function BuscarProducto(){
         });
     }
 
-
-
-
-
     function AgregarDetalleCompra() {
         var productoIdPanel = $("#ProductoIdPanel").val();
         var cantidad = $("#ProductoCantidad").val();
@@ -71,6 +67,15 @@ function BuscarProducto(){
             }
         });
 
-
+        //EliminarDetalle
+        function EliminarDetalleCompra(carroIdPanel) {
+            $.ajax({
+                url: "@Url.Content("~/Carro/EliminarDetalle")",
+                type:'post',
+            data: { 'carroId': carroIdPanel},
+            success: function (data) {
+                $("#detalleCarro").html(data);
+            }
+        });
     }
 </script>

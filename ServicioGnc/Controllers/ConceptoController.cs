@@ -110,6 +110,17 @@ namespace ServicioGnc.Controllers
             return View(concepto);
         }
 
+        [HttpPost]
+        public ActionResult BuscarConcepto(int conceptoId)
+        {
+            Concepto concepto = unitOfWork.ConceptoRepository.GetByID(conceptoId);
+            ViewBag.ConceptoId = conceptoId;
+            ViewBag.Nombre = concepto.Nombre;
+            ViewBag.Importe = concepto.Importe;
+            return View();
+
+        }
+
         //
         // POST: /Concepto/Delete/5
 

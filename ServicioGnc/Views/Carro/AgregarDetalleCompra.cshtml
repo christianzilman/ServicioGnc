@@ -19,6 +19,7 @@
             <td>Nombre Producto</td>
             <td>Cantidad</td>
             <td>Precio</td>
+            <td>SubTotal</td>
             <td></td>
         </tr>
         @foreach(ServicioGnc.Models.Carro carro in listCarro){
@@ -29,7 +30,10 @@
                 <td>@carro.Cantidad</td>
 
                 <td>@carro.Precio</td>
-                <td><input type="button" value="Quitar" class="btn-warning" onclick="javascript:EliminarDetalle()" /></td>
+                
+                <td>@carro.SubTotal</td>
+
+                <td><a href="javascript:EliminarDetalleCompra(@carro.CarroId)">Eliminar</a></td>
             </tr>   
         }
     </table>

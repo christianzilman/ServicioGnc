@@ -19,7 +19,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Index()
         {
-            var ventas = unitOfWork.VentaRepository.Get(includeProperties:"Cliente");
+            var ventas = unitOfWork.VentaRepository.Get(includeProperties: "Cliente").Where(t => t.TipoEstadoId == 4);
             return View(ventas.ToList());
         }
 

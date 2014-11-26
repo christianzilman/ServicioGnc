@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "ListDetail";
+    Layout = null;
+}
+
+@{
+    List<ServicioGnc.Models.DetalleLiquidacion> listDetalleLiquidacion = ViewBag.DetalleLiquidacion;
+}
+<table class="table">
+    <tr class="warning">
+        <th>
+            Concepto
+        </th>
+        <th>
+            Concepto
+        </th>
+        <th>
+            Importe
+        </th>
+        <th>
+            Porcentaje
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in listDetalleLiquidacion)
+    {
+        <tr>
+            <td>
+                @item.Concepto.ConceptoId
+            </td>
+            <td>
+                @item.Concepto.Nombre
+            </td>
+            <td>
+               $ @Html.DisplayFor(modelItem => item.Concepto.Importe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Concepto.Porcentaje) %
+            </td>
+            <td>
+                <a href="javascript:eliminarDetalle(@item.ConceptoId)">Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -10,12 +10,35 @@
         <h2 class="panel-title">Liquidación</h2>
     </div>
     <div class="panel-body">
-        <div class="col-md-3">
+        <div class="col-md-7">
             <div>    Nombre: @Html.DisplayFor(model => model.Persona.Nombre) </div>
             <div>    Empresa: @Html.DisplayFor(model => model.Empresa.Nombre)</div>
             <div>    Total: @Html.DisplayFor(model => model.Total)</div>
             <div>    Fecha: @Html.DisplayFor(model => model.Fecha)</div>
             <div>    Periodo: @Html.DisplayFor(model => model.Periodo)</div>
+            <div class="alert alert-warning" role="alert">
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                Detalle de Liquidación
+            </div>
+            <table class="table">
+                <tr class="warning">
+                    <th>Codigo de Concepto</th>
+                    <th>Concepto</th>
+                    <th>Importe</th>
+                    <th>Porcentaje</th>
+                    @*<th>SubTotal</th>*@
+                </tr>
+                @foreach (var item in Model.DetalleLiquidacions)
+                {
+                <tr>
+                    <th>@Html.DisplayFor(modelItem => item.ConceptoId)</th>
+                    <th>@Html.DisplayFor(modelItem => item.Concepto.Nombre)</th>
+                    <th>@Html.DisplayFor(modelItem => item.Concepto.Importe)</th>
+                    <th>@Html.DisplayFor(modelItem => item.Concepto.Porcentaje)</th>
+                  @*  <th>@Html.DisplayFor(modelItem => item.SubTotal)</th>*@
+                </tr>
+                }
+            </table>
             <br />
             <div>
                 @Html.ActionLink("Editar", "Edit", new { id = Model.LiquidacionId }) |

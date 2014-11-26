@@ -14,14 +14,14 @@
     @Html.Partial("SeleccionarEmpleado")
 </div> 
 
-@using (Html.BeginForm(actionName:"ProcesarCompra",controllerName:"Carro"))
+@using (Html.BeginForm(actionName: "ProcesarLiquidacion", controllerName: "Carro"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
 
     <div id="busqueda">
-        <input type="text" name="productoId" id="productoId"  />
+        <input type="text" name="conceptoId" id="conceptoId"  />
         <input type="button" class="btn-warning" onclick="javascript:BuscarConcepto()" value="Buscar" />
 
     </div>
@@ -43,7 +43,7 @@
 
 <script >
 function BuscarConcepto(){
-        var productoCodigo = $("#conceptoId").val();
+        var conceptoCodigo = $("#conceptoId").val();
         $.ajax({
             url: "@Url.Content("~/Concepto/BuscarConcepto")",
             type: 'POST',
@@ -54,18 +54,13 @@ function BuscarConcepto(){
         });
     }
 
-
-
-
-
     function AgregarDetalleLiquidacion() {
-        var productoIdPanel = $("#ProductoIdPanel").val();
-        var cantidad = $("#ProductoCantidad").val();
+        var conceptoIdPanel = $("#ConceptoIdPanel").val();
         $.ajax({
             url: "@Url.Content("~/Carro/AgregarDetalleLiquidacion")",
             type:'post',
 
-            data: { 'productoId': productoIdPanel, 'cantidad': cantidad , 'tipoOperacionId': 3 },
+            data: { 'conceptoId': productoIdPanel, 'tipoOperacionId': 3 },
             success: function (data) {
                 $("#detalleCarro").html(data);
             }

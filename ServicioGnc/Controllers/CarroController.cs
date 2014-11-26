@@ -12,6 +12,7 @@ using Rotativa;
 
 namespace ServicioGnc.Controllers
 {
+    [Authorize]
     public class CarroController : Controller
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
@@ -108,24 +109,35 @@ namespace ServicioGnc.Controllers
             return View();
         }
 
-        public ActionResult EliminarDetalle(int productoId, int cantidad, int tipoOperacionId)
+        public ActionResult EliminarDetalle(int carroId)
         {
-            Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
 
-            Carro carro = new Carro();
+            Carro carro = unitOfWork.CarroRepository.GetByID(carroId);
             int UserId = WebSecurity.GetUserId(User.Identity.Name);
-            carro.UsuarioId = UserId;
             // tipo operacion 1:Venta  2:Compra
-            carro.TipoOperacionId = tipoOperacionId;
-
+            carro.TipoOperacionId = 1;
             unitOfWork.CarroRepository.Delete(carro);
             unitOfWork.CarroRepository.Save();
-
-            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1,UserId); //CarroRepository.Get(includeProperties :"Producto").ToList();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1,UserId);
             ViewBag.ListCarro = listCarro;
-            return View();
+            return View("AgregarDetalle");
         }
 
+        public ActionResult EliminarDetalleCompra(int carroId)
+        {
+
+            Carro carro = unitOfWork.CarroRepository.GetByID(carroId);
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
+            // tipo operacion 1:Venta  2:Compra
+            carro.TipoOperacionId = 2;
+            unitOfWork.CarroRepository.Delete(carro);
+            unitOfWork.CarroRepository.Save();
+            List<Carro> listCarro = unitOfWork.CarroRepository.GetByTipoOperacionUsuario(1, UserId);
+            ViewBag.ListCarro = listCarro;
+            return View("AgregarDetalle");
+        }
+
+        [Authorize]
         [HttpPost]
         public ActionResult ProcesarVenta(int ClienteId)
         {
@@ -139,7 +151,6 @@ namespace ServicioGnc.Controllers
             ViewBag.ProveedorId = new SelectList(unitOfWork.ProveedorRepository.Get(), "Cliente", "Nombre");
 
             Venta venta = new Venta();
-            venta.ClienteId = 2;
             venta.Total = total;
             venta.UsuarioId = UserId;
             venta.Fecha = DateTime.Now;
@@ -188,7 +199,7 @@ namespace ServicioGnc.Controllers
             Compra compra = unitOfWork.CompraRepository.GetByID(CompraId);
             ViewBag.Compra = unitOfWork.CompraRepository.GetByID(CompraId);
             ViewBag.DetalleCompra = compra.DetalleCompras;
-            return View();
+            return View(compra);
         }
 
 
@@ -208,7 +219,6 @@ namespace ServicioGnc.Controllers
             compra.Total = total;
             compra.Fecha = DateTime.Now;
             //ESTADOS: 1=Pendiente 2=Confirmado 3=Cancelado
-            compra.ProveedorId = 1;
             compra.TipoEstadoId = 1;
             compra.ProveedorId = ProveedorId;
             compra.UsuarioId = UserId;

@@ -181,10 +181,12 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\Reporte.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoConceptoController.cs" />
     <Compile Include="Controllers\TurnoController.cs" />
     <Compile Include="Controllers\TurnoEspecialController.cs" />
+    <Compile Include="Controllers\UnidadController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\GenericRepository2.cs" />
@@ -576,6 +578,15 @@
     <Content Include="Views\Concepto\BuscarConcepto.cshtml" />
     <Content Include="Views\Carro\ImprimirVenta.cshtml" />
     <Content Include="Views\Carro\ImprimirCompra.cshtml" />
+    <Content Include="Views\Unidad\Index.cshtml" />
+    <Content Include="Views\Unidad\Details.cshtml" />
+    <Content Include="Views\Unidad\Create.cshtml" />
+    <Content Include="Views\Unidad\Edit.cshtml" />
+    <Content Include="Views\Unidad\Delete.cshtml" />
+    <Content Include="Views\Liquidacion\CreateDetail.cshtml" />
+    <Content Include="Views\Liquidacion\CreateParticular.cshtml" />
+    <Content Include="Views\Liquidacion\ListDetail.cshtml" />
+    <Content Include="Views\Liquidacion\ImprimirLiquidacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -90,8 +90,10 @@ namespace ServicioGnc.Controllers
             List<DetalleTurno> listDetalleTurno = Session["detalleTurnos"] as List<DetalleTurno>;
 
             DetalleTurno temp = null;
-            foreach(DetalleTurno item in listDetalleTurno){
-                if(item.HorarioId == HorarioId){
+            foreach(DetalleTurno item in listDetalleTurno)
+            {
+                if(item.HorarioId == HorarioId)
+                {
                     temp = item;
                 }
             }

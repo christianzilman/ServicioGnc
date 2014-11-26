@@ -32,6 +32,7 @@
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
+                <th>Subtotal</th>
             </tr>
             @foreach (var item in Model.DetalleVentas)
             {
@@ -40,7 +41,7 @@
                     <th>@Html.DisplayFor(modelItem => item.Producto.Nombre)</th>
                     <th>@Html.DisplayFor(modelItem => item.Cantidad)</th>
                     <th>$ @Html.DisplayFor(modelItem => item.Precio)</th>
-
+                    <th>$ @Html.DisplayFor(modelItem => item.Subtotal)</th>
                 </tr>
             }
 

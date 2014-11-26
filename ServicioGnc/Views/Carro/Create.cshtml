@@ -70,15 +70,12 @@
     });
 
     }
-
-    function EliminarDetalle() {
-        var productoIdPanel = $("#ProductoIdPanel").val();
-        var cantidad = $("#ProductoCantidad").val();
-        var clienteId = $("#ClienteId").val();
+    //EliminarDetalle
+    function EliminarDetalle(carroIdPanel) {
         $.ajax({
-            url: "@Url.Content("~/Carro/AgregarDetalle")",
+            url: "@Url.Content("~/Carro/EliminarDetalle")",
             type:'post',
-        data: { 'productoId': productoIdPanel, 'cantidad': cantidad, 'tipoOperacionId': 1,'clienteId':clienteId },
+        data: { 'carroId': carroIdPanel},
         success: function (data) {
             $("#detalleCarro").html(data);
         }

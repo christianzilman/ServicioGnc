@@ -19,7 +19,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Index()
         {
-            var compras = unitOfWork.CompraRepository.Get(includeProperties: "Proveedor");
+            var compras = unitOfWork.CompraRepository.Get(includeProperties: "Proveedor").Where(t => t.TipoEstadoId < 3 );
             return View(compras.ToList());
         }
 

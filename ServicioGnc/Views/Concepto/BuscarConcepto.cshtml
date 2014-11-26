@@ -21,9 +21,7 @@
             <th>
                Producto
             </th>
-            <th>
-                Cantidad
-            </th>
+
             <th>
                 Precio
             </th>
@@ -34,29 +32,22 @@
 
             <tr>
                 <td hidden="hidden">
-                    <input type="text" value="@ViewBag.ProductoId" id="ProductoIdPanel" name="ProductoIdPanel" />
+                    <input type="text" value="@ViewBag.ConceptoId" id="ConceptoIdPanel" name="ConceptoIdPanel" />
                 </td>
 
                 <td>
                     <label>
-                        @ViewBag.NombreProducto
+                        @ViewBag.Nombre
                     </label>
                 </td>
                 <td>
-                    <input type="text" value="1" id="ProductoCantidad" name="ProductoCantidad" />
-                </td>
-                <td>
-                    <label>@ViewBag.PrecioVenta</label>
+                    <label>@ViewBag.Importe</label>
                 </td>
 
             </tr>
         
     <tbody>
 </table>
-
-
-
-
 
 <input type="button" value="Agregar" class="btn-warning" onclick="javascript:AgregarDetalleLiquidacion()"/>
 <br/>
