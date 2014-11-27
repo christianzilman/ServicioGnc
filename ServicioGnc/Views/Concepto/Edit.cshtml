@@ -4,7 +4,11 @@
     ViewBag.Title = "Concepto";
 }
 
-<h2>Concepto</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+    Conceptos
+</div>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -54,7 +58,7 @@
             @Html.DropDownList("TipoConceptoId", String.Empty)
             @Html.ValidationMessageFor(model => model.TipoConceptoId)
         </div>
-
+        <br/>
         <p>
             <input type="submit"  class="btn-warning" value="Guardar" />
         </p>

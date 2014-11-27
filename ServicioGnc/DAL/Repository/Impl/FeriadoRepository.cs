@@ -14,5 +14,10 @@ namespace ServicioGnc.DAL.Repository.Impl
         {
             this.Context = context;
         }
+
+        public List<Feriado> GetByGreaterThanDate(DateTime fechaActual)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

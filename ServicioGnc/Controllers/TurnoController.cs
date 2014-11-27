@@ -57,7 +57,8 @@ namespace ServicioGnc.Controllers
             if (ModelState.IsValid)
             {
                 turno.DetalleTurnoes = Session["detalleTurnos"] as List<DetalleTurno>;
-
+                Session["detalleTurnos"] = new List<DetalleTurno>();
+               
                 unitOfWork.TurnoRepository.Add(turno);
                 unitOfWork.TurnoRepository.Save();
                 return RedirectToAction("Index");
@@ -80,7 +81,7 @@ namespace ServicioGnc.Controllers
             Session["detalleTurnos"] = listDetalleTurno;
 
             ViewBag.Horarios = unitOfWork.HorarioRepository.Get();
-
+            detalleTurno.Horario = null;
             return View();
         }
 

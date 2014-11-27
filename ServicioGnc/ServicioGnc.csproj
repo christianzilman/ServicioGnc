@@ -607,6 +607,10 @@
     <Content Include="Views\Configuracion\Delete.cshtml" />
     <Content Include="Views\RegistroAutomatico\CreateGeneral.cshtml" />
     <Content Include="Views\RegistroAutomatico\Exito.cshtml" />
+    <Content Include="Views\Fichada\FichadaPorEmpleado.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\TurnoEspecial\FeriadosAsignados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

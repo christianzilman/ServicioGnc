@@ -43,6 +43,14 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Dni)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dni)
+            @Html.ValidationMessageFor(model => model.Dni)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Domicilio)
         </div>
         <div class="editor-field">

@@ -26,6 +26,23 @@ namespace ServicioGnc.Controllers
 
         //
         // GET: /TurnoEspecial/Details/5
+        public ActionResult FeriadosAsignados(string dni, string fechaDesde, string fechaHasta)
+        {
+            var turnosespeciales = unitOfWork.TurnoEspecialRepository.Get();
+            //fechaDesde
+            if (!String.IsNullOrEmpty(dni) && (!String.IsNullOrEmpty(fechaDesde) && (!String.IsNullOrEmpty(fechaHasta))))
+            {
+                turnosespeciales = turnosespeciales.Where(l => l.Persona.Dni == Convert.ToInt32(dni)).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date <= Convert.ToDateTime(fechaHasta)));
+            }
+            else
+            {
+                if((!String.IsNullOrEmpty(fechaDesde) && (!String.IsNullOrEmpty(fechaHasta))))
+                { 
+                turnosespeciales = turnosespeciales.Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date <= Convert.ToDateTime(fechaHasta)));
+                }
+            }
+            return View(turnosespeciales.ToList());
+        }
 
         public ActionResult Details(int id = 0)
         {

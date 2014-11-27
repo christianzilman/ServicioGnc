@@ -33,6 +33,17 @@ namespace ServicioGnc.Controllers
             //return View();
         }
 
+        public ActionResult FichadaPorEmpleado(string dni, string fechaDesde,string fechaHasta)
+        {
+            var fichadas = unitOfWork.FichadaRepository.Get();
+            //fechaDesde
+            if (!String.IsNullOrEmpty(dni))
+            {
+                fichadas = fichadas.Where(l => l.Persona.Dni == Convert.ToInt32(dni)).Where((l => Convert.ToDateTime(l.FechaIngreso).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.FechaEgreso).Date <= Convert.ToDateTime(fechaHasta)));
+            }
+            return View(fichadas.ToList());
+        }
+
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file)
         {

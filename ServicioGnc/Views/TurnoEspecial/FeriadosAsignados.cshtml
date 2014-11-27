@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ServicioGnc.Models.TurnoEspecial>
+
+@{
+    ViewBag.Title = "Turnos Especiales";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Turnos especiales
+</div>
+
+
+
+<div id="buscador">
+    @using (Html.BeginForm())
+    {
+        <div>
+            <table class="table">
+                <tr class="warning">
+                    <th> Filtros</th>
+                    <th> </th>
+                </tr>
+                <tr>
+                    <th>Dni del empleado:</th>
+                    <th>@Html.TextBox("dni")</th>
+                </tr>
+                <tr>
+                    <th>Fecha Desde:</th>
+                    <th>@Html.TextBox("fechaDesde")</th>
+                </tr>
+                <tr>
+                    <th>Fecha Hasta:</th>
+                    <th>@Html.TextBox("fechaHasta") </th>
+                </tr>
+            </table>
+
+            <input type="submit" class="btn-warning" value="Buscar" />
+        </div>
+    }
+
+</div>
+
+<table class="table">
+    <tr class="warning">
+        <th>
+            Feriado
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Empleado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Feriado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Feriado.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

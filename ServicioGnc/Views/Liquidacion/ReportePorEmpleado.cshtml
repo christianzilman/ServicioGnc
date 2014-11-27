@@ -9,30 +9,24 @@
 </div>
 
 
-<div>
-    @Html.ActionLink("Liquidación particular", "Create")
-</div>
-<br/>
-<div>
-    @Html.ActionLink("Liquidacion general", "CreateGeneral")
-</div>
-<br />
-<div>
-    @Html.ActionLink("Liquidacion particular por conceptos", "CreateParticular")
-</div>
+@*<p>
+    @Html.ActionLink("Liquidación Particular", "Create")
+    @Html.ActionLink("Liquidacion General", "CreateGeneral")
+</p>*@
 
 
+<div id="buscador">
+    @using (Html.BeginForm())
+    {
+        <div>
+            Buscar empleado por DNI: @Html.TextBox("dni")
+            <input type="submit" class="btn-warning" value="Buscar" />
+        </div>
+    }
+
+</div>
 <p>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    
-       <p>
-           Consultar por periodo: @Html.TextBox("periodo")
-           <input type="submit" class="btn-warning" value="Consultar" />
-       </p>    
-}
- 
-<table class="table" >
+ <table class="table" >
     <thead>
         <tr class="warning">
             <th>
@@ -73,11 +67,7 @@
                     @Html.DisplayFor(modelItem => item.Periodo)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.LiquidacionId }) |
-                    @Html.ActionLink("Detalle", "Details", new { id = item.LiquidacionId }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.LiquidacionId }) |
-                    @Html.ActionLink("Imprimir", "Impresiones", new { id = item.LiquidacionId })
-                    
+                    @Html.ActionLink("Imprimir Recibo", "Impresiones", new { id = item.LiquidacionId }) 
                 </td>
             </tr>
         }

@@ -37,6 +37,20 @@ namespace ServicioGnc.Controllers
             return View(persona);
         }
 
+
+        //[HttpPost]
+        //public ActionResult BuscarPersona(int dni)
+        //{
+        //    Persona persona = unitOfWork.PersonaRepository.GetByIDDni(dni);
+        //    Producto producto = unitOfWork.ProductoRepository.GetByID(productoId);
+        //    ViewBag.ProductoId = productoId;
+        //    ViewBag.NombreProducto = producto.Nombre;
+        //    ViewBag.PrecioCompra = producto.PrecioCompra;
+        //    return View();
+
+        //}
+
+
         //
         // GET: /Personal/Create
 

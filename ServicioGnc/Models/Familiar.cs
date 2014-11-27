@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -10,6 +11,8 @@ namespace ServicioGnc.Models
         public Nullable<int> Dni { get; set; }
         public string Nombre { get; set; }
         public string Relacion { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public virtual Persona Persona { get; set; }
     }

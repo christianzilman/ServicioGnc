@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ServicioGnc.Models.Fichada>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Fichadas
+</div>
+
+
+
+<div id="buscador">
+    @using (Html.BeginForm())
+    {
+        <div>
+            <table class="table">
+                <tr class="warning">
+                    <th> Filtros</th>
+                    <th> </th>
+                </tr>
+                <tr>
+                    <th>Dni del empleado:</th>
+                    <th>@Html.TextBox("dni")</th>
+                </tr>
+                <tr>
+
+                    <th>Fecha Desde:</th>
+                    <th>*@Html.TextBox("fechaDesde")</th>
+                    
+                </tr>
+                <tr>
+
+                    <th>Fecha Hasta:</th>
+                    <th>@Html.TextBox("fechaHasta") </th>
+                </tr>
+            </table>
+
+            <input type="submit" class="btn-warning" value="Buscar" />
+        </div>
+    }
+
+</div>
+
+<table class="table">
+    <tr class="warning">
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Fecha de Egreso
+        </th>
+        <th>
+            Empleado
+        </th>
+        <th>
+            Observación
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEgreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacion)
+            </td>
+            <td>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script src="~/Content/bootstrap-3.1.1/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>

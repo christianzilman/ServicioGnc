@@ -37,20 +37,18 @@ namespace ServicioGnc.Controllers
             return View(registroautomatico);
         }
 
-
+        [HttpGet]
         public ActionResult CreateGeneral() {
             ViewBag.Fecha = DateTime.Now.ToString();
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateGeneral() {
+        public ActionResult CreateGeneral(int id) {
 
             DateTime fechaActual = DateTime.Now;
 
-            List<Feriado> listFeriado = unitOfWork.FeriadoRepository.GetByGreaterThanDate(fechaActual);
-
-
+            List<Feriado> listFeriado = unitOfWork.FeriadoRepository.GetByGreaterThanDate(fechaActual);        
 
             return View("Index");
         }

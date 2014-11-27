@@ -37,6 +37,17 @@ namespace ServicioGnc.Controllers
             return View(liquidacions.ToList());
         }
 
+
+        [Authorize]
+        public ActionResult ReportePorEmpleado(string dni)
+        {
+            var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
+            if (!String.IsNullOrEmpty(dni))
+            {
+                liquidacions = liquidacions.Where(l => l.Persona.Dni == Convert.ToInt32(dni));
+            }
+            return View(liquidacions.ToList());
+        }
         //
         // GET: /Liquidacion/Details/5
 
@@ -352,6 +363,7 @@ namespace ServicioGnc.Controllers
             if (ModelState.IsValid)
             {
                 liquidacion.DetalleLiquidacions = Session["detalleLiquidacion"] as List<DetalleLiquidacion>;
+                Session["detalleLiquidacion"] = new List<DetalleLiquidacion>();
                 double importeTotal = 0.00;
                 foreach (DetalleLiquidacion detalleconcepto in liquidacion.DetalleLiquidacions)
                 {
@@ -364,10 +376,10 @@ namespace ServicioGnc.Controllers
                             importeTotal = calcularSueldo(importeTotal, (double)detalleconcepto.Concepto.Importe, (double)detalleconcepto.Concepto.Porcentaje, (int)detalleconcepto.Concepto.Utilidad, (int)detalleconcepto.Concepto.TipoConceptoId);
                             break;
                     }
+                    detalleconcepto.Concepto = null;
                 }
                 liquidacion.Fecha = DateTime.Today;
-                liquidacion.Total = importeTotal;
-                liquidacion.DetalleLiquidacions = Session["detalleLiquidacion"] as List<DetalleLiquidacion>;
+                liquidacion.Total = importeTotal;                
                 unitOfWork.LiquidacionRepository.Add(liquidacion);
                 unitOfWork.LiquidacionRepository.Save();
                 return new ActionAsPdf(
@@ -387,6 +399,18 @@ namespace ServicioGnc.Controllers
             ViewBag.Liquidacion = unitOfWork.LiquidacionRepository.GetByID(LiquidacionId);
             ViewBag.DetalleLiquidacion = liquidacion.DetalleLiquidacions;
             return View(liquidacion);
+        }
+
+
+
+
+        public ActionResult Impresiones(int id)
+        {
+            Liquidacion liquidacion = unitOfWork.LiquidacionRepository.GetByID(id);
+            return new ActionAsPdf(
+                                        "ImprimirLiquidacion",
+                                        new { LiquidacionId = liquidacion.LiquidacionId }
+                                        );
         }
 
         protected override void Dispose(bool disposing)
