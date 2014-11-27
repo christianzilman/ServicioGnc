@@ -16,9 +16,12 @@ namespace ServicioGnc.Models
         }
 
         public int PersonaId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el nombre")]
         public string Nombre { get; set; }
         public Nullable<int> RolId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el apellido")]
         public string Apellido { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el domicilio")]
         public string Domicilio { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

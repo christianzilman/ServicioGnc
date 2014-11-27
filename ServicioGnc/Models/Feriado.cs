@@ -15,6 +15,7 @@ namespace ServicioGnc.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime Fecha { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el nombre")]
         public string Nombre { get; set; }
         public virtual ICollection<TurnoEspecial> TurnoEspecials { get; set; }
     }

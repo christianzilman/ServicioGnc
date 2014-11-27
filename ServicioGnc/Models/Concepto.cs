@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -11,6 +12,7 @@ namespace ServicioGnc.Models
         }
 
         public int ConceptoId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el nombre del concepto")]
         public string Nombre { get; set; }
         public Nullable<double> Porcentaje { get; set; }
         public Nullable<double> Importe { get; set; }

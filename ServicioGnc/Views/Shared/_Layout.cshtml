@@ -69,6 +69,9 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Historia de un Articulo", "CodigoProductoVentaCompra", "Reporte")</li>                    
                             <li>@Html.ActionLink("Historial de un Articulo por Periodo", "CodigoPeriodoProductoVentaCompra", "Reporte")</li>                    
+                            <li>@Html.ActionLink("Recibos de sueldo por DNI de empleado", "ReportePorEmpleado", "Liquidacion")</li> 
+                            <li>@Html.ActionLink("Asistencia por empleado entre fechas", "FichadaPorEmpleado", "Fichada")</li>                                       
+                            <li>@Html.ActionLink("Turnos para feriados asignados", "FeriadosAsignados", "TurnoEspecial")</li>                                       
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Asignacion de Turnos", "Index", "AsignacionTurno")</li>                    
@@ -91,6 +94,7 @@
                             <li>@Html.ActionLink("Proveedor", "Index", "Proveedor")</li>
                             <li>@Html.ActionLink("Turno Especial", "Index", "TurnoEspecial")</li>
                             <li>@Html.ActionLink("Feriado","Index","Feriado")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
                             
                             @if (Request.IsAuthenticated)
                             {

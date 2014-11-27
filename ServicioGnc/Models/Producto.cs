@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -13,9 +14,12 @@ namespace ServicioGnc.Models
         }
 
         public int ProductoId { get; set; }
+        [Required(ErrorMessage = "Debe Ingresar el nombre")]
         public string Nombre { get; set; }
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Precio inválido. Debe tener 2 decimales como máximo")]
         public Nullable<double> PrecioCompra { get; set; }
         public Nullable<int> UnidadId { get; set; }
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Precio inválido. Debe tener 2 decimales como máximo")]
         public Nullable<double> PrecioVenta { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public virtual ICollection<Carro> Carroes { get; set; }

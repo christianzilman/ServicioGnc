@@ -4,7 +4,10 @@
     ViewBag.Title = "Crear nuevo producto";
 }
 
-<h2>Crear nuevo producto</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+   Nuevo Producto
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
