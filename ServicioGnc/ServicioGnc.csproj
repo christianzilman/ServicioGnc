@@ -611,6 +611,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\TurnoEspecial\FeriadosAsignados.cshtml" />
+    <Content Include="Views\Liquidacion\Impresiones.cshtml" />
+    <Content Include="Views\Liquidacion\ReportePorEmpleado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
