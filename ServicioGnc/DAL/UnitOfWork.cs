@@ -34,6 +34,16 @@ namespace ServicioGnc.DAL
         private IDetalleCompraRepository detalleCompraRepository;
         private IDetalleVentaRepository detalleVentaRepository;
         private IRegistroAutomaticoRepository registroAutomaticoRepository;
+        private IConfiguracionRepository configuracionRepository;
+
+        public IConfiguracionRepository ConfiguracionRepository {
+            get {
+                if(this.configuracionRepository == null){
+                    this.configuracionRepository = new ConfiguracionRepository(context);
+                }
+                return this.configuracionRepository;
+            }
+        }
 
         public IRegistroAutomaticoRepository RegistroAutomaticoRepository {
             get { 

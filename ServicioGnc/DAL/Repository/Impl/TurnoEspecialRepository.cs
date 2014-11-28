@@ -13,5 +13,10 @@ namespace ServicioGnc.DAL.Repository.Impl
         {
             this.Context = context;
         }
+
+        public List<TurnoEspecial> GetByFeriado(int feriadoId)
+        {
+            return this.Context.TurnoEspecials.Where(t => t.FeriadoId == feriadoId).ToList();
+        }
     }
 }

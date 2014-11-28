@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ServicioGnc.DAL.Repository
-{    
-    public interface ITurnoEspecialRepository:IGenericRepository<TurnoEspecial>
+{
+    public interface IConfiguracionRepository:IGenericRepository<Configuracion>
     {
-        List<TurnoEspecial> GetByFeriado(int p);
     }
 }

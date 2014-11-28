@@ -42,7 +42,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.TipoConceptoId = new SelectList(unitOfWork.ConceptoRepository.Get(), "TipoConceptoId", "Nombre");
+            ViewBag.TipoConceptoId = new SelectList(unitOfWork.TipoConceptoRepository.Get(), "TipoConceptoId", "Nombre");
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace ServicioGnc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipoConceptoId = new SelectList(unitOfWork.ConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
+            ViewBag.TipoConceptoId = new SelectList(unitOfWork.TipoConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
 
             return View(concepto);
         }
@@ -75,8 +75,8 @@ namespace ServicioGnc.Controllers
             {
                 return HttpNotFound();
             }
-            
-            ViewBag.TipoConceptoId = new SelectList(unitOfWork.ConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
+
+            ViewBag.TipoConceptoId = new SelectList(unitOfWork.TipoConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
             return View(concepto);
         }
 
@@ -93,7 +93,7 @@ namespace ServicioGnc.Controllers
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.TipoConceptoId = new SelectList(unitOfWork.ConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
+            ViewBag.TipoConceptoId = new SelectList(unitOfWork.TipoConceptoRepository.Get(), "TipoConceptoId", "Nombre", concepto.TipoConceptoId);
             return View(concepto);
         }
 

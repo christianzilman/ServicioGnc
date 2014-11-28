@@ -111,6 +111,7 @@ namespace ServicioGnc.Controllers
             if (ModelState.IsValid)
             {
                 unitOfWork.TurnoEspecialRepository.Edit(turnoespecial);
+                
                 unitOfWork.TurnoEspecialRepository.Save();
                 return RedirectToAction("Index");
             }

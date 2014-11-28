@@ -198,6 +198,7 @@
     <Compile Include="DAL\Repository\IClienteRepository.cs" />
     <Compile Include="DAL\Repository\ICompraRepository.cs" />
     <Compile Include="DAL\Repository\IConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\IConfiguracionRepository.cs" />
     <Compile Include="DAL\Repository\IDetalleCompraRepository.cs" />
     <Compile Include="DAL\Repository\IDetalleVentaRepository.cs" />
     <Compile Include="DAL\Repository\IEmpresaRepository.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="DAL\Repository\Impl\ClienteRepository.cs" />
     <Compile Include="DAL\Repository\Impl\CompraRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ConceptoRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\ConfiguracionRepository.cs" />
     <Compile Include="DAL\Repository\Impl\DetalleCompraRepository.cs" />
     <Compile Include="DAL\Repository\Impl\DetalleVentaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\EmpresaRepository.cs" />
@@ -613,6 +615,8 @@
     <Content Include="Views\TurnoEspecial\FeriadosAsignados.cshtml" />
     <Content Include="Views\Liquidacion\Impresiones.cshtml" />
     <Content Include="Views\Liquidacion\ReportePorEmpleado.cshtml" />
+    <Content Include="Views\LecturaPresionTemperatura\PresionNoOk.cshtml" />
+    <Content Include="Views\LecturaPresionTemperatura\PresionOk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

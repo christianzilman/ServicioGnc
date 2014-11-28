@@ -23,18 +23,22 @@
                 </tr>
                 <tr>
                     <th>Dni del empleado:</th>
-                    <th>@Html.TextBox("dni")</th>
+                    <th><input name="dni" id="dni" value="@ViewBag.Dni"></th>
                 </tr>
                 <tr>
 
                     <th>Fecha Desde:</th>
-                    <th>*@Html.TextBox("fechaDesde")</th>
+                    <th>
+                        <input class="text-box single-line" data-val="true" data-val-date="The field Fecha must be a date." data-val-required="The Fecha field is required." id="fechaDesde" name="fechaDesde" type="date" value="@ViewBag.FechaDesde">
+                    </th>
                     
                 </tr>
                 <tr>
 
                     <th>Fecha Hasta:</th>
-                    <th>@Html.TextBox("fechaHasta") </th>
+                    <th>
+                        <input class="text-box single-line" data-val="true" data-val-date="The field Fecha must be a date." data-val-required="The Fecha field is required." id="fechaHasta" name="fechaHasta" type="date" value="@ViewBag.FechaHasta">
+                    </th>
                 </tr>
             </table>
 

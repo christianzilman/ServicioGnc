@@ -17,7 +17,7 @@ namespace ServicioGnc.DAL.Repository.Impl
 
         public List<Feriado> GetByGreaterThanDate(DateTime fechaActual)
         {
-            throw new NotImplementedException();
+            return this.Context.Feriadoes.Where(f => f.Fecha > fechaActual).OrderBy(f => f.Fecha).ToList<Feriado>();
         }
     }
 }

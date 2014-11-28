@@ -2,24 +2,28 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+    Asigniación automática de turnos
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <fieldset>
         <legend>RegistroAutomatico</legend>
-        <p>
-            @ViewBag.Fecha 
-        </p>
+        <input type="hidden" id="id" name="id" value="2"/>
+        <div>
+            <h4>Fecha Actual:    @ViewBag.Fecha </h4>
+        </div>
 
         <p>
-            <input type="submit" value="Procesar" />
+            <input type="submit" class="btn-warning" value="Procesar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ver listado", "Index")
 </div>
 
 @section Scripts {
