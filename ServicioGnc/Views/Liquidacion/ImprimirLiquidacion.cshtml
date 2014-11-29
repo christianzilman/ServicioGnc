@@ -47,21 +47,18 @@
     </div>
     <table class="table">
         <tr class="warning">
-       @*     <th>Código</th>*@
             <th>Concepto</th>
             <th>Importe</th>
             <th>Porcentaje</th>
-          @*  <th>Subtotal</th>*@
-        </tr>
+            <th>Subtotal</th>
+        <S/tr>
         @foreach (var item in Model.DetalleLiquidacions)
     {
         <tr>
-           @* <th>@Html.DisplayFor(modelItem => item.LiquidacionId)</th>*@
             <th>@Html.DisplayFor(modelItem => item.Concepto.Nombre)</th>
             <th>$ @Html.DisplayFor(modelItem => item.Concepto.Importe)</th>
             <th>@Html.DisplayFor(modelItem => item.Concepto.Porcentaje) %</th>
-            @*<th>$ @Html.DisplayFor(modelItem => item.SubTotal)</th>*@
-
+            <th>@Html.DisplayFor(modelItem => item.SubTotal) %</th>
         </tr>
     }
 

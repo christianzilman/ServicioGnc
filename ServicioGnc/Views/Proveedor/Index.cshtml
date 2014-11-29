@@ -4,10 +4,13 @@
     ViewBag.Title = "Proveedor";
 }
 
-<h2>Proveedor</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+    Proveedor
+</div>
 
 <p>
-    @Html.ActionLink("Crear nuevo Proveedor ", "Crear")
+    @Html.ActionLink("Crear nuevo Proveedor ", "Create")
 </p>
 <table class="table">
     <thead>

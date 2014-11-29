@@ -81,7 +81,6 @@ namespace ServicioGnc.Controllers
             Session["detalleTurnos"] = listDetalleTurno;
 
             ViewBag.Horarios = unitOfWork.HorarioRepository.Get();
-            detalleTurno.Horario = null;
             return View();
         }
 

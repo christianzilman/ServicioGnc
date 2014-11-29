@@ -4,7 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-@*<h2>Create</h2>*@
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+    Proveedor
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -36,7 +39,7 @@
             @Html.EditorFor(model => model.Domicilio)
             @Html.ValidationMessageFor(model => model.Domicilio)
         </div>
-
+        <br/>
         <p>
             <input type="submit" class ="btn-warning" value="Guardar" />
         </p>
