@@ -13,5 +13,10 @@ namespace ServicioGnc.DAL.Repository.Impl
         }
 
 
+
+        public List<RegistroAutomatico> GetByTurnoEspecial(int id)
+        {
+            return this.Context.RegistroAutomaticoes.Where(r => r.TurnoEspecialId == id).ToList() ;
+        }
     }
 }

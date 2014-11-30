@@ -24,5 +24,11 @@ namespace ServicioGnc.DAL.Repository.Impl
         {
             return this.Context.Set<DetalleCompra>().Where(c => c.Compra.TipoEstadoId == estadoId && c.ProductoId == productoId && c.Compra.Fecha >= fechaDesde && c.Compra.Fecha <= fechaHasta).ToList();            
         }
+
+
+        public List<DetalleCompra> GetByCompra(int compraId)
+        {
+            return this.Context.Set<DetalleCompra>().Where(c => c.Compra.CompraId == compraId).ToList();            
+        }
     }
 }

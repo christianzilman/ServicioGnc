@@ -10,5 +10,6 @@ namespace ServicioGnc.DAL.Repository
     public interface IRegistroAutomaticoRepository: IGenericRepository<RegistroAutomatico>
     {
 
+        List<RegistroAutomatico> GetByTurnoEspecial(int id);
     }
 }

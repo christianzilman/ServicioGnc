@@ -92,6 +92,16 @@ namespace ServicioGnc.Controllers
                 //    Producto producto = unitOfWork.ProductoRepository.GetByID(id);
                 //    producto.Cantidad = 
                 //}
+                if (compra.TipoEstadoId == 2 || compra.TipoEstadoId == 4) {
+                    List<DetalleCompra> listDetalleCompra = unitOfWork.DetalleCompraRepository.GetByCompra(compra.CompraId);
+                    foreach (DetalleCompra detalle in listDetalleCompra)
+                    {
+                        Producto producto = unitOfWork.ProductoRepository.GetByID(detalle.ProductoId);
+                        producto.Cantidad = producto.Cantidad + detalle.Cantidad;
+                        unitOfWork.ProductoRepository.Edit(producto);
+                    }
+                }
+
                 unitOfWork.CompraRepository.Edit(compra);
                 unitOfWork.Save();
                 return RedirectToAction("Index");

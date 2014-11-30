@@ -158,6 +158,7 @@ namespace ServicioGnc.Controllers
             //ESTADOS: 1=Pendiente 2=Confirmado 3=Cancelado
             venta.TipoEstadoId = 4;
 
+            
             List<DetalleVenta> listDetalleVenta = new List<DetalleVenta>();
             foreach(Carro carro in listCarro){
                 DetalleVenta detalleVenta = new DetalleVenta();
@@ -165,9 +166,7 @@ namespace ServicioGnc.Controllers
                 detalleVenta.Subtotal = carro.SubTotal;
                 detalleVenta.ProductoId = carro.ProductoId;
                 detalleVenta.Precio = carro.Precio;
-
                 listDetalleVenta.Add(detalleVenta);
-
             }
 
             venta.DetalleVentas = listDetalleVenta;
@@ -175,6 +174,9 @@ namespace ServicioGnc.Controllers
             unitOfWork.Save();
             foreach(Carro carro in listCarro)
             {
+                Producto producto = unitOfWork.ProductoRepository.GetByID(carro.ProductoId);
+                producto.Cantidad = producto.Cantidad - carro.Cantidad;
+                unitOfWork.ProductoRepository.Edit(producto);                
                 unitOfWork.CarroRepository.Delete(carro);
             }
             unitOfWork.Save();

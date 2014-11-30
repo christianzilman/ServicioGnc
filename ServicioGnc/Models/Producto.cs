@@ -21,7 +21,7 @@ namespace ServicioGnc.Models
         public Nullable<int> UnidadId { get; set; }
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Precio inválido. Debe tener 2 decimales como máximo")]
         public Nullable<double> PrecioVenta { get; set; }
-        public Nullable<int> Cantidad { get; set; }
+        public Nullable<double> Cantidad { get; set; }
         public virtual ICollection<Carro> Carroes { get; set; }
         public virtual ICollection<DetalleCompra> DetalleCompras { get; set; }
         public virtual ICollection<DetalleVenta> DetalleVentas { get; set; }

@@ -140,9 +140,16 @@ namespace ServicioGnc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TurnoEspecial turnoespecial = unitOfWork.TurnoEspecialRepository.GetByID(id);
-            unitOfWork.TurnoEspecialRepository.Delete(turnoespecial);
-            unitOfWork.TurnoEspecialRepository.Save();
+            //TurnoEspecial turnoespecial = unitOfWork.TurnoEspecialRepository.GetByID(id);
+           // unitOfWork.TurnoEspecialRepository.Delete(turnoespecial);
+            List<RegistroAutomatico> listRegistroAutomatico = unitOfWork.RegistroAutomaticoRepository.GetByTurnoEspecial(id);
+            foreach(RegistroAutomatico registroAutomatico in listRegistroAutomatico)
+            {
+                unitOfWork.RegistroAutomaticoRepository.Delete(registroAutomatico);
+                unitOfWork.RegistroAutomaticoRepository.Save();
+            }
+
+            //unitOfWork.TurnoEspecialRepository.Save();
             return RedirectToAction("Index");
         }
 
