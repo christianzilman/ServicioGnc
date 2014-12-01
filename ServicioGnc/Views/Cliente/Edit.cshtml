@@ -4,7 +4,10 @@
     ViewBag.Title = "Cliente";
 }
 
-<h2>Editar Cliente</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Cliente
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

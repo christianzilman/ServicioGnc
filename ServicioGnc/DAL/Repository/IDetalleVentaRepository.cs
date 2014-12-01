@@ -12,5 +12,7 @@ namespace ServicioGnc.DAL.Repository
         List<DetalleVenta> GetByProductoIdEstadoId(int productoId,int estadoId);
 
         List<DetalleVenta> GetByProductoIdEstadoIdFechaDesdeFechaHasta(int productoId, int estadoId, DateTime fechaDesde, DateTime fechaHasta);
+
+        List<DetalleVenta> GetByVenta(int ventaId);
     }
 }

@@ -87,11 +87,6 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (ViewBag.TipoEstadoId = 2)
-                //{
-                //    Producto producto = unitOfWork.ProductoRepository.GetByID(id);
-                //    producto.Cantidad = 
-                //}
                 Compra compraCompleta = unitOfWork.CompraRepository.GetByID(compra.CompraId);
                 if (compra.TipoEstadoId == 2 || compra.TipoEstadoId == 4) {
                     List<DetalleCompra> listDetalleCompra = unitOfWork.DetalleCompraRepository.GetByCompra(compra.CompraId);
@@ -104,6 +99,7 @@ namespace ServicioGnc.Controllers
                 }
                 compraCompleta.TipoEstadoId = compra.TipoEstadoId;
                 compraCompleta.Fecha = compra.Fecha;
+                compraCompleta.ProveedorId = compra.ProveedorId;
 
                 unitOfWork.CompraRepository.Edit(compraCompleta);
                 unitOfWork.Save();

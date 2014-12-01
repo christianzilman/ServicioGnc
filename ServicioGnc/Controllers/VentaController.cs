@@ -85,9 +85,25 @@ namespace ServicioGnc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Venta venta)
         {
+            
             if (ModelState.IsValid)
             {
-                unitOfWork.VentaRepository.Edit(venta);
+                Venta ventaCompleta = unitOfWork.VentaRepository.GetByID(venta.VentaId);
+                if (venta.TipoEstadoId == 5)
+                {
+                    List<DetalleVenta> listDetalleVenta = unitOfWork.DetalleVentaRepository.GetByVenta(venta.VentaId);
+                    foreach (DetalleVenta detalle in listDetalleVenta)
+                    {
+                        Producto producto = unitOfWork.ProductoRepository.GetByID(detalle.ProductoId);
+                        producto.Cantidad = producto.Cantidad + detalle.Cantidad;
+                        unitOfWork.ProductoRepository.Edit(producto);
+                    }
+                }
+                ventaCompleta.TipoEstadoId = venta.TipoEstadoId;
+                ventaCompleta.Fecha = venta.Fecha;
+                ventaCompleta.ClienteId = venta.ClienteId;
+
+                unitOfWork.VentaRepository.Edit(ventaCompleta);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }

@@ -4,24 +4,29 @@
     ViewBag.Title = "Delete";
 }
 
-<div class="alert alert-warning" role="alert">
-    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
-    Realmente deseas eliminar este turno?
-</div>
-<fieldset>
-    <legend>Turno</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Turno - ¿Está seguro de que desea eliminar esto?</h2>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Turno: @Html.DisplayFor(model => model.Nombre) </div>
+
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
+
+            </div>
+        </div>
     </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit"  class="btn-warning"  value="Eliminar" /> |
-        @Html.ActionLink("Volver al listado", "Index")
-    </p>
-}
+</div>
+
+

@@ -39,6 +39,7 @@ namespace ServicioGnc.Controllers
             ViewBag.ProductoId = productoId;
             ViewBag.NombreProducto = producto.Nombre;
             ViewBag.PrecioVenta = producto.PrecioVenta;
+            ViewBag.Cantidad = producto.Cantidad;
             return View();
 
         }
