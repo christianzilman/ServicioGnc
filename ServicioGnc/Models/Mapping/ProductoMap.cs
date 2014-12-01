@@ -22,6 +22,7 @@ namespace ServicioGnc.Models.Mapping
             this.Property(t => t.UnidadId).HasColumnName("UnidadId");
             this.Property(t => t.PrecioVenta).HasColumnName("PrecioVenta");
             this.Property(t => t.Cantidad).HasColumnName("Cantidad");
+            this.Property(t => t.Utilidad).HasColumnName("Utilidad");
 
             // Relationships
             this.HasOptional(t => t.Unidad)

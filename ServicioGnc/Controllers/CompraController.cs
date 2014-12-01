@@ -92,6 +92,7 @@ namespace ServicioGnc.Controllers
                 //    Producto producto = unitOfWork.ProductoRepository.GetByID(id);
                 //    producto.Cantidad = 
                 //}
+                Compra compraCompleta = unitOfWork.CompraRepository.GetByID(compra.CompraId);
                 if (compra.TipoEstadoId == 2 || compra.TipoEstadoId == 4) {
                     List<DetalleCompra> listDetalleCompra = unitOfWork.DetalleCompraRepository.GetByCompra(compra.CompraId);
                     foreach (DetalleCompra detalle in listDetalleCompra)
@@ -101,8 +102,10 @@ namespace ServicioGnc.Controllers
                         unitOfWork.ProductoRepository.Edit(producto);
                     }
                 }
+                compraCompleta.TipoEstadoId = compra.TipoEstadoId;
+                compraCompleta.Fecha = compra.Fecha;
 
-                unitOfWork.CompraRepository.Edit(compra);
+                unitOfWork.CompraRepository.Edit(compraCompleta);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
             }

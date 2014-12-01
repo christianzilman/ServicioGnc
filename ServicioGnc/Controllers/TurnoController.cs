@@ -56,9 +56,17 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
-                turno.DetalleTurnoes = Session["detalleTurnos"] as List<DetalleTurno>;
+                List<DetalleTurno> listDetalleTurno = Session["detalleTurnos"] as List<DetalleTurno>;
+
+                foreach(DetalleTurno turnoDetalle in listDetalleTurno)
+                {
+                    turnoDetalle.Horario = null;
+                }
+
                 Session["detalleTurnos"] = new List<DetalleTurno>();
-               
+
+
+                turno.DetalleTurnoes = listDetalleTurno;
                 unitOfWork.TurnoRepository.Add(turno);
                 unitOfWork.TurnoRepository.Save();
                 return RedirectToAction("Index");

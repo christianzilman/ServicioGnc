@@ -15,16 +15,6 @@ namespace ServicioGnc.Controllers
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 
-        //
-        // GET: /Liquidacion/
-/*
-        public ActionResult Index()
-        {
-            var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
-            return View(liquidacions.ToList());
-        }
-        */
-       // [HttpPost]
         [Authorize]
         public ActionResult Index(string periodo)
         {
@@ -48,8 +38,7 @@ namespace ServicioGnc.Controllers
             }
             return View(liquidacions.ToList());
         }
-        //
-        // GET: /Liquidacion/Details/5
+
 
         public ActionResult Details(int id = 0)
         {
@@ -142,7 +131,6 @@ namespace ServicioGnc.Controllers
 
                     unitOfWork.LiquidacionRepository.Add(liquidacionGeneral);
                     unitOfWork.Save();
-                    //return RedirectToAction("Index");
                 }
                 return RedirectToAction("Index");
             }
@@ -192,7 +180,7 @@ namespace ServicioGnc.Controllers
                             importeTemp = sueldoBasico;
                             break;
                         default:
-                            importeTemp = calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
+                            importeTemp = sueldoBasico - calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
                             break;
                     }
                     detalleLiquidacion.SubTotal = importeTemp;
@@ -295,13 +283,29 @@ namespace ServicioGnc.Controllers
         [HttpPost]
         public ActionResult CreateDetail(DetalleLiquidacion detalleLiquidacion)
         {
-
+            double subt = 0.00;
+            
             List<DetalleLiquidacion> listDetalleLiquidacion = Session["detalleLiquidacion"] as List<DetalleLiquidacion>;
             int cantidad = listDetalleLiquidacion.Count;
             cantidad++;
             detalleLiquidacion.LiquidacionId = cantidad;
 
             detalleLiquidacion.Concepto = unitOfWork.ConceptoRepository.GetByID(detalleLiquidacion.ConceptoId);
+            Concepto conceptos = unitOfWork.ConceptoRepository.GetByID(1);
+            double totDes = (double)conceptos.Importe;
+
+            
+            if(detalleLiquidacion.ConceptoId == 1)
+            {
+                subt = (double)detalleLiquidacion.Concepto.Importe;
+            }
+            else
+            {
+                subt = totDes - calcularSueldo(totDes, (double)detalleLiquidacion.Concepto.Importe,(double)detalleLiquidacion.Concepto.Porcentaje,(int)detalleLiquidacion.Concepto.Utilidad,(int)detalleLiquidacion.Concepto.TipoConceptoId);
+            }
+
+            detalleLiquidacion.SubTotal = subt;
+            
             listDetalleLiquidacion.Add(detalleLiquidacion);
 
             Session["detalleLiquidacion"] = listDetalleLiquidacion;

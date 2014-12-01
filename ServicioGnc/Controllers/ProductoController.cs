@@ -98,6 +98,10 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
+                double utilidad = (double)producto.Utilidad / 100.00;
+
+                producto.PrecioVenta = producto.PrecioCompra + (producto.PrecioCompra * utilidad); 
+                producto.Cantidad = 0;
                 unitOfWork.ProductoRepository.Add(producto);
                 unitOfWork.Save();
                 return RedirectToAction("Index");
@@ -130,6 +134,8 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
+                double utilidad = (double)producto.Utilidad / 100.00;
+                producto.PrecioVenta = producto.PrecioCompra + (producto.PrecioCompra * utilidad); 
                 unitOfWork.ProductoRepository.Edit(producto);
                 unitOfWork.Save();
                 return RedirectToAction("Index");

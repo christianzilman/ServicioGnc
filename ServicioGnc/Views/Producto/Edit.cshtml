@@ -41,6 +41,15 @@
                         @Html.ValidationMessageFor(model => model.PrecioCompra)
                     </div>
 
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Utilidad)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Utilidad)
+                        @Html.ValidationMessageFor(model => model.Utilidad)
+                    </div>
+
                     <div class="editor-label">
                         @Html.LabelFor(model => model.UnidadId, "Unidad")
                     </div>
@@ -52,16 +61,16 @@
                     <div class="editor-label">
                         @Html.LabelFor(model => model.PrecioVenta)
                     </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.PrecioVenta)
-                        @Html.ValidationMessageFor(model => model.PrecioVenta)
+                    <div class="editor-field">                        
+                        <input name="PrecioVenta" id="PrecioVenta"  value="@Model.PrecioVenta" readonly="readonly"/>
+
                     </div>
 
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Cantidad)
                     </div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.Cantidad)
+                        <input name="Cantidad" id="Cantidad" value="@Model.Cantidad"  readonly="readonly"/>
                         @Html.ValidationMessageFor(model => model.Cantidad)
                     </div>
                     <br />

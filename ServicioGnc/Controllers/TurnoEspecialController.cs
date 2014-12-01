@@ -110,6 +110,10 @@ namespace ServicioGnc.Controllers
         {
             if (ModelState.IsValid)
             {
+                //TurnoEspecial turnoEspecialModificar = unitOfWork.TurnoEspecialRepository.GetByID(turnoespecial.TurnoEspecialId);
+                //turnoespecial.FeriadoId = turnoespecial.FeriadoId;
+                //turnoespecial.PersonaId = turnoespecial.PersonaId;
+
                 unitOfWork.TurnoEspecialRepository.Edit(turnoespecial);
                 
                 unitOfWork.TurnoEspecialRepository.Save();
@@ -139,9 +143,7 @@ namespace ServicioGnc.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {
-            //TurnoEspecial turnoespecial = unitOfWork.TurnoEspecialRepository.GetByID(id);
-           // unitOfWork.TurnoEspecialRepository.Delete(turnoespecial);
+        {            
             List<RegistroAutomatico> listRegistroAutomatico = unitOfWork.RegistroAutomaticoRepository.GetByTurnoEspecial(id);
             foreach(RegistroAutomatico registroAutomatico in listRegistroAutomatico)
             {
@@ -149,7 +151,10 @@ namespace ServicioGnc.Controllers
                 unitOfWork.RegistroAutomaticoRepository.Save();
             }
 
-            //unitOfWork.TurnoEspecialRepository.Save();
+            TurnoEspecial turnoespecial = unitOfWork.TurnoEspecialRepository.GetByID(id);
+            unitOfWork.TurnoEspecialRepository.Delete(turnoespecial);
+            unitOfWork.TurnoEspecialRepository.Save();
+
             return RedirectToAction("Index");
         }
 
