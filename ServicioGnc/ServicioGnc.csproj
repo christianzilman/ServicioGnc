@@ -170,6 +170,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\DetalleTurnoController.cs" />
     <Compile Include="Controllers\FamiliarController.cs" />
     <Compile Include="Controllers\FeriadoController.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\RegistroAutomaticoController.cs" />
     <Compile Include="Controllers\Reporte.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoConceptoController.cs" />
@@ -221,6 +223,7 @@
     <Compile Include="DAL\Repository\Impl\PersonaRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProductoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\ProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\Impl\RegistroAutomaticoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TipoConceptoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TipoEstadoRepository.cs" />
     <Compile Include="DAL\Repository\Impl\TurnoEspecialRepository.cs" />
@@ -230,6 +233,7 @@
     <Compile Include="DAL\Repository\IPersonaRepository.cs" />
     <Compile Include="DAL\Repository\IProductoRepository.cs" />
     <Compile Include="DAL\Repository\IProveedorRepository.cs" />
+    <Compile Include="DAL\Repository\IRegistroAutomaticoRepository.cs" />
     <Compile Include="DAL\Repository\ITipoConceptoRepository.cs" />
     <Compile Include="DAL\Repository\ITipoEstadoRepository.cs" />
     <Compile Include="DAL\Repository\ITurnoEspecialRepository.cs" />
@@ -247,6 +251,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Concepto.cs" />
+    <Compile Include="Models\Configuracion.cs" />
     <Compile Include="Models\ControlFeriado.cs" />
     <Compile Include="Models\DetalleCompra.cs" />
     <Compile Include="Models\DetalleLiquidacion.cs" />
@@ -264,6 +269,7 @@
     <Compile Include="Models\Mapping\ClienteMap.cs" />
     <Compile Include="Models\Mapping\CompraMap.cs" />
     <Compile Include="Models\Mapping\ConceptoMap.cs" />
+    <Compile Include="Models\Mapping\ConfiguracionMap.cs" />
     <Compile Include="Models\Mapping\ControlFeriadoMap.cs" />
     <Compile Include="Models\Mapping\DetalleCompraMap.cs" />
     <Compile Include="Models\Mapping\DetalleLiquidacionMap.cs" />
@@ -279,6 +285,7 @@
     <Compile Include="Models\Mapping\PersonaMap.cs" />
     <Compile Include="Models\Mapping\ProductoMap.cs" />
     <Compile Include="Models\Mapping\ProveedorMap.cs" />
+    <Compile Include="Models\Mapping\RegistroAutomaticoMap.cs" />
     <Compile Include="Models\Mapping\RolMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TipoConceptoMap.cs" />
@@ -290,6 +297,7 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Proveedor.cs" />
+    <Compile Include="Models\RegistroAutomatico.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\ServicioGncContext.cs" />
     <Compile Include="Models\sysdiagram.cs" />
@@ -587,6 +595,18 @@
     <Content Include="Views\Liquidacion\CreateParticular.cshtml" />
     <Content Include="Views\Liquidacion\ListDetail.cshtml" />
     <Content Include="Views\Liquidacion\ImprimirLiquidacion.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Index.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Details.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Create.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Edit.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Delete.cshtml" />
+    <Content Include="Views\Configuracion\Index.cshtml" />
+    <Content Include="Views\Configuracion\Details.cshtml" />
+    <Content Include="Views\Configuracion\Create.cshtml" />
+    <Content Include="Views\Configuracion\Edit.cshtml" />
+    <Content Include="Views\Configuracion\Delete.cshtml" />
+    <Content Include="Views\RegistroAutomatico\CreateGeneral.cshtml" />
+    <Content Include="Views\RegistroAutomatico\Exito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

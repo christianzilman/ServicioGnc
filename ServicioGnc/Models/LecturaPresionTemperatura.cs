@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -10,8 +9,6 @@ namespace ServicioGnc.Models
         public string Nombre { get; set; }
         public Nullable<double> Presion { get; set; }
         public Nullable<double> Temperatura { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Fecha { get; set; }
     }
 }

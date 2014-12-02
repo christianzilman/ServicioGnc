@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ServicioGnc.DAL.Repository
 {
-    public interface IFeriadoRepository:IGenericRepository<Feriado>
+    public interface IRegistroAutomaticoRepository: IGenericRepository<RegistroAutomatico>
     {
-        List<Feriado> GetByGreaterThanDate(DateTime fechaActual);
+
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -20,14 +19,8 @@ namespace ServicioGnc.Models
         public Nullable<int> RolId { get; set; }
         public string Apellido { get; set; }
         public string Domicilio { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaEgreso { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<int> Dni { get; set; }
         public virtual ICollection<AsignacionTurno> AsignacionTurnoes { get; set; }

@@ -21,6 +21,7 @@ namespace ServicioGnc.Models
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Concepto> Conceptoes { get; set; }
+        public DbSet<Configuracion> Configuracions { get; set; }
         public DbSet<DetalleCompra> DetalleCompras { get; set; }
         public DbSet<DetalleLiquidacion> DetalleLiquidacions { get; set; }
         public DbSet<DetalleTurno> DetalleTurnoes { get; set; }
@@ -35,6 +36,7 @@ namespace ServicioGnc.Models
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Producto> Productoes { get; set; }
         public DbSet<Proveedor> Proveedors { get; set; }
+        public DbSet<RegistroAutomatico> RegistroAutomaticoes { get; set; }
         public DbSet<Rol> Rols { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<TipoConcepto> TipoConceptoes { get; set; }
@@ -51,6 +53,7 @@ namespace ServicioGnc.Models
             modelBuilder.Configurations.Add(new ClienteMap());
             modelBuilder.Configurations.Add(new CompraMap());
             modelBuilder.Configurations.Add(new ConceptoMap());
+            modelBuilder.Configurations.Add(new ConfiguracionMap());
             modelBuilder.Configurations.Add(new DetalleCompraMap());
             modelBuilder.Configurations.Add(new DetalleLiquidacionMap());
             modelBuilder.Configurations.Add(new DetalleTurnoMap());
@@ -65,6 +68,7 @@ namespace ServicioGnc.Models
             modelBuilder.Configurations.Add(new PersonaMap());
             modelBuilder.Configurations.Add(new ProductoMap());
             modelBuilder.Configurations.Add(new ProveedorMap());
+            modelBuilder.Configurations.Add(new RegistroAutomaticoMap());
             modelBuilder.Configurations.Add(new RolMap());
             modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new TipoConceptoMap());

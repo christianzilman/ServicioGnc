@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -16,8 +15,6 @@ namespace ServicioGnc.Models
         public Nullable<int> EmpresaId { get; set; }
         public Nullable<double> Total { get; set; }
         public string Periodo { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Fecha { get; set; }
         public virtual ICollection<DetalleLiquidacion> DetalleLiquidacions { get; set; }
         public virtual Empresa Empresa { get; set; }

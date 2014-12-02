@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -13,8 +12,6 @@ namespace ServicioGnc.Models
 
         public int CompraId { get; set; }
         public int ProveedorId { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<double> Total { get; set; }
         public Nullable<int> TipoEstadoId { get; set; }
