@@ -62,7 +62,9 @@
             <b>Fecha de Nacimiento</b>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaNacimiento)
+            @*@Html.EditorFor(model => model.FechaNacimiento,"dd/MM/yyyy")
+            @Html.ValidationMessageFor(model => model.)*@
+            <input id="FechaNacimiento" name="FechaNacimiento" value="@Model.FechaNacimiento" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaNacimiento)
         </div>
 
@@ -78,7 +80,7 @@
             <b>Fecha de Ingreso</b>
 </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaIngreso)
+            <input id="FechaIngreso" name="FechaIngreso" value="@Model.FechaIngreso" class="datepicker" data-date-format="dd-mm-yyyy"/>
             @Html.ValidationMessageFor(model => model.FechaIngreso)
         </div>
         <br/>
@@ -95,3 +97,16 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    $(function () {
+        $('#FechaIngreso').datepicker({
+            dateFormat: 'dd-mm-yy'
+        })
+    });
+    $(function () {
+        $('#FechaNacimiento').datepicker({
+            dateFormat: 'dd-mm-yy'
+        })
+    });
+</script>

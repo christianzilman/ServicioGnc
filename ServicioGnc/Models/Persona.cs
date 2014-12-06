@@ -24,13 +24,13 @@ namespace ServicioGnc.Models
         [Required(ErrorMessage = "Debe Ingresar el domicilio")]
         public string Domicilio { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+       // [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+  //      [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> FechaEgreso { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+    //    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<int> Dni { get; set; }
         public virtual ICollection<AsignacionTurno> AsignacionTurnoes { get; set; }
