@@ -43,7 +43,7 @@ namespace ServicioGnc.Controllers
         public ActionResult Create()
         {
             ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre");
-            return View();
+            return View(new Familiar());
         }
 
         //
