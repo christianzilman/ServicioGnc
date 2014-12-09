@@ -21,8 +21,6 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Index()
         {
-            //var fichadas = unitOfWork.FichadaRepository.Get();
-            //return View(fichadas.ToList());
             return View();
         }
 
@@ -30,7 +28,6 @@ namespace ServicioGnc.Controllers
         {
             var fichadas = unitOfWork.FichadaRepository.Get();
             return View(fichadas.ToList());
-            //return View();
         }
 
         public ActionResult FichadaPorEmpleado()
@@ -42,14 +39,21 @@ namespace ServicioGnc.Controllers
             return View(new List<Fichada>());
         }
         [HttpPost]
-        public ActionResult FichadaPorEmpleado(string dni, DateTime fechaDesde,DateTime fechaHasta)
+        public ActionResult FichadaPorEmpleado(string dni, DateTime? fechaDesde,DateTime? fechaHasta)
         {
             var fichadas = unitOfWork.FichadaRepository.Get();
-            //fechaDesde
-            if (!String.IsNullOrEmpty(dni))
+            if (!String.IsNullOrEmpty(dni) && (fechaDesde != null) && (fechaHasta != null))
             {
-                fichadas = fichadas.Where(l => l.Persona.Dni == Convert.ToInt32(dni)).Where((l => Convert.ToDateTime(l.FechaIngreso).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.FechaEgreso).Date <= Convert.ToDateTime(fechaHasta)));
+                fichadas = fichadas.Where(l => l.Persona.Dni == Convert.ToInt32(dni)).Where((l => l.FechaIngreso >= fechaDesde)).Where((l => l.FechaEgreso <= fechaHasta));
             }
+            else
+            {
+                if (((fechaDesde != null) && (fechaHasta != null)))
+                {
+                    fichadas = fichadas.Where((l => Convert.ToDateTime(l.FechaIngreso).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.FechaEgreso).Date <= Convert.ToDateTime(fechaHasta)));
+                }
+            }
+
             ViewBag.Dni = dni;
             ViewBag.FechaDesde = fechaDesde;
             ViewBag.FechaHasta = fechaHasta;

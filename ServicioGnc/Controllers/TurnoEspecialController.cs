@@ -20,28 +20,33 @@ namespace ServicioGnc.Controllers
         public ActionResult Index()
         {
             var turnoespecials = unitOfWork.TurnoEspecialRepository.Get(includeProperties:"Feriado");
-            //var turnoespecials = unitOfWork.TurnoEspecialRepository.Get(t => t.Feriado).Include(t => t.Persona);
             return View(turnoespecials.ToList());
         }
 
         //
         // GET: /TurnoEspecial/Details/5
-        public ActionResult FeriadosAsignados(string dni, string fechaDesde, string fechaHasta)
+        public ActionResult FeriadosAsignados(string dni, DateTime? fechaDesde, DateTime? fechaHasta)
         {
             var turnosespeciales = unitOfWork.TurnoEspecialRepository.Get();
-            //fechaDesde
-            if (!String.IsNullOrEmpty(dni) && (!String.IsNullOrEmpty(fechaDesde) && (!String.IsNullOrEmpty(fechaHasta))))
+            if (!String.IsNullOrEmpty(dni) && (fechaDesde != null) && (fechaHasta != null))
             {
                 turnosespeciales = turnosespeciales.Where(l => l.Persona.Dni == Convert.ToInt32(dni)).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date <= Convert.ToDateTime(fechaHasta)));
             }
             else
             {
-                if((!String.IsNullOrEmpty(fechaDesde) && (!String.IsNullOrEmpty(fechaHasta))))
-                { 
-                turnosespeciales = turnosespeciales.Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date <= Convert.ToDateTime(fechaHasta)));
+                if (((fechaDesde != null) && (fechaHasta != null)))
+                {
+                    turnosespeciales = turnosespeciales.Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.Feriado.Fecha).Date <= Convert.ToDateTime(fechaHasta)));
                 }
             }
+
+            ViewBag.Dni = dni;
+            ViewBag.FechaDesde = fechaDesde;
+            ViewBag.FechaHasta = fechaHasta;
+
+
             return View(turnosespeciales.ToList());
+
         }
 
         public ActionResult Details(int id = 0)

@@ -15,7 +15,6 @@ namespace ServicioGnc.Models
          [Required(ErrorMessage = "Debe Ingresar la relacion con el empleado")]
         public string Relacion { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public virtual Persona Persona { get; set; }
     }

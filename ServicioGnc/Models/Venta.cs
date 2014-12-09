@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicioGnc.Models
 {
@@ -11,6 +12,7 @@ namespace ServicioGnc.Models
         }
 
         public int VentaId { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<double> Total { get; set; }
         public Nullable<int> ClienteId { get; set; }

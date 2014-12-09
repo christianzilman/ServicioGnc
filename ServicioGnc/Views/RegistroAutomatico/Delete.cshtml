@@ -4,30 +4,29 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Registro automático - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Fecha: @Html.DisplayFor(model => model.Fecha) </div>
+            <div>    Feriado: @Html.DisplayFor(model => model.TurnoEspecial.Feriado.Nombre)</div>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>RegistroAutomatico</legend>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TurnoEspecial.TurnoEspecialId)
+            </div>
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TurnoEspecial.TurnoEspecialId)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Fecha)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Fecha)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+

@@ -29,7 +29,7 @@
 
                     <th>Fecha Desde:</th>
                     <th>
-                        <input class="text-box single-line" data-val="true" data-val-date="The field Fecha must be a date." data-val-required="The Fecha field is required." id="fechaDesde" name="fechaDesde" type="date" value="@ViewBag.FechaDesde">
+                        <input id="fechaDesde" name="fechaDesde" value="@ViewBag.FechaDesde" class="datepicker" data-date-format="dd-mm-yyyy" />
                     </th>
                     
                 </tr>
@@ -37,7 +37,7 @@
 
                     <th>Fecha Hasta:</th>
                     <th>
-                        <input class="text-box single-line" data-val="true" data-val-date="The field Fecha must be a date." data-val-required="The Fecha field is required." id="fechaHasta" name="fechaHasta" type="date" value="@ViewBag.FechaHasta">
+                        <input id="fechaHasta" name="fechaHasta" value="@ViewBag.FechaHasta" class="datepicker" data-date-format="dd-mm-yyyy" />
                     </th>
                 </tr>
             </table>
@@ -89,9 +89,16 @@
 
 
 
-<script src="~/Content/bootstrap-3.1.1/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript">
+
+
+<script>
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+        $('#fechaDesde').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#fechaHasta').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+
     });
 </script>
