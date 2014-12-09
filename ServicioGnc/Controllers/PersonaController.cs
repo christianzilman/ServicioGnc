@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using ServicioGnc.Models;
 using ServicioGnc.DAL;
+using WebMatrix.WebData;
 
 namespace ServicioGnc.Controllers
 {
+    [Authorize]
     public class PersonaController : Controller
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
@@ -19,6 +21,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Index()
         {
+            int UserId = WebSecurity.GetUserId(User.Identity.Name);
             //includeProperties: "Persona"
             var personaList = unitOfWork.PersonaRepository.Get();
             return View(personaList.ToList());
@@ -56,7 +59,7 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Persona());
         }
 
         //

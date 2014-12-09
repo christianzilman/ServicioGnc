@@ -14,7 +14,7 @@ using ServicioGnc.Models;
 namespace Negocio.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //

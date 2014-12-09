@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Empleado";
-    Layout = "~/Views/Shared/Date.cshtml";
 }
 
 <div class="alert alert-warning" role="alert">
@@ -42,34 +41,43 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Dni)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dni)
+            @Html.ValidationMessageFor(model => model.Dni)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Domicilio)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Domicilio)
             @Html.ValidationMessageFor(model => model.Domicilio)
         </div>
-
         <div class="editor-label">
-            Fecha de nacimiento
+            <b>Fecha de Nacimiento</b>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaNacimiento)
+            @*@Html.EditorFor(model => model.FechaNacimiento,"dd/MM/yyyy")
+            @Html.ValidationMessageFor(model => model.)*@
+            <input id="FechaNacimiento" name="FechaNacimiento" value="@Model.FechaNacimiento" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaNacimiento)
         </div>
 
         <div class="editor-label">
-            Fecha de Egreso
+            <b>Fecha de Egreso</b>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaEgreso)
+            <input id="FechaEgreso" name="FechaEgreso" value="@Model.FechaEgreso" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaEgreso)
         </div>
 
         <div class="editor-label">
-            Fecha de ingreso
+            <b>Fecha de Ingreso</b>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaIngreso)
+            <input id="FechaIngreso" name="FechaIngreso" value="@Model.FechaIngreso" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaIngreso)
         </div>
         <br/>
@@ -86,3 +94,17 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    $(function () {
+        $('#FechaNacimiento').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#FechaIngreso').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#FechaEgreso').datepicker({
+            dateFormat: 'dd-mm-yy'
+        })
+    });
+</script>
