@@ -22,7 +22,16 @@ namespace ServicioGnc.DAL.Repository.Impl
 
         public List<DetalleVenta> GetByProductoIdEstadoIdFechaDesdeFechaHasta(int productoId, int estadoId, DateTime fechaDesde, DateTime fechaHasta)
         {
-            return this.Context.Set<DetalleVenta>().Where(v => v.Venta.TipoEstadoId == estadoId && v.ProductoId == productoId && v.Venta.Fecha >= fechaDesde && v.Venta.Fecha <= fechaHasta).ToList();
+            List<DetalleVenta> listDetalleVenta = new List<DetalleVenta>();
+            if(productoId==null){
+                productoId = 0;
+            }
+            if(fechaDesde!=null && fechaHasta !=null){
+                listDetalleVenta = this.Context.Set<DetalleVenta>().Where(v => v.Venta.TipoEstadoId == estadoId && v.ProductoId == productoId && v.Venta.Fecha >= fechaDesde && v.Venta.Fecha <= fechaHasta).ToList();
+            }else{
+                listDetalleVenta =  this.Context.Set<DetalleVenta>().Where(v => v.Venta.TipoEstadoId == estadoId && v.ProductoId == productoId).ToList();
+            }
+            return listDetalleVenta;
         }
 
         public List<DetalleVenta> GetByVenta(int ventaId)

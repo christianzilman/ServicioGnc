@@ -14,7 +14,6 @@ namespace ServicioGnc.Models
         public int CompraId { get; set; }
         public int ProveedorId { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<double> Total { get; set; }
         public Nullable<int> TipoEstadoId { get; set; }

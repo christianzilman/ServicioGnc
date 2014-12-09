@@ -2,6 +2,7 @@
 using ServicioGnc.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,6 +24,7 @@ namespace ServicioGnc.Controllers
         public ActionResult CodigoProductoVentaCompra() {
 
             ViewBag.ListDescripcionProductoCompraVenta = new List<DescripcionProductoVenta>();
+            ViewBag.Code = "";
             return View();
         }
 
@@ -34,8 +36,11 @@ namespace ServicioGnc.Controllers
         }
 
         public class ParametrosBusqueda {
+            [Required]
             public Nullable<int> codigo { get; set; }
+            [Required]
             public Nullable<DateTime> fechaDesde { get; set; }
+            [Required]
             public Nullable<DateTime> fechaHasta { get; set; }
         }
 
@@ -44,7 +49,9 @@ namespace ServicioGnc.Controllers
         {
             List<DescripcionProductoVenta> listDescripcionProductoVenta = new List<DescripcionProductoVenta>();
             ViewBag.ListDescripcionProductoCompraVenta = listDescripcionProductoVenta;
-
+            ViewBag.Code = parametros.codigo;
+            parametros.fechaDesde = DateTime.Now;
+            parametros.fechaHasta = DateTime.Now;
             if(ModelState.IsValid){
 
                 int codigo = (int)parametros.codigo;
@@ -56,7 +63,8 @@ namespace ServicioGnc.Controllers
                     descripcionP.productoId = (int)detalleVenta.ProductoId;
                     descripcionP.fecha = (DateTime)detalleVenta.Venta.Fecha;
                     descripcionP.accion = "ALTA DE VENTA";
-                    descripcionP.nombreUsuario = dbSeguridad.UserProfiles.Where(u => u.UserId == detalleVenta.Venta.UsuarioId).FirstOrDefault().UserName;
+
+                    descripcionP.nombreUsuario = dbSeguridad.UserProfiles.Where(u => u.UserId == detalleVenta.Venta.UsuarioId).FirstOrDefault().Name;
                     listDescripcionProductoVenta.Add(descripcionP);
                 }
 
@@ -111,7 +119,7 @@ namespace ServicioGnc.Controllers
         public ActionResult CodigoPeriodoProductoVentaCompra(ParametrosBusqueda parametrosBusqueda)
         {
             InicializarParametrosReporteCodigoPeriodoVentaCompra();
-            ViewBag.Codigo = parametrosBusqueda.codigo;
+            
             if(ModelState.IsValid){
                 List<DetalleVenta> listDetalleVenta = unitOfWork.DetalleVentaRepository.
                                                                     GetByProductoIdEstadoIdFechaDesdeFechaHasta(

@@ -6,23 +6,36 @@
     <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
     Hitorial de Articulo por periodo
 </div>
-
-    <p>
-        Ingresar Codigo Producto: <input type="text" id="productoId" name="productoId" value="@ViewBag.Codigo" />
-        <input type="button" class="btn-warning" onclick="javascript: BuscarProducto()" value="BuscarProducto" />
-    </p>
+    
 <div id="productoDescripcion"></div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-       <p>
-           <input type="hidden" name="codigo" id="codigo" value="@ViewBag.Codigo" />
-           <input type="text" name="fechaDesde" value="@ViewBag.FechaDesde" />
-           <input type="text" name="fechaHasta" value="@ViewBag.FechaHasta" />
+       
+        <div class="editor-label">
+                Codigo:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="codigo" id="codigo" value="@ViewBag.Codigo" />
+        </div>
+    
+        <div class="editor-label">
+                Fecha Desde:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="fechaDesde" value="@ViewBag.FechaDesde" />
+        </div>
+    
+    
+        <div class="editor-label">
+                Fecha Hasta:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="fechaHasta" value="@ViewBag.FechaHasta" />
+        </div>
+    
         <input type="submit" class="btn-warning"  value="Consultar" />
-    </p>
 }
 
 <table class="table">
