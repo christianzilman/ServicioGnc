@@ -19,8 +19,8 @@
     @Html.AntiForgeryToken()
 
     <p>
-        Fecha desde: @Html.TextBox("fechaDesde")
-        Fecha Hasta: @Html.TextBox("fechaHasta")
+        <input id="fechaDesde" name="fechaDesde" value="@ViewBag.FechaDesde" class="datepicker" data-date-format="dd-mm-yyyy" />
+        <input id="fechaHasta" name="fechaHasta" value="@ViewBag.FechaHasta" class="datepicker" data-date-format="dd-mm-yyyy" />
         <input type="submit" class="btn-warning" value="Consultar" />
     </p>
 }
@@ -67,3 +67,13 @@
 
 </table>
 
+<script>
+    $(function () {
+        $('#fechaDesde').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#fechaHasta').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>

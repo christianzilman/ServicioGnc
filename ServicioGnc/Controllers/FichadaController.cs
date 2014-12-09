@@ -26,10 +26,29 @@ namespace ServicioGnc.Controllers
 
         public ActionResult Consulta()
         {
-            var fichadas = unitOfWork.FichadaRepository.Get();
-            return View(fichadas.ToList());
+
+            ViewBag.FechaDesde = "";
+            ViewBag.FechaHasta = "";
+
+            return View(new List<Fichada>());
         }
 
+          [HttpPost]
+        public ActionResult Consulta(DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            var fichadas = unitOfWork.FichadaRepository.Get();
+            if ((fechaDesde != null) && (fechaHasta != null))
+            {
+                fichadas = fichadas.Where((l => l.FechaIngreso >= fechaDesde)).Where((l => l.FechaEgreso <= fechaHasta));
+            }
+
+            ViewBag.FechaDesde = fechaDesde;
+            ViewBag.FechaHasta = fechaHasta;
+
+
+            return View(fichadas.ToList());
+        }
+        
         public ActionResult FichadaPorEmpleado()
         {
             ViewBag.Dni = "";
@@ -50,7 +69,7 @@ namespace ServicioGnc.Controllers
             {
                 if (((fechaDesde != null) && (fechaHasta != null)))
                 {
-                    fichadas = fichadas.Where((l => Convert.ToDateTime(l.FechaIngreso).Date >= Convert.ToDateTime(fechaDesde))).Where((l => Convert.ToDateTime(l.FechaEgreso).Date <= Convert.ToDateTime(fechaHasta)));
+                    fichadas = fichadas.Where((l =>l.FechaIngreso >= fechaDesde)).Where((l => l.FechaEgreso <= fechaHasta));
                 }
             }
 
