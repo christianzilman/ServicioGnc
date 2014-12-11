@@ -1,0 +1,38 @@
+﻿@model ServicioGnc.Models.Persona
+
+@{
+    ViewBag.Title = "Empleado";
+}
+
+<h2></h2>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Empleado - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Nombre: @Html.DisplayFor(model => model.Nombre) </div>
+            <div>    Apellido: @Html.DisplayFor(model => model.Apellido)</div>
+            <div>    Domicilio: @Html.DisplayFor(model => model.Domicilio)</div>
+            <div>    Rol:       @Html.DisplayFor(model => model.Rol.Nombre)</div>
+            <div>    Fecha de Nacimiento: @Html.DisplayFor(model => model.FechaNacimiento)</div>
+            <div>    Fecha de Ingreso: @Html.DisplayFor(model => model.FechaIngreso)</div>
+            <div>    Fecha de Egreso: @Html.DisplayFor(model => model.FechaEgreso)</div>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

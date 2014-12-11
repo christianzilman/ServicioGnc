@@ -1,0 +1,43 @@
+﻿@model ServicioGnc.Models.Fichada
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Fichada</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FechaIngreso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaIngreso)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FechaEgreso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaEgreso)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Persona.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Persona.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Observacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FichadaId }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>

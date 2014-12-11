@@ -1,0 +1,34 @@
+﻿@model ServicioGnc.Models.LecturaPresionTemperatura
+
+@{
+    ViewBag.Title = "Presion y temperatura";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+    Presión y Temperatura
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LecturaPresionTemperatura</legend>
+        <img src="~/Images/Barometer.png" class="center-block" style="width: 250px; height: 250px;" />
+
+        <div class="center-block">
+            <p class="center-block">
+                <input type="submit"  class="btn-warning" value="Controlar" />
+            </p>
+        </div>
+    </fieldset>
+}
+
+<div class="center-block">
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

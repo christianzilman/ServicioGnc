@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ServicioGnc.Models.DetalleTurno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario.ComienzoTurno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Turno.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario.ComienzoTurno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Turno.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DetalleTurnoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DetalleTurnoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DetalleTurnoId })
+        </td>
+    </tr>
+}
+
+</table>

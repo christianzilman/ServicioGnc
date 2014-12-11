@@ -15,6 +15,7 @@ namespace ServicioGnc.Models
         public Nullable<int> PersonaId { get; set; }
         public Nullable<int> EmpresaId { get; set; }
         public Nullable<double> Total { get; set; }
+        [RegularExpression(@"\d{2}-\d{4}", ErrorMessage = "PERIODO INVÁLIDO")]
         public string Periodo { get; set; }
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Fecha { get; set; }

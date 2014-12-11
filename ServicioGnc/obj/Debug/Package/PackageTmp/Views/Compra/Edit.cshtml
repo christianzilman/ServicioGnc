@@ -1,0 +1,75 @@
+﻿@model ServicioGnc.Models.Compra
+
+@{
+    ViewBag.Title = "Compra";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    Compra
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Compra</legend>
+
+        @Html.HiddenFor(model => model.CompraId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProveedorId, "Proveedor")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProveedorId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProveedorId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fecha)
+        </div>
+        <div class="editor-field">            
+            <input id="Fecha" name="Fecha" value="" class="datepicker" data-date-format="dd-mm-yyyy" />
+            @Html.ValidationMessageFor(model => model.Fecha)
+
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoEstadoId, "TipoEstado")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TipoEstadoId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TipoEstadoId)
+        </div>
+
+                        <div class="editor-label">
+            @Html.LabelFor(model => model.Total)
+        </div>
+        <div class="editor-field">
+          $  <input name="Total" id="Total" value="0" readonly="readonly" />
+        </div>
+
+        <br />
+        <p>
+            <input type="submit" class="btn-warning" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script>
+    $(function () {
+        $('#Fecha').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>

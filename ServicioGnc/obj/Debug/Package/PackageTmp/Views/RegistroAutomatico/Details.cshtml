@@ -1,0 +1,29 @@
+﻿@model ServicioGnc.Models.RegistroAutomatico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RegistroAutomatico</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TurnoEspecial.TurnoEspecialId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TurnoEspecial.TurnoEspecialId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fecha)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RegistroAutomaticoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,32 @@
+﻿@model ServicioGnc.Models.TurnoEspecial
+
+@{
+    ViewBag.Title = "Turnos Especiales";
+}
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Turno Especial - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Feriado: @Html.DisplayFor(model => model.Feriado.Nombre) </div>
+            <div>    Empleado: @Html.DisplayFor(model => model.Persona.Nombre)</div>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

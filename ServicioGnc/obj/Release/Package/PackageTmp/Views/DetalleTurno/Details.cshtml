@@ -1,0 +1,36 @@
+﻿@model ServicioGnc.Models.DetalleTurno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DetalleTurno</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Horario.ComienzoTurno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Horario.ComienzoTurno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Dia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Dia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Turno.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Turno.Nombre)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DetalleTurnoId }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>

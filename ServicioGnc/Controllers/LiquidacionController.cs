@@ -29,9 +29,10 @@ namespace ServicioGnc.Controllers
 
 
         [Authorize]
-        public ActionResult ReportePorEmpleado(string dni)
+        public ActionResult ReportePorEmpleado(string dni/*, string periodo*/)
         {
             var liquidacions = unitOfWork.LiquidacionRepository.Get(includeProperties: "Persona");
+
             if (!String.IsNullOrEmpty(dni))
             {
                 liquidacions = liquidacions.Where(l => l.Persona.Dni == Convert.ToInt32(dni));
@@ -121,7 +122,7 @@ namespace ServicioGnc.Controllers
                                 importeTemp = sueldoBasico;
                                 break;
                             default:
-                                importeTemp = calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
+                                importeTemp = sueldoBasico - calcularSueldo(sueldoBasico, (double)concepto.Importe, (double)concepto.Porcentaje, (int)concepto.Utilidad, (int)concepto.TipoConceptoId);
                                 break;
                         }
                         detalleLiquidacion.SubTotal = importeTemp;

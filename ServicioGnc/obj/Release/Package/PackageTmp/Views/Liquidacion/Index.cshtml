@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ServicioGnc.Models.Liquidacion>
+
+@{
+    ViewBag.Title = "Liquidación de Sueldos";
+}
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Liquidación de Sueldos
+</div>
+
+
+<div>
+    @Html.ActionLink("Liquidación particular", "Create")
+</div>
+<br/>
+<div>
+    @Html.ActionLink("Liquidacion general", "CreateGeneral")
+</div>
+<br />
+<div>
+    @Html.ActionLink("Liquidacion particular por conceptos", "CreateParticular")
+</div>
+
+
+<p>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    
+       <p>
+           Consultar por periodo: @Html.TextBox("periodo")
+           <input type="submit" class="btn-warning" value="Consultar" />
+       </p>    
+}
+ 
+<table class="table" >
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Persona.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Periodo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persona.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Periodo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.LiquidacionId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.LiquidacionId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.LiquidacionId }) |
+                    @Html.ActionLink("Imprimir", "Impresiones", new { id = item.LiquidacionId })
+                    
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>
+
+

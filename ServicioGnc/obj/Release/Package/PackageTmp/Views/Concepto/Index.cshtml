@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ServicioGnc.Models.Concepto>
+
+@{
+    ViewBag.Title = "Concepto";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+    Conceptos
+</div>
+
+<p>
+    @Html.ActionLink("Crear nuevo concepto ", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Porcentaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Importe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoConcepto.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Porcentaje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Importe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Utilidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoConcepto.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ConceptoId }) |
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ConceptoId })
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>

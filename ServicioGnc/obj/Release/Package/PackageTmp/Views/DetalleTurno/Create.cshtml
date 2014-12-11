@@ -1,0 +1,52 @@
+﻿@model ServicioGnc.Models.DetalleTurno
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DetalleTurno</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HorarioId, "Horario")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("HorarioId", String.Empty)
+            @Html.ValidationMessageFor(model => model.HorarioId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dia)
+            @Html.ValidationMessageFor(model => model.Dia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TurnoId, "Turno")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TurnoId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TurnoId)
+        </div>
+
+        <p>
+            <input type="submit" class ="btn-warning" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

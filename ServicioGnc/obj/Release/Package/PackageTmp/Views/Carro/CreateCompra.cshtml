@@ -1,0 +1,81 @@
+﻿@model ServicioGnc.Models.Carro
+
+
+@{
+    ViewBag.Title = "Compra";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    COMPRA
+</div>
+@using (Html.BeginForm(actionName: "ProcesarCompra", controllerName: "Carro"))
+{
+
+<div id="formularioDetail">
+    @Html.Partial("SeleccionarProveedor")
+</div> 
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+
+    <div id="busqueda">
+        <input type="text" name="productoId" id="productoId"  />
+        <input type="button" class="btn-warning" onclick="javascript:BuscarProducto()" value="Buscar" />
+
+    </div>
+    <div id="productoDescripcion"></div>
+    
+    <div id="detalleCarro"></div>
+       <br/>
+    <input type="submit" class="btn-warning" onclick="javascript:ProcesarCompra()" value="Guardar" />
+    <br/>
+}
+
+<div>
+    @Html.ActionLink("Nueva compra", "CreateCompra")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script >
+function BuscarProducto(){
+        var productoCodigo = $("#productoId").val();
+        $.ajax({
+            url: "@Url.Content("~/Producto/BuscarProductoCompra")",
+            type: 'POST',
+            data: { 'productoId': productoCodigo },
+            success: function (data) {
+                $("#productoDescripcion").html(data);
+            }
+        });
+    }
+
+    function AgregarDetalleCompra() {
+        var productoIdPanel = $("#ProductoIdPanel").val();
+        var cantidad = $("#ProductoCantidad").val();
+        $.ajax({
+            url: "@Url.Content("~/Carro/AgregarDetalleCompra")",
+            type:'post',
+
+            data: { 'productoId': productoIdPanel, 'cantidad': cantidad , 'tipoOperacionId': 2 },
+            success: function (data) {
+                $("#detalleCarro").html(data);
+            }
+        });
+    }
+        //EliminarDetalle
+        function EliminarDetalleCompra(carroIdPanel) {
+            $.ajax({
+                url: "@Url.Content("~/Carro/EliminarDetalle")",
+                type:'post',
+            data: { 'carroId': carroIdPanel},
+            success: function (data) {
+                $("#detalleCarro").html(data);
+            }
+        });
+    }
+</script>

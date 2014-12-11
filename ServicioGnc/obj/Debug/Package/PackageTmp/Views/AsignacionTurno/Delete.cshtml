@@ -1,0 +1,42 @@
+﻿@model ServicioGnc.Models.AsignacionTurno
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Realmente deseas eliminar esta asignación?
+</div>
+<fieldset>
+    <legend>AsignacionTurno</legend>
+
+    <div class="display-label">
+         Nombre Turno:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Turno.Nombre)
+    </div>
+
+    <div class="display-label">
+         Nombre:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Persona.Nombre)
+    </div>
+
+    <div class="display-label">
+         Observación:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacion)
+    </div>
+    <br />
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit"  class ="btn-warning" value="Eliminar" /> |
+        @Html.ActionLink("Volver al listado", "Index")
+    </p>
+}

@@ -9,17 +9,16 @@
 </div>
 
 
-@*<p>
-    @Html.ActionLink("Liquidación Particular", "Create")
-    @Html.ActionLink("Liquidacion General", "CreateGeneral")
-</p>*@
-
-
 <div id="buscador">
     @using (Html.BeginForm())
     {
         <div>
             Buscar empleado por DNI: @Html.TextBox("dni")
+        </div>    
+        @*<div>
+            Buscar por periodo: @Html.TextBox("periodo")
+        </div>*@
+        <div>
             <input type="submit" class="btn-warning" value="Buscar" />
         </div>
     }

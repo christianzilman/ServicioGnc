@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ServicioGnc.Models.Fichada>
+
+﻿@{
+    ViewBag.Title = "Fichada";
+}
+
+
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+Carga masiva de fichadas
+</div>
+
+
+
+@using (Html.BeginForm("Index", "Fichada", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" class="btn-warning" name="file" />
+    <br/>
+    <input type="submit" class="btn-warning" value="Importar" />
+    <br/>
+  
+
+}  
+
+
+

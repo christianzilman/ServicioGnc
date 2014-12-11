@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ServicioGnc.Models.Unidad>
+
+@{
+    ViewBag.Title = "Unidad";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+    Unidad
+</div>
+
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            Unidad
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.UnidadId }) |
+          @*  @Html.ActionLink("Details", "Details", new { id=item.UnidadId }) |*@
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.UnidadId })
+        </td>
+    </tr>
+}
+
+</table>

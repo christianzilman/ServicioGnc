@@ -20,20 +20,22 @@ namespace ServicioGnc.Controllers
         public ActionResult Index()
         {
             
-            return View(unitOfWork.LecturaPresionTemperaturaRepository.Get().ToList());
+            return View(unitOfWork.LecturaPresionTemperaturaRepository.Get().OrderByDescending(x => x.Fecha).ToList());
 
         }
 
-        public ActionResult PresionOk()
+        public ActionResult PresionOk(LecturaPresionTemperatura lecturapresiontemperatura)
         {
-
+            ViewBag.Presion = lecturapresiontemperatura.Presion;
+            ViewBag.Temperatura = lecturapresiontemperatura.Temperatura;
             return View();
 
         }
 
-        public ActionResult PresionNoOk()
+        public ActionResult PresionNoOk(LecturaPresionTemperatura lecturapresiontemperatura)
         {
-
+            ViewBag.Presion = lecturapresiontemperatura.Presion;
+            ViewBag.Temperatura = lecturapresiontemperatura.Temperatura;
             return View();
 
         }
@@ -93,11 +95,11 @@ namespace ServicioGnc.Controllers
                 unitOfWork.LecturaPresionTemperaturaRepository.Save();
                 if(presion > 250)
                 {
-                    return RedirectToAction("PresionNoOk");
+                    return RedirectToAction("PresionNoOk", lecturapresiontemperatura);
                 }
                 else
                 {
-                    return RedirectToAction("PresionOk");
+                    return RedirectToAction("PresionOk", lecturapresiontemperatura);
                 }    
             }
 

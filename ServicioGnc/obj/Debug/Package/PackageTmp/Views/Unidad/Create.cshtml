@@ -1,0 +1,40 @@
+﻿@model ServicioGnc.Models.Unidad
+
+@{
+    ViewBag.Title = "Unidad";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+    Unidad
+</div>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Unidad</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <p>
+            <input type="submit" class="btn-warning" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

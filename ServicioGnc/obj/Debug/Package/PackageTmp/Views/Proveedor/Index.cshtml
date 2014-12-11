@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ServicioGnc.Models.Proveedor>
+
+@{
+    ViewBag.Title = "Proveedor";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+    Proveedor
+</div>
+
+<p>
+    @Html.ActionLink("Crear nuevo Proveedor ", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.RazonSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CUIT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RazonSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CUIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domicilio)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.ProveedorId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>
+      

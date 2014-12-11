@@ -1,0 +1,26 @@
+﻿@model ServicioGnc.Models.TurnoEspecial
+
+@{
+    ViewBag.Title = "Turno especial";
+}
+
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de Turno Especial</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Feriado: @Html.DisplayFor(model => model.Feriado.Nombre) </div>
+            <div>    Empleado: @Html.DisplayFor(model => model.Persona.Nombre)</div>
+            <br />
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.TurnoEspecialId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+

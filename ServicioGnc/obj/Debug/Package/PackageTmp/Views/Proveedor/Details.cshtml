@@ -1,0 +1,26 @@
+﻿@model ServicioGnc.Models.Proveedor
+
+@{
+    ViewBag.Title = "Proveedor";
+}
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de Proveedor</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Razón Social: @Html.DisplayFor(model => model.RazonSocial) </div>
+            <div>    CUIT: @Html.DisplayFor(model => model.CUIT)</div>
+            <div>    Domicilio: @Html.DisplayFor(model => model.Domicilio)</div>            
+            <br />
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ProveedorId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+

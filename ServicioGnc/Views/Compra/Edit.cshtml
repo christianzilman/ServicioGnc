@@ -47,7 +47,7 @@
             @Html.LabelFor(model => model.Total)
         </div>
         <div class="editor-field">
-          $  <input name="Total" id="Total" value="0" readonly="readonly" />
+         $<input name="Total" id="Total" value="@Html.DisplayFor(model => model.Total)" readonly="readonly" />
         </div>
 
         <br />

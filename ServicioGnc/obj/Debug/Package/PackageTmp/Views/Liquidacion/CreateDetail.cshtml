@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "CreateDetail";
+      
+}
+<br />
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+    Agregar Conceptos
+</div>
+
+
+<div class="editor-label">
+    Concepto:
+</div>
+<div class="editor-field">  
+    @{
+        List<ServicioGnc.Models.Concepto> listConcepto = ViewBag.Conceptos;
+    }
+
+    <select id="ConceptoId" name="ConceptoId">
+        @foreach (var item in listConcepto)
+        {
+            <option value="@item.ConceptoId"> @item.Nombre </option>
+            
+        }
+
+    </select>
+</div>
+
+    <br />
+    <input type="button" class="btn-warning" value="Agregar Detalle" onclick="javascript:agregarDetalle()" />
+    <br />

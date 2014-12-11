@@ -1,0 +1,10 @@
+﻿@model ServicioGnc.Models.Persona
+
+Seleccione Empleado
+<div class="editor-label">
+    @Html.LabelFor(model => model.PersonaId, "Persona")
+</div>
+<div class="editor-field" id="personaid">
+    @Html.DropDownList("PersonaId")
+    @Html.ValidationMessageFor(model => model.PersonaId)
+</div>

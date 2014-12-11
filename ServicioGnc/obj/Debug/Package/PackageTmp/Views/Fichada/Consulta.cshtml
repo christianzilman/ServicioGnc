@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ServicioGnc.Models.Fichada>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Fichadas
+</div>
+
+
+<p>
+    @Html.ActionLink("Nueva Fichada", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        <input id="fechaDesde" name="fechaDesde" value="@ViewBag.FechaDesde" class="datepicker" data-date-format="dd-mm-yyyy" />
+        <input id="fechaHasta" name="fechaHasta" value="@ViewBag.FechaHasta" class="datepicker" data-date-format="dd-mm-yyyy" />
+        <input type="submit" class="btn-warning" value="Consultar" />
+    </p>
+}
+
+<table class="table">
+    <tr class="warning">
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Fecha de Egreso
+        </th>
+        <th>
+            Empleado
+        </th>
+        <th>
+            Observación
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEgreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.FichadaId }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.FichadaId }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.FichadaId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(function () {
+        $('#fechaDesde').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#fechaHasta').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>

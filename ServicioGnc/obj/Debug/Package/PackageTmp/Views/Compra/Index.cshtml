@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ServicioGnc.Models.Compra>
+
+@{
+    ViewBag.Title = "Compras";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    Compras
+</div>
+
+
+<table class="table">
+    <tr class="warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedor.RazonSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proveedor.RazonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.ActionLink("Confirmar/Cancelar", "Edit", new { id=item.CompraId }) 
+            @*@Html.ActionLink("Details", "Details", new { id=item.CompraId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompraId })*@
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,48 @@
+﻿@model ServicioGnc.Models.Persona
+
+@{
+    ViewBag.Title = "Empleado";
+}
+
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de Empleado</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-8">
+            <div>    Nombre: @Html.DisplayFor(model => model.Nombre) </div>
+            <div>    Apellido: @Html.DisplayFor(model => model.Apellido)</div>
+            <div>    Domicilio: @Html.DisplayFor(model => model.Domicilio)</div>
+            <div>    Rol:       @Html.DisplayFor(model => model.Rol.Nombre)</div>
+            <div>    Fecha de Nacimiento: @Html.DisplayFor(model => model.FechaNacimiento)</div>
+            <div>    Fecha de Ingreso: @Html.DisplayFor(model => model.FechaIngreso)</div>
+            <div>    Fecha de Egreso: @Html.DisplayFor(model => model.FechaEgreso)</div>
+            <br />
+            <div> Familiares </div>
+            <table class="table">
+                <tr class="warning">
+                    <th>Dni</th>
+                    <th>Nombre</th>
+                    <th>Relación</th>
+                    <th>Fecha de Nacimiento</th>
+                </tr>
+                @foreach (var item in Model.Familiars)
+                { <tr>
+                        <th>@Html.DisplayFor(modelItem => item.Dni)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Nombre)</th>                   
+                        <th>@Html.DisplayFor(modelItem => item.Relacion)</th>
+                        <th>@Html.DisplayFor(modelItem => item.FechaNacimiento)</th>
+                    </tr>
+                }
+            </table>
+
+
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.PersonaId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+</div>

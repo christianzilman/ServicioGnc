@@ -1,0 +1,98 @@
+﻿@model ServicioGnc.Models.RegisterModel
+@{
+    ViewBag.Title = "Registrarse";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#Birthday").datepicker({ dateFormat: 'dd-mm-yy' });
+    });
+</script>
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Registrarse. Cree una cuenta nueva.
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <!--<input type="hidden" name="RoleId" id="RoleId" value="1" />-->    
+    <fieldset>
+        <legend>Formulario de registro</legend>
+        <ol>
+
+            <li>
+                <label for="Name"> Nombre:</label>                
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+
+            <li class="editor-label">
+                <label for="Surname"> Apellido:</label>
+                @Html.TextBoxFor(m => m.Surname)
+            </li>
+
+            <li>
+            @*    <label for="Age">Edad:</label>
+                @Html.TextBoxFor(m => m.Age)
+
+    @Html.EditorFor(model => model.Age)
+    @Html.ValidationMessageFor(model => model.Age)*@
+            </li>
+            <li class="editor-label">
+                <label for="Email">Email:</label>
+                <input class="text-box single-line" data-val="true" data-val-required="El campo Email es obligatorio." id="Email" name="Email" type="email" value="@Model.Email">
+                @*@Html.ValidationMessageFor(model => model.Email)*@
+            </li>
+            <li>
+                <label for="Birthday">Fecha de Nacimiento:</label>                
+                @Html.TextBoxFor(m => m.Birthday)
+                @*@Html.ValidationMessageFor(model => model.Birthday)*@
+            </li>
+
+
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+
+            <li>
+                <input type="hidden" name="RoleId" id="RoleId" value="1" />           
+                @if (Request.IsAuthenticated)
+                {
+                   try
+                   {
+                       if (User.IsInRole("administrador"))
+                       {
+                           <p>Rol </p>
+                           <p>
+                               <select id="RoleId" name="RoleId">
+                                   <option value="2">Empleado</option>
+                                   <option value="4"> Negocio </option>
+                                   <option value="1">Administrador </option>
+                               </select>
+                           </p>
+                       }
+                   }catch{
+                   }
+                }              
+            </li>
+
+        </ol>
+        <input type="submit" class="btn-warning" value="Agregar" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/bootstrap-3.1.1/js/jquery-ui.js"></script>
+}

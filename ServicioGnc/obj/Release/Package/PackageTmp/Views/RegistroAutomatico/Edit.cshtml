@@ -1,0 +1,49 @@
+﻿@model ServicioGnc.Models.RegistroAutomatico
+
+@{
+    ViewBag.Title = "Editar Asigniación de Turnos";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+    Asigniación automática de turnos
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RegistroAutomatico</legend>
+
+        @Html.HiddenFor(model => model.RegistroAutomaticoId)
+
+        <div class="editor-label" hidden="hidden">
+            @Html.LabelFor(model => model.TurnoEspecialId, "TurnoEspecial")
+        </div>
+        <div class="editor-field" hidden="hidden">
+            @Html.DropDownList("TurnoEspecialId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TurnoEspecialId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fecha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fecha)
+            @Html.ValidationMessageFor(model => model.Fecha)
+        </div>
+        <br />
+        <p>
+            <input type="submit" class="btn-warning" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

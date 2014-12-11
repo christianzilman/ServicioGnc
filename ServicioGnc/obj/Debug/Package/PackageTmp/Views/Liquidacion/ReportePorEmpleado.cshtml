@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ServicioGnc.Models.Liquidacion>
+
+@{
+    ViewBag.Title = "Liquidación de Sueldos";
+}
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Liquidación de Sueldos
+</div>
+
+
+@*<p>
+    @Html.ActionLink("Liquidación Particular", "Create")
+    @Html.ActionLink("Liquidacion General", "CreateGeneral")
+</p>*@
+
+
+<div id="buscador">
+    @using (Html.BeginForm())
+    {
+        <div>
+            Buscar empleado por DNI: @Html.TextBox("dni")
+            <input type="submit" class="btn-warning" value="Buscar" />
+        </div>
+    }
+
+</div>
+<p>
+ <table class="table" >
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Persona.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Periodo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persona.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Periodo)
+                </td>
+                <td>
+                    @Html.ActionLink("Imprimir Recibo", "Impresiones", new { id = item.LiquidacionId }) 
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>
+
+

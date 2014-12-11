@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ServicioGnc.Models.Producto>
+
+@{
+    ViewBag.Title = "Productos";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> 
+    Productos
+</div>
+
+
+<div>
+    @Html.ActionLink("Crear nuevo producto ", "Create")
+</div>
+<br/>
+<div id="buscador">
+    @using (Html.BeginForm())
+    {
+        <div >
+            Buscar productos: @Html.TextBox("SearchString")
+            <input type="submit" class="btn-warning" value="Buscar" />
+        </div>
+    }
+
+</div>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                Código de Producto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unidad.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unidad.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductoId })
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>
+

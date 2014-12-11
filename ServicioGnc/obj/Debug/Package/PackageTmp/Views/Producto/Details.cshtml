@@ -1,0 +1,27 @@
+﻿@model ServicioGnc.Models.Producto
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de Producto</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Nombre: @Html.DisplayFor(model => model.Nombre) </div>
+            <div>    Precio de Compra: @Html.DisplayFor(model => model.PrecioCompra)</div>
+            <div>    Precio de Venta: @Html.DisplayFor(model => model.PrecioVenta)</div>
+            <div>    Unidad: @Html.DisplayFor(model => model.Unidad.Nombre)</div>
+            <div>    Cantidad: @Html.DisplayFor(model => model.Cantidad)</div>
+            <br />
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ProductoId }) |
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+

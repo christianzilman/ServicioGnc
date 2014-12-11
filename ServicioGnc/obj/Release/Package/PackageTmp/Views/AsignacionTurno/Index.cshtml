@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ServicioGnc.Models.AsignacionTurno>
+
+@{
+    ViewBag.Title = "Asignación de turnos";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Asignación de turnos    
+</div>
+
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Turno.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Turno.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AsignacionTurnoId }) |
+            @Html.ActionLink("Ver Detalle", "Details", new { id=item.AsignacionTurnoId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.AsignacionTurnoId })
+        </td>
+    </tr>
+}
+</table>

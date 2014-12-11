@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "CodigoPeriodoProductoVentaCompra";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Hitorial de Articulo por periodo
+</div>
+    
+<div id="productoDescripcion"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+       
+        <div class="editor-label">
+                Codigo:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="codigo" id="codigo" value="@ViewBag.Codigo" />
+        </div>
+    
+        <div class="editor-label">
+                Fecha Desde:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="fechaDesde" value="@ViewBag.FechaDesde" />
+        </div>
+    
+    
+        <div class="editor-label">
+                Fecha Hasta:
+        </div>
+        <div class="editor-field">
+            <input type="text" name="fechaHasta" value="@ViewBag.FechaHasta" />
+        </div>
+    
+        <input type="submit" class="btn-warning"  value="Consultar" />
+}
+
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                Cantidad Pedida
+            </th>
+
+            <th>
+                Cantidad Comprada
+            </th>
+            <th>
+                Cantidad Vendida
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <label>
+                    @ViewBag.CantidadPedida
+                </label>
+            </td>
+            <td>
+                <label>@ViewBag.CantidadComprada</label>
+            </td>
+
+            <td>
+                <label>@ViewBag.CantidadVendida</label>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+
+
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                Monto Pedido
+            </th>
+
+            <th>
+                Monto Comprado
+            </th>
+            <th>
+                Monto Vendido
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                <label>
+                    @ViewBag.MontoPedido
+                </label>
+            </td>
+            <td>
+                <label>@ViewBag.MontoComprado</label>
+            </td>
+
+            <td>
+                <label>@ViewBag.MontoVendido</label>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+
+<script>
+
+    function BuscarProducto(){
+        var productoCodigo = $("#productoId").val();
+        $("#codigo").val(productoCodigo);
+        $.ajax({
+            url: "@Url.Content("~/Producto/BuscarProductoReporte")",
+            type: 'POST',
+            data: { 'productoId': productoCodigo },
+            success: function (data) {
+                $("#productoDescripcion").html(data);
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ServicioGnc.Models.TurnoEspecial>
+
+@{
+    ViewBag.Title = "Turnos Especiales";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Turnos especiales
+</div>
+
+<p>
+    @Html.ActionLink("Crear nuevo turno especial", "Create")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            Feriado
+        </th>
+        <th>
+            Empleado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Feriado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.TurnoEspecialId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.TurnoEspecialId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.TurnoEspecialId })
+        </td>
+    </tr>
+}
+
+</table>

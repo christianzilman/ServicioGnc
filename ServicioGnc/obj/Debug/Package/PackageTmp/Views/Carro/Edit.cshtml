@@ -1,0 +1,72 @@
+﻿@model ServicioGnc.Models.Carro
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Carro</legend>
+
+        @Html.HiddenFor(model => model.CarroId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UsuarioId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UsuarioId)
+            @Html.ValidationMessageFor(model => model.UsuarioId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductoId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductoId)
+            @Html.ValidationMessageFor(model => model.ProductoId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Precio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Precio)
+            @Html.ValidationMessageFor(model => model.Precio)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubTotal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubTotal)
+            @Html.ValidationMessageFor(model => model.SubTotal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cantidad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cantidad)
+            @Html.ValidationMessageFor(model => model.Cantidad)
+        </div>
+
+
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

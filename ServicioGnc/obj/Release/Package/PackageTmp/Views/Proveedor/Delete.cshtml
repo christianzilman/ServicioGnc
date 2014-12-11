@@ -1,0 +1,34 @@
+﻿@model ServicioGnc.Models.Proveedor
+
+@{
+    ViewBag.Title = "Proveedor";
+}
+
+<h2></h2>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Proveedor - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Razón social: @Html.DisplayFor(model => model.RazonSocial) </div>
+            <div>    CUIT: @Html.DisplayFor(model => model.CUIT)</div>
+            <div>    Domicilio: @Html.DisplayFor(model => model.Domicilio)</div>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ServicioGnc.Models.Feriado>
+
+@{
+    ViewBag.Title = "Feriados";
+}
+
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+    Gestión de Feriados
+</div>
+<br />
+
+
+<p>
+    @Html.ActionLink("Crear nuevo Feriado ", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+            
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.FeriadoId }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.FeriadoId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.FeriadoId })
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>

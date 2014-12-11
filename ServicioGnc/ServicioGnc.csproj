@@ -394,8 +394,16 @@
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="App_Browsers\qt.browser" />
+<<<<<<< HEAD
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+=======
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+>>>>>>> 943aa3b07996e0c977df2c0cd5b2f4ee0e131d05
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\barometer %281%29.png" />
+    <Content Include="Images\Barometer.png" />
+    <Content Include="Images\GNC_GASO.jpg" />
+    <Content Include="Images\HiAppHere_com_pl.baggus.barometr.png" />
     <Content Include="NuGet.exe" />
     <Content Include="Rotativa\libeay32.dll" />
     <Content Include="Rotativa\libgcc_s_dw2-1.dll" />

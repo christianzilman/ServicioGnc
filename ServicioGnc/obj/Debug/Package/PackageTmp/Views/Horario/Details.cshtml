@@ -1,0 +1,31 @@
+﻿@model ServicioGnc.Models.Horario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+    Detalle del horario
+</div>
+<fieldset>
+    <legend>Horario</legend>
+
+    <div class="display-label">
+         Comienzo del Turno:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ComienzoTurno)
+    </div>
+
+    <div class="display-label">
+         Final del turno:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FinalTurno)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.HorarioId }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>

@@ -1,0 +1,71 @@
+﻿@model ServicioGnc.Models.Carro
+
+
+@{
+    ViewBag.Title = "Liquidación";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    Liquidación
+</div>
+
+<div id="formularioDetail">
+    @Html.Partial("SeleccionarEmpleado")
+</div> 
+
+@using (Html.BeginForm(actionName: "ProcesarLiquidacion", controllerName: "Carro"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+
+    <div id="busqueda">
+        <input type="text" name="conceptoId" id="conceptoId"  />
+        <input type="button" class="btn-warning" onclick="javascript:BuscarConcepto()" value="Buscar" />
+
+    </div>
+    <div id="productoDescripcion"></div>
+    
+    <div id="detalleCarro"></div>
+       <br/>
+    <input type="submit" class="btn-warning" onclick="javascript:ProcesarLiquidacion()" value="Guardar" />
+    <br/>
+}
+
+<div>
+    @Html.ActionLink("Nueva Liquidación", "CreateLiquidacion")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script >
+function BuscarConcepto(){
+        var conceptoCodigo = $("#conceptoId").val();
+        $.ajax({
+            url: "@Url.Content("~/Concepto/BuscarConcepto")",
+            type: 'POST',
+            data: { 'conceptoId': conceptoCodigo },
+            success: function (data) {
+                $("#conceptoDescripcion").html(data);
+            }
+        });
+    }
+
+    function AgregarDetalleLiquidacion() {
+        var conceptoIdPanel = $("#ConceptoIdPanel").val();
+        $.ajax({
+            url: "@Url.Content("~/Carro/AgregarDetalleLiquidacion")",
+            type:'post',
+
+            data: { 'conceptoId': productoIdPanel, 'tipoOperacionId': 3 },
+            success: function (data) {
+                $("#detalleCarro").html(data);
+            }
+        });
+
+
+    }
+</script>

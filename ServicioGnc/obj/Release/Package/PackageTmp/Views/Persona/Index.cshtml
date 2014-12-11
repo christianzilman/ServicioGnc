@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ServicioGnc.Models.Persona>
+
+@{
+    ViewBag.Title = "Empleado";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Empleado
+</div>
+
+<p>
+    @Html.ActionLink("Crear nuevo empleado", "Create")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            DNI
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </th>
+        <th>
+         Fecha de Nacimiento
+        </th>
+        <th>
+        Fecha de Egreso
+        </th>
+        <th>
+         Fecha de Ingreso
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Dni)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEgreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PersonaId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PersonaId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.PersonaId })
+        </td>
+    </tr>
+}
+
+</table>

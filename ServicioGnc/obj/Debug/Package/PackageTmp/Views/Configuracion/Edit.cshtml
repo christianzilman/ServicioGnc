@@ -1,0 +1,52 @@
+﻿@model ServicioGnc.Models.Configuracion
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Edición de Configuración</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <p>
+                    @ViewBag.MensageError
+                </p>
+
+                <fieldset>
+                    <legend>Configuracion</legend>
+
+                    @Html.HiddenFor(model => model.ConfiguracionId)
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CantidadEmpleado)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CantidadEmpleado)
+                        @Html.ValidationMessageFor(model => model.CantidadEmpleado)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Guardar" />
+                    </p>
+                </fieldset>
+            }
+
+            <div>
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

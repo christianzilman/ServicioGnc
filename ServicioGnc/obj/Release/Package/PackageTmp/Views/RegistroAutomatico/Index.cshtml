@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ServicioGnc.Models.RegistroAutomatico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Registro Automatico
+</div>
+
+<p>
+    @ViewBag.Mensaje
+</p>
+
+<p>
+    @Html.ActionLink("Generar Nuevo Registro Automatico", "CreateGeneral")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            Fecha de Registro
+        </th>
+        <th>Persona</th>
+        <th>
+            Feriado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurnoEspecial.Persona.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurnoEspecial.Feriado.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.RegistroAutomaticoId })
+        </td>
+    </tr>
+}
+
+</table>

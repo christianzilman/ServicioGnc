@@ -1,0 +1,93 @@
+﻿@model ServicioGnc.Models.Turno
+
+@{
+    ViewBag.Title = "Turnos";
+}
+
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+   Turno
+</div>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Turno</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <div class="editor-field">
+            
+            <div id="formularioDetail">
+                @Html.Partial("CreateDetail")
+            </div>            
+        </div>
+        <div class="editor-field">
+            <h4>Detalle del Turno</h4>
+            <div id="detalleTurno">
+            </div>
+        </div>
+        <script type="text/javascript">
+                function agregarDetalle() {
+
+                    var HorarioId = $("#HorarioId").val();
+                    var Dia = $("#Dia").val();
+
+                    $.ajax({
+                        url: "@Url.Content("~/Turno/CreateDetail")",
+                        type: 'post',
+                        data: { 'TurnoId': 0, 'HorarioId': HorarioId, 'Dia': Dia },
+                        success: function (data) {
+                            $("#formularioDetail").html(data);
+                            listarDetalle();
+                        }
+                    });
+                }
+
+            function listarDetalle() {
+                $.ajax({
+                    url: "@Url.Content("~/Turno/ListDetail")",
+                    type: 'post',
+                    data: {},
+                    success: function (data) {
+                        $("#detalleTurno").html(data);
+                    }
+                });
+            }
+
+            function eliminarDetalle(detalleId) {
+                    $.ajax({
+                        url: "@Url.Content("~/Turno/DeleteDetail")",
+                        type: 'post',
+                        data: { 'HorarioId': detalleId },
+                        success: function (data) {
+                            $("#detalleTurno").html(data);
+                        }
+                    });
+            }
+        </script>
+        <br/>
+        <p class="editor-field">
+            <input type="submit" class="btn-warning" value="Crear Turno" />
+        </p>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

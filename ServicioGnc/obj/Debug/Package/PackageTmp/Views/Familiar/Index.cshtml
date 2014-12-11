@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ServicioGnc.Models.Familiar>
+
+@{
+    ViewBag.Title = "Familiar";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    Familiares
+</div>
+
+<p>
+    @Html.ActionLink("Crear nuevo familiar", "Create")
+</p>
+<table class="table">
+    <tr class="warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Relacion)
+        </th>
+        <th>
+            Fecha de Nacimiento
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Relacion)
+        </td>
+        <td>
+           @* @item.Date.ToString("dd MMM yyyy")*@
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.FamiliarId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.FamiliarId }) |
+            @Html.ActionLink("Elimnar", "Delete", new { id=item.FamiliarId })
+        </td>
+    </tr>
+}
+
+</table>

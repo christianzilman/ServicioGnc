@@ -52,6 +52,8 @@ namespace ServicioGnc.Controllers
             ViewBag.Code = parametros.codigo;
             parametros.fechaDesde = DateTime.Now;
             parametros.fechaHasta = DateTime.Now;
+            ModelState.Remove("fechaDesde");
+            ModelState.Remove("fechaHasta");
             if(ModelState.IsValid){
 
                 int codigo = (int)parametros.codigo;

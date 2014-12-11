@@ -1,0 +1,49 @@
+﻿@model ServicioGnc.Models.Fichada
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Realmente deseas eliminar esta fichada ?
+</div>
+
+<fieldset>
+    <legend>Fichada</legend>
+
+    <div class="display-label">
+        Fecha Ingreso:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaIngreso)
+    </div>
+
+    <div class="display-label">
+         Fecha Egreso:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaEgreso)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Persona.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Persona.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Observacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacion)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit"  class="warning"  value="Eliminar" /> |
+        @Html.ActionLink("Volver al listado", "Index")
+    </p>
+}

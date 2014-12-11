@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ServicioGnc.Models.LecturaPresionTemperatura>
+
+@{
+    ViewBag.Title = "Sensor de Presión y Temperatura";
+}
+
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+    Presión y Temperatura
+</div>
+
+<p>
+    @Html.ActionLink("Nuevo control", "Create")
+</p>
+
+<table class="table">
+    <tr class="warning">
+        <th>
+            Operación
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Presion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Presion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temperatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.LecturaPresionTemperaturaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LecturaPresionTemperaturaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LecturaPresionTemperaturaId })*@
+        </td>
+    </tr>
+}
+
+</table>

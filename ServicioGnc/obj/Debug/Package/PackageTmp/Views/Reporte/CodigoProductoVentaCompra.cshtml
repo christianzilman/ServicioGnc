@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "CodigoProductoVentaCompra";
+}
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    Hitorial de Articulo
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Ingresar Codigo Producto: <input type="text" name="codigo" value="" />        
+        <input type="submit" class="btn-warning" value="Consultar" />
+    </p>
+}
+
+@{
+    List<ServicioGnc.Controllers.ReporteController.DescripcionProductoVenta> listDescripcionProductoCompraVenta = ViewBag.ListDescripcionProductoCompraVenta;
+}
+
+<table class="table">
+    <thead>
+        <tr class="warning">
+            <th>
+                Codigo Producto
+            </th>
+            <th>
+                Acción
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Usuario
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in listDescripcionProductoCompraVenta)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreUsuario)
+                </td>
+            </tr>
+        }
+    <tbody>
+</table>
+
