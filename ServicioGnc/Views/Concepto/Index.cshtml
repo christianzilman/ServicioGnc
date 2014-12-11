@@ -26,6 +26,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Utilidad)
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoConcepto.Nombre)
@@ -48,6 +49,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Utilidad)
+                    @if(item.Utilidad==1){
+                        <p>Importe con suma numérica</p>
+                    }else{
+                        <p>Importe con porcentaje</p>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TipoConcepto.Nombre)

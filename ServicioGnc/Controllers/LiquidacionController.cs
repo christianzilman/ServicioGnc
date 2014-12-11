@@ -58,13 +58,15 @@ namespace ServicioGnc.Controllers
         {
             ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre");
             ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre");
-            return View();
+            Liquidacion liquidacion = new Liquidacion() { Fecha = DateTime.Now};
+            return View(liquidacion);
         }
         [Authorize]
         public ActionResult CreateGeneral()
         {
             ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre");
-            return View();
+            Liquidacion liquidacion = new Liquidacion() { Fecha = DateTime.Now };
+            return View(liquidacion);
         }
 
 
@@ -354,7 +356,8 @@ namespace ServicioGnc.Controllers
             ViewBag.Conceptos = unitOfWork.ConceptoRepository.Get();
             ViewBag.EmpresaId = new SelectList(unitOfWork.EmpresaRepository.Get(), "EmpresaId", "Nombre");
             ViewBag.PersonaId = new SelectList(unitOfWork.PersonaRepository.Get(), "PersonaId", "Nombre");
-            return View();
+            Liquidacion liquidacion = new Liquidacion() { Fecha = DateTime.Now };
+            return View(liquidacion);
         }
 
         //

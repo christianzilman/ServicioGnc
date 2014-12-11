@@ -56,6 +56,7 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Periodo)
             @Html.ValidationMessageFor(model => model.Periodo)
+            (Formato MM-YYYY)
         </div>
 <div>
 <div id="formularioDetail">
@@ -124,8 +125,9 @@
 }
 
 <script>
-    $(function(){    
-        
+    $(function () {
+        $('#Fecha').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
     });
-
 </script>

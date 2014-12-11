@@ -49,7 +49,7 @@
                         @Html.LabelFor(model => model.Fecha)
                     </div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.Fecha)
+                        <input id="Fecha" name="Fecha" value="@Model.Fecha" class="datepicker" data-date-format="dd-mm-yyyy" />
                         @Html.ValidationMessageFor(model => model.Fecha)
                     </div>
 
@@ -73,6 +73,13 @@
         </div>
     </div>
 </div>
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $(function () {
+        $('#Fecha').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>

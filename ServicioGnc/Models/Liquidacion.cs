@@ -17,7 +17,6 @@ namespace ServicioGnc.Models
         public Nullable<double> Total { get; set; }
         public string Periodo { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> Fecha { get; set; }
         public virtual ICollection<DetalleLiquidacion> DetalleLiquidacions { get; set; }
         public virtual Empresa Empresa { get; set; }
