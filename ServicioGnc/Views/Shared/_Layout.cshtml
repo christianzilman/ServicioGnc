@@ -104,8 +104,7 @@
                                 { 
                                     if (User.IsInRole("administrador") || User.IsInRole("negocio"))
                                     {
-                                        <li>@Html.ActionLink("Empleados", "Index", "Empleado")</li>
-                                        <li>@Html.ActionLink("Crear Usuario", "RegisterRole", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                       <li>@Html.ActionLink("Crear Usuario", "RegisterRole", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                                     }
                                 }
                                 catch { }

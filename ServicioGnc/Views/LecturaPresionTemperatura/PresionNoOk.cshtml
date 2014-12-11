@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ServicioGnc.Models.LecturaPresionTemperatura
+@{
     ViewBag.Title = "PresionOk";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,6 +10,13 @@
 </div>
 
 <img src="~/Images/barometer (1).png" class="center-block" style="width: 250px; height: 250px;" />
+
+<div>
+    <b> Presión:      @ViewBag.Presion</b>
+</div>
+<div>
+    <b>   Temperatura : @ViewBag.Temperatura</b>
+</div>
 
 <div class="center-block">
     @Html.ActionLink("Volver al listado", "Index")

@@ -1,10 +1,13 @@
 ﻿@model ServicioGnc.Models.Fichada
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Fichada";
 }
 
-<h2>Create</h2>
+<div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    Fichadas
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -17,7 +20,7 @@
             @Html.LabelFor(model => model.FechaIngreso)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaIngreso)
+            <input id="FechaIngreso" name="FechaIngreso" value="@Model.FechaIngreso" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaIngreso)
         </div>
 
@@ -25,7 +28,7 @@
             @Html.LabelFor(model => model.FechaEgreso)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FechaEgreso)
+            <input id="FechaEgreso" name="FechaEgreso" value="@Model.FechaEgreso" class="datepicker" data-date-format="dd-mm-yyyy" />
             @Html.ValidationMessageFor(model => model.FechaEgreso)
         </div>
 
@@ -58,3 +61,13 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+    $(function () {
+        $('#FechaEgreso').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#FechaIngreso').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>

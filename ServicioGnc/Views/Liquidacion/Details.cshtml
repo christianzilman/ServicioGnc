@@ -26,7 +26,7 @@
                     <th>Concepto</th>
                     <th>Importe</th>
                     <th>Porcentaje</th>
-                    @*<th>SubTotal</th>*@
+                  @*  <th>SubTotal</th>*@
                 </tr>
                 @foreach (var item in Model.DetalleLiquidacions)
                 {
@@ -35,7 +35,7 @@
                     <th>@Html.DisplayFor(modelItem => item.Concepto.Nombre)</th>
                     <th>@Html.DisplayFor(modelItem => item.Concepto.Importe)</th>
                     <th>@Html.DisplayFor(modelItem => item.Concepto.Porcentaje)</th>
-                  @*  <th>@Html.DisplayFor(modelItem => item.SubTotal)</th>*@
+                    @*<th>@Html.DisplayFor(modelItem => item.SubTotal)</th>*@
                 </tr>
                 }
             </table>

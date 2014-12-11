@@ -4,46 +4,30 @@
     ViewBag.Title = "Delete";
 }
 
-<div class="alert alert-warning" role="alert">
-    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-    Realmente deseas eliminar esta fichada ?
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">Fichada - ¿Está seguro de que desea eliminar esto?</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+            <div>    Fecha Ingreso: @Html.DisplayFor(model => model.FechaIngreso)</div>
+            <div>    Fecha Egreso: @Html.DisplayFor(model => model.FechaEgreso)</div>
+            <div>    Empleado: @Html.DisplayFor(model => model.Persona.Nombre) </div>
+            <div>    Empleado: @Html.DisplayFor(model => model.Observacion) </div>
+            <br />
+            <div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p>
+                        <input type="submit" class="btn-warning" value="Eliminar" /> |
+                        @Html.ActionLink("Volver al listado", "Index")
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
 </div>
 
-<fieldset>
-    <legend>Fichada</legend>
-
-    <div class="display-label">
-        Fecha Ingreso:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FechaIngreso)
-    </div>
-
-    <div class="display-label">
-         Fecha Egreso:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FechaEgreso)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Persona.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Persona.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Observacion)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Observacion)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit"  class="warning"  value="Eliminar" /> |
-        @Html.ActionLink("Volver al listado", "Index")
-    </p>
-}

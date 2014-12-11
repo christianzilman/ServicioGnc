@@ -11,9 +11,9 @@
 </div>
 
 
-<p>
+@*<p>
     @Html.ActionLink("Nueva Fichada", "Create")
-</p>
+</p>*@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -59,7 +59,7 @@
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.FichadaId }) |
-                @Html.ActionLink("Detalle", "Details", new { id = item.FichadaId }) |
+               @* @Html.ActionLink("Detalle", "Details", new { id = item.FichadaId }) |*@
                 @Html.ActionLink("Eliminar", "Delete", new { id = item.FichadaId })
             </td>
         </tr>
